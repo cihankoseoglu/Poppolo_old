@@ -7,23 +7,70 @@
 //
 
 #import "MyScene.h"
+#import "BallNode.h"
+
+@interface MyScene(){
+    
+}
+
+@end
 
 @implementation MyScene
+
+- (BallNode *)addBall {
+    
+    BallNode *ball = [BallNode init];
+    return ball;
+    
+    }
+
+-(CGPoint) randomPointOnScreen:(CGSize)containerSize forViewSize:(CGSize)size
+{
+    //CGPoint randomPoint = CGPointMake(arc4random()%self.frame.size.width, arc4random()%self.frame.size.height);
+    CGFloat xRange = containerSize.width - size.width;
+    CGFloat yRange = containerSize.height - size.height;
+    
+    CGFloat minX = (containerSize.width - xRange) / 2;
+    CGFloat minY = (containerSize.height - yRange) / 2;
+    
+    int randomX = (arc4random() % (int)floorf(xRange)) + minX;
+    int randomY = (arc4random() % (int)floorf(yRange)) + minY;
+    return CGPointMake(randomX, randomY);
+    
+}
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        self.backgroundColor = [SKColor whiteColor];
         
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+        self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
+        self.physicsWorld.gravity = CGVectorMake(0, 0);
         
-        [self addChild:myLabel];
+
+        for (int i = 0 ; i <4; i++) {
+            for (int j = 0; j < 4; j++) {
+                
+                SKSpriteNode *ballSprite;
+                ballSprite = [self addBall];
+                //blueBallSprite.userInteractionEnabled = YES;
+
+                ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
+
+                
+                [self addChild:ballSprite];
+
+                CGVector myVector = CGVectorMake(10,5);
+
+                
+                [ballSprite.physicsBody applyImpulse:myVector];
+            }
+        }
+
+        
+
     }
     return self;
 }
@@ -31,19 +78,38 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    
+    NSLog(@"touchLocation x: %f and y: %f", location.x, location.y);
+    
+    SKNode *touchedNode = [self nodeAtPoint:location];
+    
+
+    
+    
+    
+    if(touchedNode != self){
+        [touchedNode removeFromParent];
         
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
+        SKSpriteNode* ball = [self addBall];
+        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
         
-        sprite.position = location;
+        [self addChild:ball];
         
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
+        [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
         
-        [sprite runAction:[SKAction repeatActionForever:action]];
         
-        [self addChild:sprite];
+        
     }
+    
+    
+    
+    
+    
+        
+        
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {

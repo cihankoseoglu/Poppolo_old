@@ -24,6 +24,7 @@
 		D1A78C3519673C32000E30D7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A78C1019673C32000E30D7 /* UIKit.framework */; };
 		D1A78C3D19673C32000E30D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C3B19673C32000E30D7 /* InfoPlist.strings */; };
 		D1A78C3F19673C32000E30D7 /* PoppoloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C3E19673C32000E30D7 /* PoppoloTests.m */; };
+		D1A78C4A1968A462000E30D7 /* BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C491968A462000E30D7 /* BallNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		D1A78C3A19673C32000E30D7 /* PoppoloTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PoppoloTests-Info.plist"; sourceTree = "<group>"; };
 		D1A78C3C19673C32000E30D7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D1A78C3E19673C32000E30D7 /* PoppoloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoppoloTests.m; sourceTree = "<group>"; };
+		D1A78C481968A462000E30D7 /* BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallNode.h; sourceTree = "<group>"; };
+		D1A78C491968A462000E30D7 /* BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,8 @@
 				D1A78C2419673C32000E30D7 /* ViewController.m */,
 				D1A78C2619673C32000E30D7 /* MyScene.h */,
 				D1A78C2719673C32000E30D7 /* MyScene.m */,
+				D1A78C481968A462000E30D7 /* BallNode.h */,
+				D1A78C491968A462000E30D7 /* BallNode.m */,
 				D1A78C2919673C32000E30D7 /* Spaceship.png */,
 				D1A78C2B19673C32000E30D7 /* Images.xcassets */,
 				D1A78C1519673C32000E30D7 /* Supporting Files */,
@@ -264,6 +269,7 @@
 			files = (
 				D1A78C2819673C32000E30D7 /* MyScene.m in Sources */,
 				D1A78C2519673C32000E30D7 /* ViewController.m in Sources */,
+				D1A78C4A1968A462000E30D7 /* BallNode.m in Sources */,
 				D1A78C1F19673C32000E30D7 /* AppDelegate.m in Sources */,
 				D1A78C1B19673C32000E30D7 /* main.m in Sources */,
 			);
