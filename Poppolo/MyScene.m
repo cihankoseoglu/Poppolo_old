@@ -11,17 +11,29 @@
 
 @interface MyScene(){
     
+    NSArray *balls;
 }
 
 @end
 
 @implementation MyScene
 
-- (BallNode *)addBall {
+- (SKSpriteNode *)addBall {
     
-    BallNode *ball = [BallNode init];
-    return ball;
     
+    balls = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
+    
+    uint32_t rnd = arc4random_uniform([balls count]);
+    
+    NSString *randomBall = [balls objectAtIndex:rnd];
+    
+    SKSpriteNode* ballSprite = [SKSpriteNode spriteNodeWithImageNamed:randomBall];
+    ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
+    ballSprite.physicsBody.friction = 0;
+    ballSprite.physicsBody.restitution = 0;
+    ballSprite.physicsBody.linearDamping = 0;
+    
+    return ballSprite;
     }
 
 -(CGPoint) randomPointOnScreen:(CGSize)containerSize forViewSize:(CGSize)size
