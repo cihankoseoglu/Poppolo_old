@@ -7,11 +7,11 @@
 //
 
 #import "MyScene.h"
-#import "BallNode.h"
 
 @interface MyScene(){
     
     NSArray *balls;
+
 }
 
 @end
@@ -36,9 +36,10 @@
     return ballSprite;
     }
 
+// returns a random point on screen given the container size and the size of the sprite
 -(CGPoint) randomPointOnScreen:(CGSize)containerSize forViewSize:(CGSize)size
 {
-    //CGPoint randomPoint = CGPointMake(arc4random()%self.frame.size.width, arc4random()%self.frame.size.height);
+    
     CGFloat xRange = containerSize.width - size.width;
     CGFloat yRange = containerSize.height - size.height;
     
@@ -65,19 +66,15 @@
         for (int i = 0 ; i <4; i++) {
             for (int j = 0; j < 4; j++) {
                 
-                SKSpriteNode *ballSprite;
-                ballSprite = [self addBall];
-                //blueBallSprite.userInteractionEnabled = YES;
 
-                ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
+                BallNode* ball = [BallNode new];
+                ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
 
                 
-                [self addChild:ballSprite];
 
-                CGVector myVector = CGVectorMake(10,5);
-
-                
-                [ballSprite.physicsBody applyImpulse:myVector];
+                [self addChild:ball];
+[ball.physicsBody applyForce:CGVectorMake(10, 5)];
+            
             }
         }
 
@@ -97,30 +94,25 @@
     
     SKNode *touchedNode = [self nodeAtPoint:location];
     
-
+    
     
     
     
     if(touchedNode != self){
         [touchedNode removeFromParent];
         
-        SKSpriteNode* ball = [self addBall];
-        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
         
+        
+        BallNode *ball = [BallNode new];
+        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
         [self addChild:ball];
         
         [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
         
         
-        
     }
     
     
-    
-    
-    
-        
-        
     
 }
 

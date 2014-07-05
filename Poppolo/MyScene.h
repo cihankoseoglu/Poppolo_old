@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "BallNode.h"
+
 
 @interface MyScene : SKScene
 
