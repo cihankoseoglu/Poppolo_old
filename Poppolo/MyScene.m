@@ -10,8 +10,11 @@
 
 @interface MyScene(){
     
-    NSArray *balls;
-
+    NSArray *ballSuits;
+    NSMutableArray *suitBallsOnScreen;
+    NSUInteger ballTouchCounter;
+    NSUInteger remainingBallsInASuit;
+        NSString *newSuitColor;
 }
 
 @end
@@ -21,11 +24,11 @@
 - (SKSpriteNode *)addBall {
     
     
-    balls = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
+    ballSuits = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
     
-    uint32_t rnd = arc4random_uniform([balls count]);
+    uint32_t rnd = arc4random_uniform([ballSuits count]);
     
-    NSString *randomBall = [balls objectAtIndex:rnd];
+    NSString *randomBall = [ballSuits objectAtIndex:rnd];
     
     SKSpriteNode* ballSprite = [SKSpriteNode spriteNodeWithImageNamed:randomBall];
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
@@ -34,7 +37,7 @@
     ballSprite.physicsBody.linearDamping = 0;
     
     return ballSprite;
-    }
+}
 
 // returns a random point on screen given the container size and the size of the sprite
 -(CGPoint) randomPointOnScreen:(CGSize)containerSize forViewSize:(CGSize)size
@@ -52,7 +55,20 @@
     
 }
 
--(id)initWithSize:(CGSize)size {    
+-(CGVector) randomVector{
+    
+    CGVector finalVector;
+    
+    CGFloat x = arc4random() %70;
+    CGFloat y = arc4random() %70;
+    
+    finalVector = CGVectorMake(x, y);
+    
+    
+    return finalVector;
+}
+
+-(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
@@ -62,24 +78,25 @@
         
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
-
+        ballTouchCounter = 0;
+        
+        
         for (int i = 0 ; i <4; i++) {
             for (int j = 0; j < 4; j++) {
                 
-
+                
                 BallNode* ball = [BallNode new];
                 ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-
                 
-
                 [self addChild:ball];
-[ball.physicsBody applyForce:CGVectorMake(10, 5)];
-            
+                [ball.physicsBody applyForce:[self randomVector]];
+                [ball.physicsBody applyAngularImpulse:30];
+                
             }
         }
-
         
-
+        
+        
     }
     return self;
 }
@@ -87,27 +104,87 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
+
+    
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
     NSLog(@"touchLocation x: %f and y: %f", location.x, location.y);
     
-    SKNode *touchedNode = [self nodeAtPoint:location];
+    BallNode *touchedNode = (SKNode*)[self nodeAtPoint:location];
     
     
-    
-    
-    
-    if(touchedNode != self){
+     if(touchedNode != self){
+    // if it's a new suit
+    if(ballTouchCounter == 0){
+        
+        // get that suit color
+        newSuitColor = touchedNode.ballColor;
+        
+        remainingBallsInASuit = 0;
+        
+        //get how many balls you have on screen of that particular color
+        
+        for (BallNode *ball in self.children) {
+            
+            if ([ball.ballColor isEqualToString:newSuitColor]) {
+                [suitBallsOnScreen addObject:ball];
+                ballTouchCounter++;
+            }
+            
+        }
+        
         [touchedNode removeFromParent];
+        ballTouchCounter--;
+        
+//        BallNode *ball = [BallNode new];
+//        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
+//        [self addChild:ball];
+//        
+//        [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
+
+    }else{
+        
+        if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+            
+            [touchedNode removeFromParent];
+            ballTouchCounter--;
+            
+            
+            // add a new ball
+//            BallNode *ball = [BallNode new];
+//            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
+//            [self addChild:ball];
+//            
+//            [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
+//            
+
+            
+          
+        }else {
+            
+            NSLog(@"Touched node is not the same color as the suit");
+            // Do nothing but make a little animation of some sort later
+                    }
         
         
+    }
+    
+   
         
-        BallNode *ball = [BallNode new];
-        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-        [self addChild:ball];
-        
-        [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
+//        if ([touchedNode.ballColor  isEqualToString:newSuitColor]) {
+//            [touchedNode removeFromParent];
+//            
+//            BallNode *ball = [BallNode new];
+//            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
+//            [self addChild:ball];
+//            
+//            [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
+//
+//            
+//        }
+//        
+//        
         
         
     }
