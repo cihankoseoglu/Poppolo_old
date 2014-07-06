@@ -15,13 +15,15 @@
     NSUInteger ballTouchCounter;
     NSUInteger remainingBallsInASuit;
         NSString *newSuitColor;
+    NSDate *firstTime;
+
 }
 
 @end
 
 @implementation MyScene
 
-- (SKSpriteNode *)addBall {
+- (void)addBall {
     
     
     ballSuits = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
@@ -30,13 +32,27 @@
     
     NSString *randomBall = [ballSuits objectAtIndex:rnd];
     
-    SKSpriteNode* ballSprite = [SKSpriteNode spriteNodeWithImageNamed:randomBall];
+    BallNode* ballSprite = [BallNode new];
+    ballSprite.ballColor = randomBall;
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
     ballSprite.physicsBody.restitution = 0;
     ballSprite.physicsBody.linearDamping = 0;
+    ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
-    return ballSprite;
+    
+    // look at this part later.
+    
+    if([ballSprite.ballColor isEqualToString:newSuitColor]){
+        [suitBallsOnScreen addObject:ballSprite];
+        remainingBallsInASuit++;
+    }
+    
+    
+    [self addChild:ballSprite];
+
+    [ballSprite.physicsBody applyForce:[self randomVector]];
+    
 }
 
 // returns a random point on screen given the container size and the size of the sprite
@@ -73,9 +89,7 @@
         /* Setup your scene here */
         
         self.backgroundColor = [SKColor whiteColor];
-        
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
-        
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
         ballTouchCounter = 0;
@@ -89,13 +103,14 @@
                 ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
                 
                 [self addChild:ball];
+                [ball.physicsBody applyAngularImpulse:arc4random()%70];
                 [ball.physicsBody applyForce:[self randomVector]];
-                [ball.physicsBody applyAngularImpulse:30];
                 
             }
         }
         
         
+        [self spawnBallWithTimeInterval:2];
         
     }
     return self;
@@ -140,8 +155,7 @@
 //        BallNode *ball = [BallNode new];
 //        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
 //        [self addChild:ball];
-//        
-//        [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
+        
 
     }else{
         
@@ -156,8 +170,8 @@
 //            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
 //            [self addChild:ball];
 //            
-//            [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
-//            
+
+            
 
             
           
@@ -197,4 +211,13 @@
     /* Called before each frame is rendered */
 }
 
+
+-(void)spawnBallWithTimeInterval:(NSTimeInterval)timeInterval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:self
+                                   selector:@selector(addBall)
+                                   userInfo:nil
+                                    repeats:YES];
+}
 @end

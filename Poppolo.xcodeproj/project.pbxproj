@@ -17,7 +17,6 @@
 		D1A78C2219673C32000E30D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C2019673C32000E30D7 /* Main.storyboard */; };
 		D1A78C2519673C32000E30D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C2419673C32000E30D7 /* ViewController.m */; };
 		D1A78C2819673C32000E30D7 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C2719673C32000E30D7 /* MyScene.m */; };
-		D1A78C2A19673C32000E30D7 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C2919673C32000E30D7 /* Spaceship.png */; };
 		D1A78C2C19673C32000E30D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C2B19673C32000E30D7 /* Images.xcassets */; };
 		D1A78C3319673C32000E30D7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A78C3219673C32000E30D7 /* XCTest.framework */; };
 		D1A78C3419673C32000E30D7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A78C0C19673C32000E30D7 /* Foundation.framework */; };
@@ -25,6 +24,11 @@
 		D1A78C3D19673C32000E30D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C3B19673C32000E30D7 /* InfoPlist.strings */; };
 		D1A78C3F19673C32000E30D7 /* PoppoloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C3E19673C32000E30D7 /* PoppoloTests.m */; };
 		D1A78C4A1968A462000E30D7 /* BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C491968A462000E30D7 /* BallNode.m */; };
+		D1A78C5419698B82000E30D7 /* BlueBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C4F19698B82000E30D7 /* BlueBall.png */; };
+		D1A78C5519698B82000E30D7 /* GreenBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C5019698B82000E30D7 /* GreenBall.png */; };
+		D1A78C5619698B82000E30D7 /* PinkBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C5119698B82000E30D7 /* PinkBall.png */; };
+		D1A78C5719698B82000E30D7 /* PurpleBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C5219698B82000E30D7 /* PurpleBall.png */; };
+		D1A78C5819698B82000E30D7 /* YellowBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C5319698B82000E30D7 /* YellowBall.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +58,6 @@
 		D1A78C2419673C32000E30D7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		D1A78C2619673C32000E30D7 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
 		D1A78C2719673C32000E30D7 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		D1A78C2919673C32000E30D7 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		D1A78C2B19673C32000E30D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D1A78C3119673C32000E30D7 /* PoppoloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PoppoloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1A78C3219673C32000E30D7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +66,11 @@
 		D1A78C3E19673C32000E30D7 /* PoppoloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoppoloTests.m; sourceTree = "<group>"; };
 		D1A78C481968A462000E30D7 /* BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallNode.h; sourceTree = "<group>"; };
 		D1A78C491968A462000E30D7 /* BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallNode.m; sourceTree = "<group>"; };
+		D1A78C4F19698B82000E30D7 /* BlueBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBall.png; sourceTree = "<group>"; };
+		D1A78C5019698B82000E30D7 /* GreenBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBall.png; sourceTree = "<group>"; };
+		D1A78C5119698B82000E30D7 /* PinkBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PinkBall.png; sourceTree = "<group>"; };
+		D1A78C5219698B82000E30D7 /* PurpleBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PurpleBall.png; sourceTree = "<group>"; };
+		D1A78C5319698B82000E30D7 /* YellowBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YellowBall.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,16 +132,14 @@
 		D1A78C1419673C32000E30D7 /* Poppolo */ = {
 			isa = PBXGroup;
 			children = (
+				D1A78C4E19698B70000E30D7 /* Assets */,
+				D1A78C4C19698B4C000E30D7 /* Scenes */,
+				D1A78C4B19698B41000E30D7 /* Nodes */,
 				D1A78C1D19673C32000E30D7 /* AppDelegate.h */,
 				D1A78C1E19673C32000E30D7 /* AppDelegate.m */,
 				D1A78C2019673C32000E30D7 /* Main.storyboard */,
 				D1A78C2319673C32000E30D7 /* ViewController.h */,
 				D1A78C2419673C32000E30D7 /* ViewController.m */,
-				D1A78C2619673C32000E30D7 /* MyScene.h */,
-				D1A78C2719673C32000E30D7 /* MyScene.m */,
-				D1A78C481968A462000E30D7 /* BallNode.h */,
-				D1A78C491968A462000E30D7 /* BallNode.m */,
-				D1A78C2919673C32000E30D7 /* Spaceship.png */,
 				D1A78C2B19673C32000E30D7 /* Images.xcassets */,
 				D1A78C1519673C32000E30D7 /* Supporting Files */,
 			);
@@ -167,6 +173,44 @@
 				D1A78C3B19673C32000E30D7 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D1A78C4B19698B41000E30D7 /* Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				D1A78C481968A462000E30D7 /* BallNode.h */,
+				D1A78C491968A462000E30D7 /* BallNode.m */,
+			);
+			name = Nodes;
+			sourceTree = "<group>";
+		};
+		D1A78C4C19698B4C000E30D7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D1A78C4D19698B52000E30D7 /* Levels */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		D1A78C4D19698B52000E30D7 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				D1A78C2619673C32000E30D7 /* MyScene.h */,
+				D1A78C2719673C32000E30D7 /* MyScene.m */,
+			);
+			name = Levels;
+			sourceTree = "<group>";
+		};
+		D1A78C4E19698B70000E30D7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D1A78C4F19698B82000E30D7 /* BlueBall.png */,
+				D1A78C5019698B82000E30D7 /* GreenBall.png */,
+				D1A78C5119698B82000E30D7 /* PinkBall.png */,
+				D1A78C5219698B82000E30D7 /* PurpleBall.png */,
+				D1A78C5319698B82000E30D7 /* YellowBall.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,9 +289,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1A78C5819698B82000E30D7 /* YellowBall.png in Resources */,
+				D1A78C5719698B82000E30D7 /* PurpleBall.png in Resources */,
+				D1A78C5519698B82000E30D7 /* GreenBall.png in Resources */,
 				D1A78C1919673C32000E30D7 /* InfoPlist.strings in Resources */,
+				D1A78C5619698B82000E30D7 /* PinkBall.png in Resources */,
 				D1A78C2C19673C32000E30D7 /* Images.xcassets in Resources */,
-				D1A78C2A19673C32000E30D7 /* Spaceship.png in Resources */,
+				D1A78C5419698B82000E30D7 /* BlueBall.png in Resources */,
 				D1A78C2219673C32000E30D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
