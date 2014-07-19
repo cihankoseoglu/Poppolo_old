@@ -25,15 +25,16 @@
 
 - (void)addBall {
     
+    //ballSuits = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
     
-    ballSuits = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
+    //uint32_t rnd = arc4random_uniform([ballSuits count]);
     
-    uint32_t rnd = arc4random_uniform([ballSuits count]);
+    //NSString *randomBall = [ballSuits objectAtIndex:rnd];
     
-    NSString *randomBall = [ballSuits objectAtIndex:rnd];
-    
-    BallNode* ballSprite = [BallNode new];
-    ballSprite.ballColor = randomBall;
+    // BallNode* ballSprite = [BallNode new];
+    BallNode* ballSprite = [[BallNode alloc] init];
+    //ballSprite.ballColor = randomBall;
+    //ballSprite.ballColor = @"BlueBall";
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
     ballSprite.physicsBody.restitution = 0;
@@ -42,6 +43,8 @@
     
     
     // look at this part later.
+    
+    
     
     if([ballSprite.ballColor isEqualToString:newSuitColor]){
         [suitBallsOnScreen addObject:ballSprite];
@@ -95,8 +98,8 @@
         ballTouchCounter = 0;
         
         
-        for (int i = 0 ; i <4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0 ; i <10; i++) {
+           
                 
                 
                 BallNode* ball = [BallNode new];
@@ -106,11 +109,11 @@
                 [ball.physicsBody applyAngularImpulse:arc4random()%70];
                 [ball.physicsBody applyForce:[self randomVector]];
                 
-            }
+            
         }
         
         
-        [self spawnBallWithTimeInterval:2];
+        [self spawnBallWithTimeInterval:5];
         
     }
     return self;

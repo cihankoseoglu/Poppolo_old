@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "LevelOne.h"
 #import "MyScene.h"
 
 @implementation ViewController
@@ -20,14 +21,23 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
+    
+    // white overlay is hidden.
+    self.whiteOverlay.alpha = 0;
+    
     // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [LevelOne sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
     [skView presentScene:scene];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    
+}
 - (BOOL)shouldAutorotate
 {
     return YES;
