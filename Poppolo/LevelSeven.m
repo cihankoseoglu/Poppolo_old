@@ -126,13 +126,13 @@
         // countdown start
         __block int timeRemaining = 10;
         
-        countdown.text = [NSString stringWithFormat:@"%d" , timeRemaining];
-        countdown.fontSize = 24;
-        countdown.color = instructionColor;
+        countdown.text = [NSString stringWithFormat:@"%d", timeRemaining];
+        countdown.fontSize = 48;
+        countdown.fontColor = levelPassColor;
         countdown.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2+180);
-        countdown.alpha = 1;
         
-        for (int i = 0; i < timeRemaining; i++) {
+        
+        for (int i = 0 ;  i < 10; i++) {
             SKAction* wait = [SKAction waitForDuration:1.0];
             SKAction* run = [SKAction runBlock:^{
                 
@@ -140,10 +140,17 @@
                 countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
                 
             }];
-            [countdown runAction:[SKAction sequence:@[wait, run]]];
             
+            [countdown runAction:[SKAction sequence:@[wait, run]]];
         }
+        
+        
+        
+            
 
+
+       
+        [self addChild:countdown];
         
       
         // add the balls to the scene
@@ -153,6 +160,8 @@
             
             ballCount++;
         }
+        
+        
         
     }
     return self;
