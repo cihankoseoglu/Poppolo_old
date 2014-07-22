@@ -33,8 +33,7 @@
     
     // BallNode* ballSprite = [BallNode new];
     BallNode* ballSprite = [[BallNode alloc] init];
-    //ballSprite.ballColor = randomBall;
-    //ballSprite.ballColor = @"BlueBall";
+   
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
     ballSprite.physicsBody.restitution = 0;
@@ -95,6 +94,23 @@
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            
+            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+            whiteOverlay.alpha = 1;
+            whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
+            
+            [self addChild:whiteOverlay];
+            
+            
+            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
+            
+            [whiteOverlay runAction:fadeOut];
+            [self removeNodeWithTimeInterval:whiteOverlay :5];
+            
+            
+        });
         ballTouchCounter = 0;
         
         
@@ -102,12 +118,14 @@
            
                 
                 
-                BallNode* ball = [BallNode new];
+                BallNode* ball = [[BallNode alloc] init];
                 ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
                 
                 [self addChild:ball];
                 [ball.physicsBody applyAngularImpulse:arc4random()%70];
                 [ball.physicsBody applyForce:[self randomVector]];
+            
+           
                 
             
         }
@@ -167,14 +185,6 @@
             [touchedNode removeFromParent];
             ballTouchCounter--;
             
-            
-            // add a new ball
-//            BallNode *ball = [BallNode new];
-//            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-//            [self addChild:ball];
-//            
-
-            
 
             
           
@@ -186,22 +196,6 @@
         
         
     }
-    
-   
-        
-//        if ([touchedNode.ballColor  isEqualToString:newSuitColor]) {
-//            [touchedNode removeFromParent];
-//            
-//            BallNode *ball = [BallNode new];
-//            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-//            [self addChild:ball];
-//            
-//            [ball.physicsBody applyImpulse:CGVectorMake(10, 40)];
-//
-//            
-//        }
-//        
-//        
         
         
     }
@@ -222,5 +216,15 @@
                                    selector:@selector(addBall)
                                    userInfo:nil
                                     repeats:YES];
+}
+
+
+-(void)removeNodeWithTimeInterval:(SKNode*)node :(NSTimeInterval)timeInterval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
 }
 @end

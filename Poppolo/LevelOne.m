@@ -7,7 +7,7 @@
 //
 
 #import "LevelOne.h"
-#import "MyScene.h"
+#import "LevelTwo.h"
 
 @interface LevelOne(){
     
@@ -56,8 +56,8 @@
         gameRuleLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
         gameRuleLabel.alpha = 0 ;
         
-        SKAction *fadeIn = [SKAction fadeInWithDuration:1.6];
-        SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-76 duration:1.8];
+        SKAction *fadeIn = [SKAction fadeInWithDuration:2.4];
+        SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-76 duration:3.0];
         
         SKAction *group = [SKAction group:@[fadeIn,moveUpwards]];
         
@@ -85,7 +85,7 @@
     
     NSLog(@"touchLocation x: %f and y: %f", location.x, location.y);
     
-    BallNode *touchedNode = (SKNode*)[self nodeAtPoint:location];
+    BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
     
     if(touchedNode != self){
@@ -98,18 +98,48 @@
         SKAction *group = [SKAction group:@[fadeOut,goDown]];
         
         for (SKLabelNode *label in self.children) {
+            if([label isKindOfClass:[SKLabelNode class]]){
+                
+                [label runAction:group];
+                
+                [self deleteInTimeInterval:3 node:label];
+                
+                ballCount--;
+            }
             
-            [label runAction:group];
             
-            [self deleteInTimeInterval:3];
-            
-            ballCount--;
+        
             
             // Level completed
             if (ballCount ==0) {
                 NSLog(@"Entered");
                 
-                [self segueInTimeInterval:0.5];
+                
+                //white overlay
+                SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+                whiteOverlay.alpha=0;
+                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+                [whiteOverlay runAction:fadeIn];
+                
+                //label depicting next level
+                SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+                levelLabel.text = [NSString stringWithFormat:@"2"];
+                levelLabel.fontSize = 60;
+                levelLabel.fontColor = levelPassColor;
+                levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
+                levelLabel.alpha = 0 ;
+                
+                [levelLabel runAction:fadeIn];
+
+            
+                
+                [self addChild:whiteOverlay];
+                [self addChild:levelLabel];
+                
+                
+                [self segueInTimeInterval:2];
+                
+            
                
                 
                 
@@ -145,15 +175,17 @@
     
 }
 
-
--(void)spawnBallWithTimeInterval:(NSTimeInterval)timeInterval{
-    
+-(void)deleteInTimeInterval:(NSTimeInterval)timeInterval node:(SKNode*)node{
     [NSTimer scheduledTimerWithTimeInterval:timeInterval
-                                     target:self
-                                   selector:@selector(addBall)
+                                     target:node
+                                   selector:@selector(removeFromParent)
                                    userInfo:nil
-                                    repeats:YES];
+                                    repeats:NO];
+    
+    
 }
+
+
 
 -(void)deleteInTimeInterval:(NSTimeInterval)timeInterval{
     [NSTimer scheduledTimerWithTimeInterval:timeInterval
@@ -176,10 +208,12 @@
 
 -(void)segueToNextLevel{
    
+    // remove the passed level from memory.
+    // self.scene = nil;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        MyScene *newScene = [[MyScene alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition flipHorizontalWithDuration:0.1];
+        LevelTwo *newScene = [[LevelTwo alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });
     

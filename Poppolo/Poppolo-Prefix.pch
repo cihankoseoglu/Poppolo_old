@@ -12,5 +12,7 @@
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
+#import "Constants.h"
     #import <Foundation/Foundation.h>
+#import <SpriteKit/SpriteKit.h>
 #endif

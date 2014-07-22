@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LevelOne.h"
+#import "LevelSeven.h"
 #import "MyScene.h"
 
 @implementation ViewController
@@ -22,11 +23,10 @@
     skView.showsNodeCount = YES;
     
     
-    // white overlay is hidden.
-    self.whiteOverlay.alpha = 0;
+    
     
     // Create and configure the scene.
-    SKScene * scene = [LevelOne sceneWithSize:skView.bounds.size];
+    SKScene * scene = [LevelSeven sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
