@@ -15,4 +15,7 @@
 #import "Constants.h"
     #import <Foundation/Foundation.h>
 #import <SpriteKit/SpriteKit.h>
+
+#import "GameOver.h"
+#import "MainMenu.h"
 #endif

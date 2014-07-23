@@ -266,7 +266,7 @@
     // self.scene = nil;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelSix *newScene = [[LevelSix alloc] initWithSize:self.scene.size];
+        LevelSeven *newScene = [[LevelSeven alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });

@@ -35,6 +35,23 @@
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
+        
+        SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+        whiteOverlay.alpha = 1;
+        whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
+        
+        [self addChild:whiteOverlay];
+        
+        
+        SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
+        
+        [whiteOverlay runAction:fadeOut];
+        [self removeNodeWithTimeInterval:whiteOverlay :4];
+        [self userInteractionInTimeInterval:2.1];
+
+        
+        
+        
         ballTouchCounter = 0;
         ballCount = 0;
         
@@ -221,8 +238,28 @@
     
 }
 
+-(void)removeNodeWithTimeInterval:(SKNode*)node :(NSTimeInterval)timeInterval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+}
 
+-(void)userInteractionInTimeInterval:(NSTimeInterval)timeInterval{
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:self
+                                   selector:@selector(enableTouches)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+}
 
-
+-(void)enableTouches{
+    
+    self.userInteractionEnabled = YES;
+    
+}
 
 @end

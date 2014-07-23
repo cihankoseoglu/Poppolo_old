@@ -22,9 +22,8 @@
     NSString *newSuitColor;
     NSDate *firstTime;
     NSUInteger ballCount;
-    
+    NSUInteger timeRemaining;
     BOOL firstTouch;
-    
     
 }
 
@@ -91,11 +90,16 @@
         /* Setup your scene here */
         
         self.userInteractionEnabled = NO;
-        firstTouch = NO;
         
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
+        
+        //level 7
+        
+       
+        // Timer for Level 7
+        timeRemaining = 12;
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -110,8 +114,8 @@
             SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :4];
-            [self userInteractionInTimeInterval:4.1];
+            [self removeNodeWithTimeInterval:whiteOverlay :2.5];
+            [self userInteractionInTimeInterval:2.6];
             
             
         });
@@ -124,15 +128,13 @@
         SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         
         // countdown start
-        __block int timeRemaining = 10;
         
         countdown.text = [NSString stringWithFormat:@"%d", timeRemaining];
         countdown.fontSize = 48;
         countdown.fontColor = levelPassColor;
         countdown.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2+180);
+        countdown.userInteractionEnabled = NO;
         
-        
-        for (int i = 0 ;  i < 10; i++) {
             SKAction* wait = [SKAction waitForDuration:1.0];
             SKAction* run = [SKAction runBlock:^{
                 
@@ -141,16 +143,8 @@
                 
             }];
             
-            [countdown runAction:[SKAction sequence:@[wait, run]]];
-        }
-        
-        
-        
-            
-
-
-       
-        [self addChild:countdown];
+        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:12]];
+                [self addChild:countdown];
         
       
         // add the balls to the scene
@@ -179,9 +173,8 @@
     
     BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
-    firstTouch = YES;
     
-    if(touchedNode != self){
+    if(touchedNode != self.scene){
         // if it's a new suit
         if(ballTouchCounter == 0){
             
@@ -245,7 +238,7 @@
             
             //label depicting next level
             SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"5"];
+            levelLabel.text = [NSString stringWithFormat:@"8"];
             levelLabel.fontSize = 60;
             levelLabel.fontColor = levelPassColor;
             levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
@@ -268,6 +261,13 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    if(timeRemaining == 0){
+        
+        [self gameOver];
+        timeRemaining--;
+        
+    }
     
    
 }
@@ -304,6 +304,18 @@
     // remove the passed level from memory.
     // self.scene = nil;
     
+    self.userInteractionEnabled = NO;
+    
+    SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+    whiteOverlay.alpha=0;
+    
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+    
+    [whiteOverlay runAction:fadeIn];
+    
+    [self addChild:whiteOverlay];
+
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         LevelEight *newScene = [[LevelEight alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
@@ -315,6 +327,27 @@
 }
 
 -(void)gameOver{
+    
+    NSLog(@"Entered game over state");
+    
+    self.userInteractionEnabled = NO;
+    
+    SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+    whiteOverlay.alpha=0;
+    
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+    
+    [whiteOverlay runAction:fadeIn];
+    
+    [self addChild:whiteOverlay];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+       
+        GameOver *gameOver = [[GameOver alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:gameOver transition:transition];
+    });
+    
     
     
 }

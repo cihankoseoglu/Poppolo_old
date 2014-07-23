@@ -10,6 +10,14 @@
 #import "LevelOne.h"
 #import "LevelSeven.h"
 #import "MyScene.h"
+#import "MainMenu.h"
+
+@interface ViewController(){
+    
+    NSMutableArray *levelData;
+}
+
+@end
 
 @implementation ViewController
 
@@ -22,11 +30,10 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-    
-    
+  
     
     // Create and configure the scene.
-    SKScene * scene = [LevelSeven sceneWithSize:skView.bounds.size];
+    MainMenu * scene = [MainMenu sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -62,5 +69,8 @@
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
 }
+
+
+
 
 @end
