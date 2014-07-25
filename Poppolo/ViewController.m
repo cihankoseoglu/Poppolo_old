@@ -33,7 +33,7 @@
   
     
     // Create and configure the scene.
-    MainMenu * scene = [MainMenu sceneWithSize:skView.bounds.size];
+    LevelSeven * scene = [LevelSeven sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

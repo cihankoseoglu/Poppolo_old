@@ -168,10 +168,6 @@
             ballTouchCounter--;
             ballCount--;
             
-            //        BallNode *ball = [BallNode new];
-            //        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-            //        [self addChild:ball];
-            
             
         }else{
             

@@ -24,7 +24,8 @@
     NSUInteger ballCount;
     NSUInteger timeRemaining;
     BOOL firstTouch;
-    
+   
+
 }
 
 @end
@@ -71,7 +72,7 @@
     
 }
 
-//Level 4 random vector is not that big
+//Level 7 random vector is not that big
 -(CGVector) randomVector{
     
     CGVector finalVector;
@@ -97,9 +98,44 @@
         
         //level 7
         
-       
+        
+        
+        
         // Timer for Level 7
         timeRemaining = 12;
+        
+        SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+        
+        
+        countdown.text = [NSString stringWithFormat:@"%i", timeRemaining];
+        countdown.fontSize = 48;
+        countdown.fontColor = levelPassColor;
+        countdown.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2+180);
+        countdown.alpha = 1;
+        countdown.userInteractionEnabled = NO;
+
+        
+        [self addChild:countdown];
+
+        SKAction* wait = [SKAction waitForDuration:1.0];
+        SKAction* run = [SKAction runBlock:^{
+            
+            timeRemaining--;
+            countdown.text = [NSString stringWithFormat:@"%i",timeRemaining];
+            
+            
+            if (timeRemaining == 0) {
+                [self gameOver];
+            }
+            
+            
+            
+        }];
+        
+        
+        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:13]];
+        
+
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -111,42 +147,18 @@
             [self addChild:whiteOverlay];
             
             
-            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
+            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:1.2];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :2.5];
-            [self userInteractionInTimeInterval:2.6];
+            [self removeNodeWithTimeInterval:whiteOverlay :1.4];
+            [self userInteractionInTimeInterval:1.5];
+            
             
             
         });
         ballTouchCounter = 0;
         ballCount=0;
         
-        
-        //add timer to the scene
-        
-        SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-        
-        // countdown start
-        
-        countdown.text = [NSString stringWithFormat:@"%d", timeRemaining];
-        countdown.fontSize = 48;
-        countdown.fontColor = levelPassColor;
-        countdown.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2+180);
-        countdown.userInteractionEnabled = NO;
-        
-            SKAction* wait = [SKAction waitForDuration:1.0];
-            SKAction* run = [SKAction runBlock:^{
-                
-                timeRemaining--;
-                countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
-                
-            }];
-            
-        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:12]];
-                [self addChild:countdown];
-        
-      
         // add the balls to the scene
         for (int i = 0 ; i <10; i++) {
             
@@ -174,52 +186,52 @@
     BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
     
-    if(touchedNode != self.scene){
+    if(touchedNode != self){
         // if it's a new suit
-        if(ballTouchCounter == 0){
+        
+        if ([touchedNode isKindOfClass:[BallNode class]]) {
             
-            // get that suit color
-            newSuitColor = touchedNode.ballColor;
-            
-            remainingBallsInASuit = 0;
-            
-            //get how many balls you have on screen of that particular color
-            
-            for (BallNode *ball in self.children) {
+            if(ballTouchCounter == 0){
                 
-                if ([ball.ballColor isEqualToString:newSuitColor]) {
-                    [suitBallsOnScreen addObject:ball];
-                    ballTouchCounter++;
+                // get that suit color
+                newSuitColor = touchedNode.ballColor;
+                
+                remainingBallsInASuit = 0;
+                
+                //get how many balls you have on screen of that particular color
+                
+                for (BallNode *ball in self.children) {
+                    if ([ball isKindOfClass:[BallNode class]]) {
+                        if ([ball.ballColor isEqualToString:newSuitColor]) {
+                            ballTouchCounter++;
+                        }
+                        
+                    }
+                    
                 }
-                
-            }
-            
-            [touchedNode removeFromParent];
-            ballTouchCounter--;
-            ballCount--;
-            
-            //        BallNode *ball = [BallNode new];
-            //        ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-            //        [self addChild:ball];
-            
-            
-        }else{
-            
-            if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
                 
                 [touchedNode removeFromParent];
                 ballTouchCounter--;
                 ballCount--;
                 
+            }else{
+                
+                if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+                    
+                    [touchedNode removeFromParent];
+                    ballTouchCounter--;
+                    ballCount--;
+                    
+                    
+                    
+                }else {
+                    
+                    NSLog(@"Touched node is not the same color as the suit");
+                    // Do nothing but make a little animation of some sort later
+                }
                 
                 
-            }else {
-                
-                NSLog(@"Touched node is not the same color as the suit");
-                // Do nothing but make a little animation of some sort later
             }
-            
-            
         }
         if(ballCount ==0){
             
@@ -261,15 +273,7 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    
-    if(timeRemaining == 0){
-        
-        [self gameOver];
-        timeRemaining--;
-        
-    }
-    
-   
+
 }
 
 
@@ -352,14 +356,6 @@
     
 }
 
--(SKLabelNode*)timerLabel{
-    
-    SKLabelNode *timer;
-    
-    
-    return timer;
-    
-}
 
 -(void)segueInTimeInterval:(NSTimeInterval)timeInterval{
     [NSTimer scheduledTimerWithTimeInterval:timeInterval

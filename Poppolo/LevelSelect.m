@@ -92,17 +92,9 @@
     
 }
 
--(void)changeLevelWithTimeInterval:(NSTimeInterval)timeInterval withLevel:(NSUInteger)level{
+-(void)changeLevel:(NSNumber*)level{
     
-    [NSTimer scheduledTimerWithTimeInterval:timeInterval
-                                     target:self
-                                   selector:@selector(changeLevel:)
-                                   userInfo:nil
-                                    repeats:NO];
-}
-
--(void)changeLevel:(NSUInteger)level{
-    
+    NSUInteger levelNumber = [level intValue];
     
     dispatch_async(dispatch_get_main_queue(), ^{
         LevelSelect *newScene = [[LevelSelect alloc] initWithSize:self.scene.size];
@@ -113,5 +105,14 @@
     
     
 }
+
+-(void)changeLevelWithTimeInterval:(NSTimeInterval)timeInterval withLevel:(NSUInteger)level{
+    
+    NSNumber *levelNumber = [NSNumber numberWithInt:(int)level];
+    
+    [self performSelector:@selector(changeLevel:) withObject:levelNumber afterDelay:timeInterval];
+}
+
+
 
 @end

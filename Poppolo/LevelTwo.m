@@ -105,7 +105,7 @@
     gameRuleLabel.alpha = 0;
     
     SKAction *fadeIn = [SKAction fadeInWithDuration:1.2];
-    SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-136 - offset duration:0.6];
+    SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-136 - offset duration:1.2];
     SKAction *group2 = [SKAction group:@[fadeIn,moveUpwards]];
     
     [gameRuleLabel runAction:group2];
