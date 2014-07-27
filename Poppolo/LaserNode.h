@@ -1,13 +1,13 @@
 //
-//  LevelNine.h
+//  LaserNode.h
 //  Poppolo
 //
-//  Created by Cihan Köseoğlu on 7/22/14.
+//  Created by Cihan Köseoğlu on 7/27/14.
 //  Copyright (c) 2014 Cihan Koseoglu. All rights reserved.
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "BallNode.h"
-@interface LevelNine : SKScene
+
+@interface LaserNode : SKSpriteNode
 
 @end

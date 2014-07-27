@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LevelOne.h"
 #import "LevelSeven.h"
+#import "LevelTen.h"
 #import "MyScene.h"
 #import "MainMenu.h"
 
@@ -33,7 +34,10 @@
   
     
     // Create and configure the scene.
-    LevelSeven * scene = [LevelSeven sceneWithSize:skView.bounds.size];
+    
+    // This is going to be main menu in the final but for debugging
+    // Just load the level
+    LevelTen * scene = [LevelTen sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -45,6 +49,7 @@
     
     
 }
+
 - (BOOL)shouldAutorotate
 {
     return YES;

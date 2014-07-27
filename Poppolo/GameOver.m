@@ -34,11 +34,9 @@
         gameOverLabel.fontSize = 48;
         gameOverLabel.fontColor = warningColor;
         gameOverLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 +60);
-        gameOverLabel.alpha = 0 ;
+        gameOverLabel.alpha = 1 ;
         
-        SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
-        
-        [gameOverLabel runAction:fadeIn];
+
         [self addChild:gameOverLabel];
         
         // restart button

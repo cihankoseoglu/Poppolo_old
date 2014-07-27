@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "BallNode.h"
+#import "LaserNode.h"
 
 @interface LevelTen : SKScene
 

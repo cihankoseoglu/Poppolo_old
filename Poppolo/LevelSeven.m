@@ -107,7 +107,7 @@
         SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         
         
-        countdown.text = [NSString stringWithFormat:@"%i", timeRemaining];
+        countdown.text = [NSString stringWithFormat:@"%lu", (unsigned long)timeRemaining];
         countdown.fontSize = 48;
         countdown.fontColor = levelPassColor;
         countdown.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2+180);
@@ -121,7 +121,7 @@
         SKAction* run = [SKAction runBlock:^{
             
             timeRemaining--;
-            countdown.text = [NSString stringWithFormat:@"%i",timeRemaining];
+            countdown.text = [NSString stringWithFormat:@"%lu",timeRemaining];
             
             
             if (timeRemaining == 0) {

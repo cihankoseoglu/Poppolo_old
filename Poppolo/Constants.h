@@ -11,6 +11,7 @@
 #define instructionColor [SKColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0]
 #define warningColor [SKColor colorWithRed:230/255.0 green:190/255.0 blue:190/255.0 alpha:1.0]
 #define levelPassColor [SKColor colorWithRed:200/255.0 green:200/255.0 blue:215/255.0 alpha:1.0]
+#define secretLevelBackgroundColor [SKColor colorWithRed:60/255.0 green:60/255.0 blue:60/255.0 alpha:1.0]
 
 // Ball Colors
 

@@ -45,13 +45,33 @@
         // level select button
         
         SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-120)];
+        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
         [levelSelectButton.title setText:@"level select"];
         [levelSelectButton.title setFontName:@"Helvetica"];
         [levelSelectButton.title setFontSize:20.0];
         [levelSelectButton.title setFontColor:instructionColor];
         [levelSelectButton setTouchUpInsideTarget:self action:@selector(selectLevel)];
         [self addChild:levelSelectButton];
+        
+        SKButton *storeMenu = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+        [storeMenu setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-150)];
+        [storeMenu.title setText:@"level select"];
+        [storeMenu.title setFontName:@"Helvetica"];
+        [storeMenu.title setFontSize:20.0];
+        [storeMenu.title setFontColor:instructionColor];
+        [storeMenu setTouchUpInsideTarget:self action:@selector(segueToStoreMenu)];
+        [self addChild:storeMenu];
+        
+        
+        SKButton *achievementsMenu = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+        [achievementsMenu setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
+        [achievementsMenu.title setText:@"level select"];
+        [achievementsMenu.title setFontName:@"Helvetica"];
+        [achievementsMenu.title setFontSize:20.0];
+        [achievementsMenu.title setFontColor:instructionColor];
+        [achievementsMenu setTouchUpInsideTarget:self action:@selector(segueToAchievementMenu)];
+        [self addChild:achievementsMenu];
+        
         
         
         SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
