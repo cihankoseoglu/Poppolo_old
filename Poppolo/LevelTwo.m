@@ -71,15 +71,15 @@
         // Level two
         // Create 4 balls , two of same color and two of other same color.
         
-        CGPoint centerMinus40 = CGPointMake(self.scene.size.width/2-40, self.scene.size.height/2-40);
-        CGPoint centerPlus40 = CGPointMake(self.scene.size.width/2+40, self.scene.size.height/2-40);
-        CGPoint centerSMinus40 = CGPointMake(self.scene.size.width/2-40, self.scene.size.height/2+40);
-        CGPoint centerSPlus40 = CGPointMake(self.scene.size.width/2+40, self.scene.size.height/2+40);
+        CGPoint centerMinus60 = CGPointMake(self.scene.size.width/2-60, self.scene.size.height/2-60);
+        CGPoint centerPlus60 = CGPointMake(self.scene.size.width/2+60, self.scene.size.height/2-60);
+        CGPoint centerSMinus60 = CGPointMake(self.scene.size.width/2-60, self.scene.size.height/2+60);
+        CGPoint centerSPlus60 = CGPointMake(self.scene.size.width/2+60, self.scene.size.height/2+60);
         
-        [self addBallwithPosition:centerSMinus40 ofColor:YellowBall];
-        [self addBallwithPosition:centerSPlus40 ofColor:YellowBall];
-        [self addBallwithPosition:centerMinus40 ofColor:PinkBall];
-        [self addBallwithPosition:centerPlus40 ofColor:PinkBall];
+        [self addBallwithPosition:centerSMinus60 ofColor:YellowBall];
+        [self addBallwithPosition:centerSPlus60 ofColor:YellowBall];
+        [self addBallwithPosition:centerMinus60 ofColor:PinkBall];
+        [self addBallwithPosition:centerPlus60 ofColor:PinkBall];
         
         
         

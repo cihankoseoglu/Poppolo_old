@@ -45,7 +45,7 @@
     
     [self addChild:ballSprite];
     
-    [ballSprite.physicsBody applyImpulse:CGVectorMake(10, 10)];
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
 
@@ -70,8 +70,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %100;
-    CGFloat y = arc4random() %100;
+    CGFloat x = arc4random() %30;
+    CGFloat y = arc4random() %30;
     
     finalVector = CGVectorMake(x, y);
     
@@ -83,8 +83,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.userInteractionEnabled = NO;
-        
+                self.userInteractionEnabled = NO;
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -95,15 +94,16 @@
             SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
-            
+            whiteOverlay.userInteractionEnabled = NO;
+
             [self addChild:whiteOverlay];
             
             
             SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :4];
-            [self userInteractionInTimeInterval:4.1];
+            [self removeNodeWithTimeInterval:whiteOverlay :2.2];
+            [self userInteractionInTimeInterval:2.3];
             
             
         });

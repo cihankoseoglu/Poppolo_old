@@ -8,6 +8,23 @@
 
 #import "LevelSelect.h"
 
+#import "LevelSeven.h"
+#import "LevelEight.h"
+#import "LevelNine.h"
+#import "LevelTen.h"
+
+#import "LevelEleven.h"
+#import "LevelTwelve.h"
+#import "LevelThirteen.h"
+#import "LevelFourteen.h"
+#import "LevelFifteen.h"
+#import "LevelSixteen.h"
+#import "LevelSeventeen.h"
+#import "LevelEighteen.h"
+#import "LevelNineteen.h"
+#import "LevelTwenty.h"
+
+
 @interface LevelSelect(){
     
     NSMutableArray *levelData;
@@ -92,14 +109,86 @@
     
 }
 
--(void)changeLevel:(NSNumber*)level{
+-(void)changeLevel:(NSNumber*)levelNumber{
     
-    NSUInteger levelNumber = [level intValue];
+    int levelNum = [levelNumber intValue];
+    NSString *level = [NSString stringWithFormat:@"%d",levelNum];
     
+ 
+    
+    // remove the levelSelect picker view
+    
+    [self.levelPickerView removeFromSuperview];
+    
+    
+    SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+    whiteOverlay.alpha=0;
+    
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1.2];
+    
+    [whiteOverlay runAction:fadeIn];
+    
+    [self addChild:whiteOverlay];
+    
+    //label depicting next level
+    SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+    levelLabel.text = level;
+    levelLabel.fontSize = 60;
+    levelLabel.fontColor = levelPassColor;
+    levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
+    levelLabel.alpha = 0 ;
+    
+    [levelLabel runAction:fadeIn];
+    [self addChild:levelLabel];
+    
+
+    // segue to level in other thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelSelect *newScene = [[LevelSelect alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
+        if ([level isEqualToString:@"7"]) {
+            
+            LevelSeven *newScene = [[LevelSeven alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }
+        
+        else if ([level isEqualToString:@"8"]) {
+            LevelEight *newScene = [[LevelEight alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }
+        else if ([level isEqualToString:@"9"]) {
+            LevelNine *newScene = [[LevelNine alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }
+        
+        else if ([level isEqualToString:@"10"]) {
+            LevelTen *newScene = [[LevelTen alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }
+        
+        else if ([level isEqualToString:@"11"]) {
+            LevelEleven *newScene = [[LevelEleven alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }
+        
+        else if ([level isEqualToString:@"12"]) {
+            LevelTwelve *newScene = [[LevelTwelve alloc] initWithSize:self.scene.size];
+            SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+            [self.view presentScene:newScene transition:transition];
+            
+        }else{
+            
+            
+        }
+
     });
     
     

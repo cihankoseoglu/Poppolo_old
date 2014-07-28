@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "LevelOne.h"
 #import "LevelSeven.h"
+#import "LevelFive.h"
 #import "LevelTen.h"
 #import "MyScene.h"
 #import "MainMenu.h"
@@ -37,7 +38,7 @@
     
     // This is going to be main menu in the final but for debugging
     // Just load the level
-    LevelTen * scene = [LevelTen sceneWithSize:skView.bounds.size];
+    MainMenu * scene = [MainMenu sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

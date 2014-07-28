@@ -7,10 +7,25 @@
 //
 
 #import "GameOver.h"
+#import "LevelSelect.h"
+
+#import "LevelSeven.h"
+#import "LevelEight.h"
+#import "LevelNine.h"
+#import "LevelTen.h"
+
+#import "LevelEleven.h"
+#import "LevelTwelve.h"
+#import "LevelThirteen.h"
+#import "LevelFourteen.h"
+#import "LevelFifteen.h"
+#import "LevelSixteen.h"
+#import "LevelSeventeen.h"
+#import "LevelEighteen.h"
+#import "LevelNineteen.h"
+#import "LevelTwenty.h"
 
 @interface GameOver(){
-    
-    id level;
     
 }
 
@@ -25,10 +40,7 @@
         
         self.backgroundColor = [SKColor whiteColor];
         
-        // the level user failed
         
-        level = [self.scene.userData objectForKey:@"level"];
-        //label depicting next level
         SKLabelNode *gameOverLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         gameOverLabel.text = [NSString stringWithFormat:@"game over"];
         gameOverLabel.fontSize = 48;
@@ -58,7 +70,7 @@
         [levelSelectButton.title setFontName:@"Helvetica"];
         [levelSelectButton.title setFontSize:20.0];
         [levelSelectButton.title setFontColor:instructionColor];
-        [levelSelectButton setTouchUpInsideTarget:self action:@selector(restartLevel)];
+        [levelSelectButton setTouchUpInsideTarget:self action:@selector(segueToLevelSelect)];
         [self addChild:levelSelectButton];
         
         
@@ -70,11 +82,69 @@
     return self;
 }
 
+// I hate myself for typing out such a method.
+
 -(void)restartLevel{
     
-    NSLog(@"restart the level %@", level );
+    
+    id level = [self.userData objectForKey:@"level"];
+    
+    if ([level isEqualToString:@"7"]) {
+        
+        LevelSeven *newScene = [[LevelSeven alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+
+    }
+    
+    else if ([level isEqualToString:@"8"]) {
+        LevelEight *newScene = [[LevelEight alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+
+    }
+    else if ([level isEqualToString:@"9"]) {
+        LevelNine *newScene = [[LevelNine alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+        
+    }
+    
+    else if ([level isEqualToString:@"10"]) {
+        LevelTen *newScene = [[LevelTen alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+        
+    }
+    
+    else if ([level isEqualToString:@"11"]) {
+        LevelEleven *newScene = [[LevelEleven alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+        
+    }
+    
+    else if ([level isEqualToString:@"12"]) {
+        LevelTwelve *newScene = [[LevelTwelve alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+        
+    }else{
+        
+        
+    }
+
+
+
 }
 
+-(void) segueToLevelSelect
+{
+    LevelSelect *newScene = [[LevelSelect alloc] initWithSize:self.scene.size];
+    SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+    [self.view presentScene:newScene transition:transition];
+    
+}
 
 
 @end

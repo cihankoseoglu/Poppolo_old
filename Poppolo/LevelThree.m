@@ -93,7 +93,7 @@
         for (int i = -1 ; i < 2; i++) {
             for(int j = -1 ; j < 2 ; j++){
                 
-                CGPoint position = CGPointMake(center.x - 60*i, center.y - 60*j);
+                CGPoint position = CGPointMake(center.x - 90*i, center.y - 90*j);
                 if (j == -1) {
                     [self addBallwithPosition:position ofColor:GreenBall];
                 }else if(j == 0)

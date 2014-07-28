@@ -50,7 +50,7 @@
     
     
     [self addChild:ballSprite];
-    [ballSprite.physicsBody applyForce:[self randomVector]];
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
     
     
@@ -78,8 +78,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %10 + 10;
-    CGFloat y = arc4random() %10 + 10;
+    CGFloat x = arc4random() %30;
+    CGFloat y = arc4random() %30;
     
     finalVector = CGVectorMake(x, y);
     
@@ -91,8 +91,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.userInteractionEnabled = NO;
-        
+                self.userInteractionEnabled = NO;
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -121,22 +120,23 @@
         SKAction* wait = [SKAction waitForDuration:1.0];
         SKAction* run = [SKAction runBlock:^{
             
-            timeRemaining--;
-            countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
-            
-            
-            if (timeRemaining == 0) {
+            if (timeRemaining >0) {
+                
+                timeRemaining--;
+                countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
+            }else{
+                
+                
                 [self gameOver];
             }
-            
-            
             
         }];
         
         
+        
         [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:12]];
         
-        
+       
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -144,15 +144,16 @@
             SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
-            
+            whiteOverlay.userInteractionEnabled = NO;
+
             [self addChild:whiteOverlay];
             
             
-            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2.8];
+            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2.0];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :3.0];
-            [self userInteractionInTimeInterval:3.2];
+            [self removeNodeWithTimeInterval:whiteOverlay :2.1];
+            [self userInteractionInTimeInterval:2.2];
             
             
             
@@ -171,12 +172,12 @@
         
         // add laser beam button
         
-        SKButton *laserLaunchButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-        [laserLaunchButton.title setText:@"dsfjsd"];
-        [laserLaunchButton.title setFontSize:20];
-        [laserLaunchButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2)];
-        [laserLaunchButton setTouchUpInsideTarget:self action:@selector(laserBeamLaunch)];
-        [self addChild:laserLaunchButton];
+//        SKButton *laserLaunchButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+//        [laserLaunchButton.title setText:@"dsfjsd"];
+//        [laserLaunchButton.title setFontSize:20];
+//        [laserLaunchButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2)];
+//        [laserLaunchButton setTouchUpInsideTarget:self action:@selector(laserBeamLaunch)];
+//        [self addChild:laserLaunchButton];
         
         
     }
@@ -198,7 +199,7 @@
     laserBeam.physicsBody.linearDamping = 0;
     
     
-    // collision and contact bitmask  todo 
+    // collision and contact bitmask  todo
     laserBeam.position = [self randomPointOnScreen:self.scene.size forViewSize:laserBeam.size];
     
 
@@ -275,14 +276,14 @@
                 
                 self.userInteractionEnabled = NO;
                 
-                SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
-                whiteOverlay.alpha=0;
+                SKSpriteNode *grayOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
+                grayOverlay.alpha=0;
                 
-                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1.5];
                 
-                [whiteOverlay runAction:fadeIn];
+                [grayOverlay runAction:fadeIn];
                 
-                [self addChild:whiteOverlay];
+                [self addChild:grayOverlay];
                 
                 //label depicting next level
                 SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
@@ -292,10 +293,11 @@
                 levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
                 levelLabel.alpha = 0 ;
                 
-                [levelLabel runAction:fadeIn];
                 [self addChild:levelLabel];
+                [levelLabel runAction:fadeIn];
+
                 
-                [self segueToSecretInTimeInterval:3];
+                [self segueToSecretInTimeInterval:2];
                 
 
                 
@@ -452,8 +454,12 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
+        
+        
         GameOver *gameOver = [[GameOver alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        
+        gameOver.userData = @{@"level" : @"10"};
         [self.view presentScene:gameOver transition:transition];
     });
     

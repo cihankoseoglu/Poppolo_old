@@ -46,7 +46,7 @@
     
     [self addChild:ballSprite];
     
-    [ballSprite.physicsBody applyImpulse:CGVectorMake(10, 10)];
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
 
@@ -71,8 +71,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %130;
-    CGFloat y = arc4random() %130;
+    CGFloat x = arc4random() %50;
+    CGFloat y = arc4random() %50;
     
     finalVector = CGVectorMake(x, y);
     
@@ -96,15 +96,16 @@
             SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
-            
+            whiteOverlay.userInteractionEnabled = NO;
+
             [self addChild:whiteOverlay];
             
             
             SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :4];
-            [self userInteractionInTimeInterval:4.1];
+            [self removeNodeWithTimeInterval:whiteOverlay :2.1];
+            [self userInteractionInTimeInterval:2.2];
             
             
         });

@@ -87,8 +87,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        self.userInteractionEnabled = NO;
-        
+                self.userInteractionEnabled = NO;
         self.backgroundColor = secretLevelBackgroundColor;
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -117,15 +116,15 @@
         SKAction* wait = [SKAction waitForDuration:1.0];
         SKAction* run = [SKAction runBlock:^{
             
-            timeRemaining--;
-            countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
-            
-            
-            if (timeRemaining == 0) {
+            if (timeRemaining >0) {
+                
+                timeRemaining--;
+                countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
+            }else{
+                
+                
                 [self gameOver];
             }
-            
-            
             
         }];
         
@@ -137,18 +136,18 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             
-            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
-            whiteOverlay.alpha = 1;
-            whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
+            SKSpriteNode *grayOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
+            grayOverlay.alpha = 1;
+            grayOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
+            grayOverlay.userInteractionEnabled = NO;
+            [self addChild:grayOverlay];
             
-            [self addChild:whiteOverlay];
             
+            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:0.8];
             
-            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2.8];
-            
-            [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :3.0];
-            [self userInteractionInTimeInterval:3.2];
+            [grayOverlay runAction:fadeOut];
+            [self removeNodeWithTimeInterval:grayOverlay :1.0];
+            [self userInteractionInTimeInterval:1.2];
             
             
             

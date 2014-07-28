@@ -33,7 +33,7 @@
     
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
-    ballSprite.physicsBody.restitution = 0.7;
+    ballSprite.physicsBody.restitution = 0.9;
     ballSprite.physicsBody.linearDamping = 0;
     ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
@@ -46,7 +46,7 @@
     
     [self addChild:ballSprite];
     
-    [ballSprite.physicsBody applyForce:CGVectorMake(20, 20)];
+    [ballSprite.physicsBody applyForce:[self randomVector]];
     
 }
 
@@ -71,8 +71,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %30;
-    CGFloat y = arc4random() %30;
+    CGFloat x = arc4random() %30 + 30;
+    CGFloat y = arc4random() %30 + 30;
     
     finalVector = CGVectorMake(x, y);
     
@@ -84,7 +84,6 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-            self.userInteractionEnabled = NO;
         
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
@@ -96,7 +95,8 @@
             SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
-            
+            whiteOverlay.userInteractionEnabled = NO;
+
             [self addChild:whiteOverlay];
             
             
