@@ -52,6 +52,9 @@
 		D1A78C3D19673C32000E30D7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D1A78C3B19673C32000E30D7 /* InfoPlist.strings */; };
 		D1A78C3F19673C32000E30D7 /* PoppoloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C3E19673C32000E30D7 /* PoppoloTests.m */; };
 		D1A78C4A1968A462000E30D7 /* BallNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D1A78C491968A462000E30D7 /* BallNode.m */; };
+		D1B0A3621991979A00FA7C45 /* LevelData.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1B0A3611991979A00FA7C45 /* LevelData.plist */; };
+		D1B0A366199198DD00FA7C45 /* GenericScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0A365199198DD00FA7C45 /* GenericScene.m */; };
+		D1B0A36919919FC400FA7C45 /* GameState.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B0A36819919FC400FA7C45 /* GameState.m */; };
 		D1B49B03197D78020039DB2A /* LevelTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B49B02197D78020039DB2A /* LevelTwo.m */; };
 		D1B49B07197D78130039DB2A /* LevelThree.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B49B06197D78130039DB2A /* LevelThree.m */; };
 		D1B49B0B197D7DAD0039DB2A /* LevelFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B49B0A197D7DAD0039DB2A /* LevelFour.m */; };
@@ -147,6 +150,11 @@
 		D1A78C3E19673C32000E30D7 /* PoppoloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PoppoloTests.m; sourceTree = "<group>"; };
 		D1A78C481968A462000E30D7 /* BallNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallNode.h; sourceTree = "<group>"; };
 		D1A78C491968A462000E30D7 /* BallNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BallNode.m; sourceTree = "<group>"; };
+		D1B0A3611991979A00FA7C45 /* LevelData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LevelData.plist; sourceTree = "<group>"; };
+		D1B0A364199198DD00FA7C45 /* GenericScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericScene.h; sourceTree = "<group>"; };
+		D1B0A365199198DD00FA7C45 /* GenericScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericScene.m; sourceTree = "<group>"; };
+		D1B0A36719919FC400FA7C45 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
+		D1B0A36819919FC400FA7C45 /* GameState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameState.m; sourceTree = "<group>"; };
 		D1B49B01197D78020039DB2A /* LevelTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwo.h; sourceTree = "<group>"; };
 		D1B49B02197D78020039DB2A /* LevelTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwo.m; sourceTree = "<group>"; };
 		D1B49B05197D78130039DB2A /* LevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThree.h; sourceTree = "<group>"; };
@@ -462,6 +470,15 @@
 			name = Assets;
 			sourceTree = "<group>";
 		};
+		D1B0A363199198A200FA7C45 /* Generic Level */ = {
+			isa = PBXGroup;
+			children = (
+				D1B0A364199198DD00FA7C45 /* GenericScene.h */,
+				D1B0A365199198DD00FA7C45 /* GenericScene.m */,
+			);
+			name = "Generic Level";
+			sourceTree = "<group>";
+		};
 		D1B49B04197D78060039DB2A /* Level 2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +512,9 @@
 				D1BEF563197D9528006BC806 /* Constants.h */,
 				D1BEF560197D7FDC006BC806 /* CodeSnippets.h */,
 				D1BEF561197D7FDC006BC806 /* CodeSnippets.m */,
+				D1B0A3611991979A00FA7C45 /* LevelData.plist */,
+				D1B0A36719919FC400FA7C45 /* GameState.h */,
+				D1B0A36819919FC400FA7C45 /* GameState.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -565,6 +585,7 @@
 		D1CAFA5D197EDA4200CB3AFC /* Level 1-10 */ = {
 			isa = PBXGroup;
 			children = (
+				D1B0A363199198A200FA7C45 /* Generic Level */,
 				D1F5DEE11979D97B00BAA30F /* Level 1 */,
 				D1B49B04197D78060039DB2A /* Level 2 */,
 				D1B49B08197D78160039DB2A /* Level 3 */,
@@ -689,6 +710,7 @@
 				D133BBC71985D9CF009E556B /* PinkBall.png in Resources */,
 				D14D3BAC1979FC59001F53E7 /* WhiteOverlay.png in Resources */,
 				D133BBC91985D9CF009E556B /* PurpleBall.png in Resources */,
+				D1B0A3621991979A00FA7C45 /* LevelData.plist in Resources */,
 				D1A2F41C19803CEC001ADFC0 /* PoppoloLogo.png in Resources */,
 				D133BBC51985D9CF009E556B /* GreenBall.png in Resources */,
 				D1A78C1919673C32000E30D7 /* InfoPlist.strings in Resources */,
@@ -747,11 +769,13 @@
 				D1FC254A19854D8A00BB9F3D /* LaserNode.m in Sources */,
 				D1A2F4471983D560001ADFC0 /* LevelNineteen.m in Sources */,
 				D1B49B0B197D7DAD0039DB2A /* LevelFour.m in Sources */,
+				D1B0A366199198DD00FA7C45 /* GenericScene.m in Sources */,
 				D1A2F44D1983D577001ADFC0 /* SecretLevelTwo.m in Sources */,
 				D1A2F42A1982B2B2001ADFC0 /* LevelEleven.m in Sources */,
 				D1CAFA4E197ED5AB00CB3AFC /* LevelEight.m in Sources */,
 				D1CAFA46197EBEDA00CB3AFC /* LevelSix.m in Sources */,
 				D1A78C1B19673C32000E30D7 /* main.m in Sources */,
+				D1B0A36919919FC400FA7C45 /* GameState.m in Sources */,
 				D1B49B07197D78130039DB2A /* LevelThree.m in Sources */,
 				D1A2F4381983D52D001ADFC0 /* LevelFourteen.m in Sources */,
 			);

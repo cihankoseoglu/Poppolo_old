@@ -18,4 +18,5 @@
 
 #import "GameOver.h"
 #import "MainMenu.h"
+#import "GameState.h"
 #endif

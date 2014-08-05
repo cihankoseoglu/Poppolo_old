@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Level 1</key>
+	<dict>
+		<key>BallFriction</key>
+		<integer>0</integer>
+		<key>BallRestitution</key>
+		<integer>1</integer>
+		<key>BallLinearDamping</key>
+		<integer>0</integer>
+		<key>AppliedImpulse</key>
+		<dict>
+			<key>xCoord</key>
+			<integer>0</integer>
+			<key>yCoord</key>
+			<integer>0</integer>
+		</dict>
+		<key>BackgroundColor</key>
+		<string>WhiteColor</string>
+		<key>Gravity</key>
+		<integer>0</integer>
+		<key>TimeRemaining</key>
+		<integer>0</integer>
+		<key>OverlayColor</key>
+		<string></string>
+		<key>BallCount</key>
+		<integer>0</integer>
+		<key>SpawnBallTimer</key>
+		<integer>0</integer>
+		<key>isRandomSpawnLevel</key>
+		<false/>
+		<key>isTimedLevel</key>
+		<false/>
+		<key>isGravityLevel</key>
+		<false/>
+		<key>isTrapLevel</key>
+		<false/>
+		<key>isNightLevel</key>
+		<false/>
+		<key>isBrickLevel</key>
+		<false/>
+		<key>isNoBoundaryLevel</key>
+		<false/>
+	</dict>
+</dict>
+</plist>

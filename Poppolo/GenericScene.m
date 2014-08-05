@@ -1,19 +1,16 @@
 //
-//  LevelTen.m
+//  GenericScene.m
 //  Poppolo
 //
-//  Created by Cihan Köseoğlu on 7/22/14.
+//  Created by Cihan Köseoğlu on 8/6/14.
 //  Copyright (c) 2014 Cihan Koseoglu. All rights reserved.
 //
 
-// Level Ten is a special level. The clock starts from 11 seconds. If the gamer manages to finish the game when 6 seconds are left, we segue to a Secret level, if not, we segue to Level 11.
-// Of course we are going to create an achievement if our gamer manages to unlock the secret level.
 
-#import "LevelTen.h"
-#import "LevelEleven.h"
-#import "SecretLevelOne.h"
+#import "GenericScene.h"
 
-@interface LevelTen(){
+
+@interface GenericScene(){
     
     NSMutableArray *suitBallsOnScreen;
     NSUInteger ballTouchCounter;
@@ -29,7 +26,7 @@
 
 @end
 
-@implementation LevelTen
+@implementation GenericScene
 
 - (void)addBall {
     
@@ -38,7 +35,7 @@
     
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
-    ballSprite.physicsBody.restitution = 1;
+    ballSprite.physicsBody.restitution = 0.7;
     ballSprite.physicsBody.linearDamping = 0;
     ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
@@ -50,10 +47,8 @@
     
     
     [self addChild:ballSprite];
+    
     [ballSprite.physicsBody applyImpulse:[self randomVector]];
-    
-    
-    
     
 }
 
@@ -73,13 +68,13 @@
     
 }
 
-//Level 10 random vector is ookay
+//Level 7 random vector is not that big
 -(CGVector) randomVector{
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %30;
-    CGFloat y = arc4random() %30;
+    CGFloat x = arc4random() %10;
+    CGFloat y = arc4random() %10;
     
     finalVector = CGVectorMake(x, y);
     
@@ -90,8 +85,15 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        self.userInteractionEnabled = NO;
         
-                self.userInteractionEnabled = NO;
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSString *finalPath = [path stringByAppendingPathComponent:@"LevelData.plist"];
+        NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+        NSDictionary *levelData = [NSDictionary dictionaryWithDictionary:[plistData valueForKey:@"Level 1"]];
+        
+        
+        
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -101,8 +103,8 @@
         
         
         
-        // Timer for Level 9
-        timeRemaining = 11;
+        // Timer for Level 7
+        timeRemaining = 12;
         
         SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         
@@ -134,9 +136,11 @@
         
         
         
-        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:12]];
         
-       
+        
+        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:13]];
+        
+        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -145,7 +149,7 @@
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
             whiteOverlay.userInteractionEnabled = NO;
-
+            
             [self addChild:whiteOverlay];
             
             
@@ -166,46 +170,13 @@
             
             [self addBall];
             
-            
             ballCount++;
         }
         
-        // add laser beam button
-        
-//        SKButton *laserLaunchButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-//        [laserLaunchButton.title setText:@"dsfjsd"];
-//        [laserLaunchButton.title setFontSize:20];
-//        [laserLaunchButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2)];
-//        [laserLaunchButton setTouchUpInsideTarget:self action:@selector(laserBeamLaunch)];
-//        [self addChild:laserLaunchButton];
         
         
     }
     return self;
-    
-    
-    
-    
-}
-
--(void) laserBeamLaunch
-{
-    LaserNode *laserBeam = [[LaserNode alloc] init];
-    [self addChild:laserBeam];
-    
-    laserBeam.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:laserBeam.size];
-    laserBeam.physicsBody.friction = 0;
-    laserBeam.physicsBody.restitution = 1;
-    laserBeam.physicsBody.linearDamping = 0;
-    
-    
-    // collision and contact bitmask  todo
-    laserBeam.position = [self randomPointOnScreen:self.scene.size forViewSize:laserBeam.size];
-    
-
-    
-    [laserBeam.physicsBody applyImpulse:CGVectorMake(30, 56)];
-
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -270,72 +241,33 @@
         }
         if(ballCount ==0){
             
-            if(timeRemaining >= 2){
-                
-                NSLog(@"Entered");
-                
-                self.userInteractionEnabled = NO;
-                
-                SKSpriteNode *grayOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
-                grayOverlay.alpha=0;
-                
-                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1.5];
-                
-                [grayOverlay runAction:fadeIn];
-                
-                [self addChild:grayOverlay];
-                
-                //label depicting next level
-                SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-                levelLabel.text = [NSString stringWithFormat:@"Secret 1"];
-                levelLabel.fontSize = 60;
-                levelLabel.fontColor = secretLevelBackgroundColor;
-                levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
-                levelLabel.alpha = 0 ;
-                
-                [self addChild:levelLabel];
-                [levelLabel runAction:fadeIn];
-
-                
-                [self segueToSecretInTimeInterval:2];
-                
-
-                
-                
-            }else{
-                
-                NSLog(@"Entered");
-                
-                self.userInteractionEnabled = NO;
-                
-                SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
-                whiteOverlay.alpha=0;
-                
-                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
-                
-                [whiteOverlay runAction:fadeIn];
-                
-                [self addChild:whiteOverlay];
-                
-                //label depicting next level
-                SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-                levelLabel.text = [NSString stringWithFormat:@"11"];
-                levelLabel.fontSize = 60;
-                levelLabel.fontColor = levelPassColor;
-                levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
-                levelLabel.alpha = 0 ;
-                
-                [levelLabel runAction:fadeIn];
-                [self addChild:levelLabel];
-                
-                [self segueInTimeInterval:2];
-                
-
+            NSLog(@"Entered");
             
-            }
+            self.userInteractionEnabled = NO;
             
+            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+            whiteOverlay.alpha=0;
             
-                    }
+            SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+            
+            [whiteOverlay runAction:fadeIn];
+            
+            [self addChild:whiteOverlay];
+            
+            //label depicting next level
+            SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+            levelLabel.text = [NSString stringWithFormat:@"8"];
+            levelLabel.fontSize = 60;
+            levelLabel.fontColor = levelPassColor;
+            levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
+            levelLabel.alpha = 0 ;
+            
+            [levelLabel runAction:fadeIn];
+            [self addChild:levelLabel];
+            
+            [self segueInTimeInterval:2];
+            
+        }
         
         
         
@@ -394,48 +326,15 @@
     [self addChild:whiteOverlay];
     
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        LevelTen *newScene = [[LevelTen alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-    });
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        LevelEight *newScene = [[LevelEight alloc] initWithSize:self.scene.size];
+//        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+//        [self.view presentScene:newScene transition:transition];
+//    });
     
     
     
 }
-
-
-
--(void)segueToSecretNextLevel{
-    
-    // remove the passed level from memory.
-    // self.scene = nil;
-    
-    self.userInteractionEnabled = NO;
-    
-    SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
-    whiteOverlay.alpha=0;
-    
-    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1];
-    
-    [whiteOverlay runAction:fadeIn];
-    
-    [self addChild:whiteOverlay];
-    
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SecretLevelOne *newScene = [[SecretLevelOne alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-    });
-    
-    
-    
-}
-
-
-
-
 
 -(void)gameOver{
     
@@ -454,12 +353,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        
-        
         GameOver *gameOver = [[GameOver alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        
-        gameOver.userData = @{@"level" : @"10"};
         [self.view presentScene:gameOver transition:transition];
     });
     
@@ -472,15 +367,6 @@
     [NSTimer scheduledTimerWithTimeInterval:timeInterval
                                      target:self
                                    selector:@selector(segueToNextLevel)
-                                   userInfo:nil
-                                    repeats:NO];
-    
-}
-
--(void)segueToSecretInTimeInterval:(NSTimeInterval)timeInterval{
-    [NSTimer scheduledTimerWithTimeInterval:timeInterval
-                                     target:self
-                                   selector:@selector(segueToSecretNextLevel)
                                    userInfo:nil
                                     repeats:NO];
     
