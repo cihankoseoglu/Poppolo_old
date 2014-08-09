@@ -30,15 +30,32 @@
 
 - (void)addBall {
     
+    // get the level data from the leveldata plist
     
+    NSString *path = [[NSBundle mainBundle] bundlePath];
+    NSString *finalPath = [path stringByAppendingPathComponent:@"LevelData.plist"];
+    NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
+    
+    int levelOfUser = [[GameState sharedInstance] levelCount];
+    NSString *levelString = [NSString stringWithFormat:@"%i",levelOfUser];
+    NSDictionary *levelData = [NSDictionary dictionaryWithDictionary:[plistData valueForKey:levelString]];
+
+    BOOL randomSpawn = [levelData objectForKey:@"isRandomSpawnLevel"];
+    // create the ball and set the preferences
     BallNode* ballSprite = [[BallNode alloc] init];
     
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
     ballSprite.physicsBody.restitution = 0.7;
     ballSprite.physicsBody.linearDamping = 0;
-    ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
+    if (randomSpawn == NO) {
+        
+        
+    }else{
+        ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
+        
+    }
     
     if([ballSprite.ballColor isEqualToString:newSuitColor]){
         [suitBallsOnScreen addObject:ballSprite];
@@ -90,7 +107,12 @@
         NSString *path = [[NSBundle mainBundle] bundlePath];
         NSString *finalPath = [path stringByAppendingPathComponent:@"LevelData.plist"];
         NSDictionary *plistData = [NSDictionary dictionaryWithContentsOfFile:finalPath];
-        NSDictionary *levelData = [NSDictionary dictionaryWithDictionary:[plistData valueForKey:@"Level 1"]];
+        
+        int levelOfUser = [[GameState sharedInstance] levelCount];
+        NSString *levelString = [NSString stringWithFormat:@"%i",levelOfUser];
+        NSDictionary *levelData = [NSDictionary dictionaryWithDictionary:[plistData valueForKey:levelString]];
+        
+        
         
         
         

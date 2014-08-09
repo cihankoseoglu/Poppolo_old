@@ -1,16 +1,14 @@
 //
-//  LevelFour.m
+//  EndlessLevel.m
 //  Poppolo
 //
-//  Created by Cihan Köseoğlu on 7/21/14.
+//  Created by Cihan Köseoğlu on 7/22/14.
 //  Copyright (c) 2014 Cihan Koseoglu. All rights reserved.
 //
 
+#import "EndlessLevel.h"
 
-#import "LevelFour.h"
-#import "LevelFive.h"
-
-@interface LevelFour(){
+@interface EndlessLevel(){
     
     NSMutableArray *suitBallsOnScreen;
     NSUInteger ballTouchCounter;
@@ -18,22 +16,23 @@
     NSString *newSuitColor;
     NSDate *firstTime;
     NSUInteger ballCount;
-    
+    SKLabelNode *score;
+    int scoreCount;
     
 }
 
 @end
 
-@implementation LevelFour
+@implementation EndlessLevel
 
 - (void)addBall {
     
- 
+    
     BallNode* ballSprite = [[BallNode alloc] init];
     
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
-    ballSprite.physicsBody.restitution = 0.9;
+    ballSprite.physicsBody.restitution = 1;
     ballSprite.physicsBody.linearDamping = 0;
     ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
@@ -46,7 +45,33 @@
     
     [self addChild:ballSprite];
     
-    [ballSprite.physicsBody applyForce:[self randomVector]];
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
+    
+}
+- (void)addBallWithAnimation {
+    
+    
+    BallNode* ballSprite = [[BallNode alloc] init];
+    
+    ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
+    ballSprite.physicsBody.friction = 0;
+    ballSprite.physicsBody.restitution = 1;
+    ballSprite.physicsBody.linearDamping = 0;
+    ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
+    ballSprite.alpha = 0;
+    
+    if([ballSprite.ballColor isEqualToString:newSuitColor]){
+        [suitBallsOnScreen addObject:ballSprite];
+        remainingBallsInASuit++;
+    }
+    
+    
+    [self addChild:ballSprite];
+    
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1];
+    [ballSprite runAction:fadeIn];
+    
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
 
@@ -66,13 +91,13 @@
     
 }
 
-//Level 4 random vector is not that big
+//Level 5 random vector is  big
 -(CGVector) randomVector{
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %30 + 30;
-    CGFloat y = arc4random() %30 + 30;
+    CGFloat x = arc4random() %30;
+    CGFloat y = arc4random() %30;
     
     finalVector = CGVectorMake(x, y);
     
@@ -84,10 +109,21 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        
+        self.userInteractionEnabled = NO;
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
+        
+        scoreCount = 0;
+        score = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+        score.text = [NSString stringWithFormat:@"%i", scoreCount];
+        score.fontSize = 24;
+        score.fontColor = instructionColor;
+        score.position = CGPointMake(self.scene.size.width/2, self.scene.size.height - 40);
+        score.alpha = 1;
+        score.userInteractionEnabled = NO;
+        [self addChild:score];
+        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -96,15 +132,15 @@
             whiteOverlay.alpha = 1;
             whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
             whiteOverlay.userInteractionEnabled = NO;
-
+            
             [self addChild:whiteOverlay];
             
             
-            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:1.9];
+            SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:2];
             
             [whiteOverlay runAction:fadeOut];
-            [self removeNodeWithTimeInterval:whiteOverlay :2];
-            [self userInteractionInTimeInterval:2.1];
+            [self removeNodeWithTimeInterval:whiteOverlay :2.2];
+            [self userInteractionInTimeInterval:2.3];
             
             
         });
@@ -113,6 +149,14 @@
         
         
         for (int i = 0 ; i <10; i++) {
+            
+            
+            
+            //            BallNode* ball = [[BallNode alloc] init];
+            //            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
+            //
+            //            [self addChild:ball];
+            //[ball.physicsBody applyAngularImpulse:arc4random()%20];
             
             [self addBall];
             
@@ -126,8 +170,6 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     
-    
-    
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
     
@@ -136,10 +178,13 @@
     BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
     
+    
     if(touchedNode != self){
+        
+
         // if it's a new suit
         if(ballTouchCounter == 0){
-            
+
             // get that suit color
             newSuitColor = touchedNode.ballColor;
             
@@ -149,27 +194,38 @@
             
             for (BallNode *ball in self.children) {
                 
-                if ([ball.ballColor isEqualToString:newSuitColor]) {
-                    [suitBallsOnScreen addObject:ball];
-                    ballTouchCounter++;
+                if ([ball isKindOfClass:[BallNode class]]) {
+                    
+                    if ([ball.ballColor isEqualToString:newSuitColor]) {
+                        [suitBallsOnScreen addObject:ball];
+                        ballTouchCounter++;
+                    }
                 }
+                
                 
             }
             
             [touchedNode removeFromParent];
+            scoreCount++;
+
             ballTouchCounter--;
             ballCount--;
             
+            // add ball everytime. 
+            [self addBallWithAnimation];
             
         }else{
             
             if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
                 
                 [touchedNode removeFromParent];
+                scoreCount++;
+
                 ballTouchCounter--;
                 ballCount--;
                 
-                
+                // add ball everytime.
+                [self addBallWithAnimation];
                 
             }else {
                 
@@ -179,37 +235,10 @@
             
             
         }
-        if(ballCount ==0){
-            
-            NSLog(@"Entered");
-            
-                        self.userInteractionEnabled = NO;
-            
-            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
-            whiteOverlay.alpha=0;
-            
-            SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
-            
-            [whiteOverlay runAction:fadeIn];
-            
-            [self addChild:whiteOverlay];
-            
-            //label depicting next level
-            SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"5"];
-            levelLabel.fontSize = 60;
-            levelLabel.fontColor = levelPassColor;
-            levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
-            levelLabel.alpha = 0 ;
-            
-            [levelLabel runAction:fadeIn];
-            [self addChild:levelLabel];
-            
-            [self segueInTimeInterval:2];
-            
-        }
         
-
+       
+        
+        
         
     }
     
@@ -219,6 +248,8 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    score.text = [NSString stringWithFormat:@"%i", scoreCount];
+
 }
 
 
@@ -248,30 +279,7 @@
 }
 
 
--(void)segueToNextLevel{
-    
-    // remove the passed level from memory.
-    // self.scene = nil;
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        LevelFive *newScene = [[LevelFive alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-    });
-    
-    
-    
-}
 
-
--(void)segueInTimeInterval:(NSTimeInterval)timeInterval{
-    [NSTimer scheduledTimerWithTimeInterval:timeInterval
-                                     target:self
-                                   selector:@selector(segueToNextLevel)
-                                   userInfo:nil
-                                    repeats:NO];
-    
-}
 
 -(void)userInteractionInTimeInterval:(NSTimeInterval)timeInterval{
     [NSTimer scheduledTimerWithTimeInterval:timeInterval

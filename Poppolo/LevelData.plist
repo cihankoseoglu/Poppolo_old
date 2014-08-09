@@ -26,7 +26,7 @@
 		<key>OverlayColor</key>
 		<string></string>
 		<key>BallCount</key>
-		<integer>0</integer>
+		<integer>1</integer>
 		<key>SpawnBallTimer</key>
 		<integer>0</integer>
 		<key>isRandomSpawnLevel</key>
