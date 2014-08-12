@@ -54,4 +54,6 @@
 
 #define labelFadeOut() [SKAction group:@[fadeOutFast,goDown]]
 #define labelFadeIn() [SKAction group:@[fadeOutFast,goUp]]
+#define POPANIMATIONDURATION 0.5
+#define REMOVEANIMATIONDURATION 0.55
 

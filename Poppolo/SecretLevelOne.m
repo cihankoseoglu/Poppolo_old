@@ -44,9 +44,15 @@
         remainingBallsInASuit++;
     }
     
+    SKAction *shrink = [SKAction scaleTo:0 duration:0];
+    SKAction *magnify = [SKAction scaleTo:1 duration:POPANIMATIONDURATION];
+    
+    SKAction *sequence = [SKAction sequence:@[shrink,magnify]];
+    
     
     [self addChild:ballSprite];
-    [ballSprite.physicsBody applyForce:[self randomVector]];
+    
+    [ballSprite runAction:sequence];    [ballSprite.physicsBody applyForce:[self randomVector]];
     
     
     
@@ -74,8 +80,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %140 + 500;
-    CGFloat y = arc4random() %140 + 500;
+    CGFloat x = arc4random() %300;
+    CGFloat y = arc4random() %300;
     
     finalVector = CGVectorMake(x, y);
     
@@ -122,14 +128,39 @@
                 countdown.text = [NSString stringWithFormat:@"%d",timeRemaining];
             }else{
                 
+                NSLog(@"Entered");
                 
-                [self gameOver];
+                self.userInteractionEnabled = NO;
+                
+                SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
+                whiteOverlay.alpha=0;
+                
+                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+                
+                [whiteOverlay runAction:fadeIn];
+                
+                [self addChild:whiteOverlay];
+                
+                //label depicting next level
+                SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+                levelLabel.text = [NSString stringWithFormat:@"11"];
+                levelLabel.fontSize = 60;
+                levelLabel.fontColor = levelPassColor;
+                levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
+                levelLabel.alpha = 0 ;
+                
+                [levelLabel runAction:fadeIn];
+                [self addChild:levelLabel];
+                
+                [self segueInTimeInterval:2];
+
             }
             
         }];
         
         
         [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:31]];
+        
         
         
         
@@ -156,7 +187,7 @@
         ballCount=0;
         
         // add the balls to the scene
-        for (int i = 0 ; i <40; i++) {
+        for (int i = 0 ; i <15; i++) {
             
             [self addBall];
             
@@ -206,16 +237,27 @@
                     }
                     
                 }
+                //animate and remove
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
                 
-                [touchedNode removeFromParent];
                 ballTouchCounter--;
                 ballCount--;
                 
             }else{
                 
                 if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+                    //animate and remove
+                    if ([touchedNode isKindOfClass:[BallNode class]]) {
+                        [self popBall:touchedNode];
+                        
+                        
+                    }
                     
-                    [touchedNode removeFromParent];
                     ballTouchCounter--;
                     ballCount--;
                     
@@ -236,7 +278,7 @@
             
             self.userInteractionEnabled = NO;
             
-            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"GrayOverlay.png"];
             whiteOverlay.alpha=0;
             
             SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
@@ -247,7 +289,7 @@
             
             //label depicting next level
             SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"10"];
+            levelLabel.text = [NSString stringWithFormat:@"11"];
             levelLabel.fontSize = 60;
             levelLabel.fontColor = levelPassColor;
             levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
@@ -326,6 +368,32 @@
     
     
 }
+-(void)popBall:(BallNode*)ball{
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+    [ball runAction:shrink];
+    
+    [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    
+}
+
 
 -(void)gameOver{
     

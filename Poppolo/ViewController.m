@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "LevelOne.h"
 #import "LevelSeven.h"
+#import "SecretLevelOne.h"
 #import "LevelFive.h"
+#import "LevelFour.h"
 #import "LevelTen.h"
 #import "MyScene.h"
 #import "MainMenu.h"
@@ -40,7 +42,7 @@
     
     // This is going to be main menu in the final but for debugging
     // Just load the level
-    EndlessLevel * scene = [EndlessLevel sceneWithSize:skView.bounds.size];
+    SecretLevelOne * scene = [SecretLevelOne sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

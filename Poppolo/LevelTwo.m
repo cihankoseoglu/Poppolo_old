@@ -175,7 +175,14 @@
                 clickedYellow = YES;
                             ballCount--;
                 [self addChild:gameRuleLabel];
-                [touchedNode removeFromParent];
+                
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
+                
                 
                 
             }else{
@@ -197,8 +204,13 @@
                 
 
                 SKLabelNode *finishPinks = [self gameLabelWithText:@"finish off the pinks" ofColor:instructionColor withHeightOffset:30];
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
                 
-                [touchedNode removeFromParent];
                 ballCount--;
                 
                 [self addChild:finishPinks];
@@ -214,7 +226,13 @@
             //user tries to pop a pink ball
             if (ballCount <= 2) {
                 
-                [touchedNode removeFromParent];
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
+                
                 ballCount--;
                 
             }else{
@@ -361,5 +379,32 @@
     
     
 }
+-(void)popBall:(BallNode*)ball{
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+    [ball runAction:shrink];
+    
+    [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    
+}
+
+
 
 @end

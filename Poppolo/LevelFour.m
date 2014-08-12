@@ -43,8 +43,15 @@
         remainingBallsInASuit++;
     }
     
+    SKAction *shrink = [SKAction scaleTo:0 duration:0];
+    SKAction *magnify = [SKAction scaleTo:1 duration:POPANIMATIONDURATION];
+    
+    SKAction *sequence = [SKAction sequence:@[shrink,magnify]];
+  
     
     [self addChild:ballSprite];
+    
+    [ballSprite runAction:sequence];
     
     [ballSprite.physicsBody applyForce:[self randomVector]];
     
@@ -84,7 +91,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
-        
+        self.userInteractionEnabled = NO;
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -119,6 +126,7 @@
             ballCount++;
         }
         
+       
     }
     return self;
 }
@@ -156,7 +164,11 @@
                 
             }
             
-            [touchedNode removeFromParent];
+            //animate and remove
+            if ([touchedNode isKindOfClass:[BallNode class]]) {
+                [self popBall:touchedNode];
+            }
+            
             ballTouchCounter--;
             ballCount--;
             
@@ -164,8 +176,16 @@
         }else{
             
             if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+               
                 
-                [touchedNode removeFromParent];
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                  
+                }
+                
+               
                 ballTouchCounter--;
                 ballCount--;
                 
@@ -222,6 +242,7 @@
 }
 
 
+
 -(void)spawnBallWithTimeInterval:(NSTimeInterval)timeInterval{
     
     [NSTimer scheduledTimerWithTimeInterval:timeInterval
@@ -244,6 +265,32 @@
 -(void)enableTouches{
     
     self.userInteractionEnabled = YES;
+    
+}
+
+-(void)popBall:(BallNode*)ball{
+    
+    
+        SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+        [ball runAction:shrink];
+    
+           [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+        
+    
+    
+   
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
     
 }
 

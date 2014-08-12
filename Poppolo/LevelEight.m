@@ -49,9 +49,15 @@
         remainingBallsInASuit++;
     }
     
+    SKAction *shrink = [SKAction scaleTo:0 duration:0];
+    SKAction *magnify = [SKAction scaleTo:1 duration:POPANIMATIONDURATION];
+    
+    SKAction *sequence = [SKAction sequence:@[shrink,magnify]];
+    
     
     [self addChild:ballSprite];
     
+    [ballSprite runAction:sequence];
     [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
@@ -211,16 +217,26 @@
                     }
                     
                 }
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
                 
-                [touchedNode removeFromParent];
                 ballTouchCounter--;
                 ballCount--;
                 
             }else{
                 
                 if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+                    //animate and remove
+                    if ([touchedNode isKindOfClass:[BallNode class]]) {
+                        [self popBall:touchedNode];
+                        
+                        
+                    }
                     
-                    [touchedNode removeFromParent];
                     ballTouchCounter--;
                     ballCount--;
                     
@@ -277,6 +293,32 @@
     /* Called before each frame is rendered */
     
 }
+-(void)popBall:(BallNode*)ball{
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+    [ball runAction:shrink];
+    
+    [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    
+}
+
 
 
 -(void)spawnBallWithTimeInterval:(NSTimeInterval)timeInterval{

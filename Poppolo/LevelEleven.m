@@ -1,10 +1,13 @@
 //
-//  LevelEleven.m
+//  LevelSeven.m
 //  Poppolo
 //
-//  Created by Cihan Köseoğlu on 7/25/14.
+//  Created by Cihan Köseoğlu on 7/22/14.
 //  Copyright (c) 2014 Cihan Koseoglu. All rights reserved.
 //
+
+// Level 11 is a Timed Level and also no boundaries .
+
 
 
 #import "LevelEleven.h"
@@ -35,7 +38,7 @@
     
     ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
     ballSprite.physicsBody.friction = 0;
-    ballSprite.physicsBody.restitution = 1;
+    ballSprite.physicsBody.restitution = 0.7;
     ballSprite.physicsBody.linearDamping = 0;
     ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
     
@@ -46,11 +49,16 @@
     }
     
     
+    SKAction *shrink = [SKAction scaleTo:0 duration:0];
+    SKAction *magnify = [SKAction scaleTo:1 duration:POPANIMATIONDURATION];
+    
+    SKAction *sequence = [SKAction sequence:@[shrink,magnify]];
+    
+    
     [self addChild:ballSprite];
+    
+    [ballSprite runAction:sequence];
     [ballSprite.physicsBody applyImpulse:[self randomVector]];
-    
-    
-    
     
 }
 
@@ -70,13 +78,13 @@
     
 }
 
-//Level 10 random vector is ookay
+//Level 7 random vector is not that big
 -(CGVector) randomVector{
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %30;
-    CGFloat y = arc4random() %30;
+    CGFloat x = arc4random() %10;
+    CGFloat y = arc4random() %10;
     
     finalVector = CGVectorMake(x, y);
     
@@ -87,8 +95,8 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
-        
         self.userInteractionEnabled = NO;
+        
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -98,8 +106,8 @@
         
         
         
-        // Timer for Level 9
-        timeRemaining = 11;
+        // Timer for Level 7
+        timeRemaining = 12;
         
         SKLabelNode* countdown = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
         
@@ -131,7 +139,9 @@
         
         
         
-        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:12]];
+        
+        
+        [countdown runAction:[SKAction repeatAction:[SKAction sequence:@[wait, run]] count:13]];
         
         
         
@@ -163,46 +173,13 @@
             
             [self addBall];
             
-            
             ballCount++;
         }
         
-        // add laser beam button
-        
-               SKButton *laserLaunchButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-                [laserLaunchButton.title setText:@"dsfjsd"];
-                [laserLaunchButton.title setFontSize:20];
-                [laserLaunchButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2)];
-                [laserLaunchButton setTouchUpInsideTarget:self action:@selector(laserBeamLaunch)];
-                [self addChild:laserLaunchButton];
         
         
     }
     return self;
-    
-    
-    
-    
-}
-
--(void) laserBeamLaunch
-{
-    LaserNode *laserBeam = [[LaserNode alloc] init];
-    [self addChild:laserBeam];
-    
-    laserBeam.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:laserBeam.size];
-    laserBeam.physicsBody.friction = 0;
-    laserBeam.physicsBody.restitution = 1;
-    laserBeam.physicsBody.linearDamping = 0;
-    
-    
-    // collision and contact bitmask todo
-    laserBeam.position = [self randomPointOnScreen:self.scene.size forViewSize:laserBeam.size];
-    
-    
-    
-    [laserBeam.physicsBody applyImpulse:CGVectorMake(30, 56)];
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -241,16 +218,26 @@
                     }
                     
                 }
+                //animate and remove
+                if ([touchedNode isKindOfClass:[BallNode class]]) {
+                    [self popBall:touchedNode];
+                    
+                    
+                }
                 
-                [touchedNode removeFromParent];
                 ballTouchCounter--;
                 ballCount--;
                 
             }else{
                 
                 if ([touchedNode.ballColor isEqualToString:newSuitColor]) {
+                    //animate and remove
+                    if ([touchedNode isKindOfClass:[BallNode class]]) {
+                        [self popBall:touchedNode];
+                        
+                        
+                    }
                     
-                    [touchedNode removeFromParent];
                     ballTouchCounter--;
                     ballCount--;
                     
@@ -267,39 +254,33 @@
         }
         if(ballCount ==0){
             
+            NSLog(@"Entered");
             
-                
-                NSLog(@"Entered");
-                
-                self.userInteractionEnabled = NO;
-                
-                SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
-                whiteOverlay.alpha=0;
-                
-                SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
-                
-                [whiteOverlay runAction:fadeIn];
-                
-                [self addChild:whiteOverlay];
-                
-                //label depicting next level
-                SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-                levelLabel.text = [NSString stringWithFormat:@"12"];
-                levelLabel.fontSize = 60;
-                levelLabel.fontColor = levelPassColor;
-                levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
-                levelLabel.alpha = 0 ;
-                
-                [levelLabel runAction:fadeIn];
-                [self addChild:levelLabel];
-                
-                [self segueInTimeInterval:2];
-                
-                
-                
-            }
+            self.userInteractionEnabled = NO;
             
+            SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+            whiteOverlay.alpha=0;
             
+            SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+            
+            [whiteOverlay runAction:fadeIn];
+            
+            [self addChild:whiteOverlay];
+            
+            //label depicting next level
+            SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
+            levelLabel.text = [NSString stringWithFormat:@"8"];
+            levelLabel.fontSize = 60;
+            levelLabel.fontColor = levelPassColor;
+            levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
+            levelLabel.alpha = 0 ;
+            
+            [levelLabel runAction:fadeIn];
+            [self addChild:levelLabel];
+            
+            [self segueInTimeInterval:2];
+            
+        }
         
         
         
@@ -311,6 +292,31 @@
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+}
+-(void)popBall:(BallNode*)ball{
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+    [ball runAction:shrink];
+    
+    [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
     
 }
 
@@ -368,10 +374,6 @@
     
 }
 
-
-
-
-
 -(void)gameOver{
     
     NSLog(@"Entered game over state");
@@ -389,12 +391,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        
-        
         GameOver *gameOver = [[GameOver alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        
-        gameOver.userData = @{@"level" : @"10"};
         [self.view presentScene:gameOver transition:transition];
     });
     
@@ -407,15 +405,6 @@
     [NSTimer scheduledTimerWithTimeInterval:timeInterval
                                      target:self
                                    selector:@selector(segueToNextLevel)
-                                   userInfo:nil
-                                    repeats:NO];
-    
-}
-
--(void)segueToSecretInTimeInterval:(NSTimeInterval)timeInterval{
-    [NSTimer scheduledTimerWithTimeInterval:timeInterval
-                                     target:self
-                                   selector:@selector(segueToSecretNextLevel)
                                    userInfo:nil
                                     repeats:NO];
     

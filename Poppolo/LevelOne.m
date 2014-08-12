@@ -108,7 +108,13 @@
     if(touchedNode != self){
         // if it's a new suit
         
-            [touchedNode removeFromParent];
+        //animate and remove
+        if ([touchedNode isKindOfClass:[BallNode class]]) {
+            [self popBall:touchedNode];
+            
+            
+        }
+        
         
         SKAction *fadeOut = [SKAction fadeOutWithDuration:1];
         SKAction *goDown = [SKAction moveByX:0 y:-10 duration:1];
@@ -261,5 +267,32 @@
     self.userInteractionEnabled = YES;
     
 }
+
+-(void)popBall:(BallNode*)ball{
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0.0 duration:POPANIMATIONDURATION];
+    [ball runAction:shrink];
+    
+    [self removeFromParentInTimeInterval:ball interval:REMOVEANIMATIONDURATION];
+    
+    
+    
+    
+    
+    
+}
+
+-(void)removeFromParentInTimeInterval:(BallNode*)node interval:(NSTimeInterval)interval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:interval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+    
+}
+
 
 @end
