@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Cihan Koseoglu. All rights reserved.
 //
 
-// Level 11 is a Timed Level and also no boundaries .
+// Level 7 is a Timed Level .
+// Same as Level 4 but timed to 10 seconds.
 
 
 
-#import "LevelEleven.h"
 #import "LevelTwelve.h"
+#import "LevelEleven.h"
 
 @interface LevelEleven(){
     
@@ -29,7 +30,51 @@
 
 @end
 
+static const uint32_t ballCategory = 1;
+static const uint32_t edgeCategory = 2;
+
+
+
 @implementation LevelEleven
+
+-(void)didBeginContact:(SKPhysicsContact *)contact{
+    
+    
+    BOOL touchedOnce = NO;
+    
+    
+    if (contact.bodyA.categoryBitMask == edgeCategory) {
+        
+        CGPoint ballPosition = contact.bodyB.node.position;
+      //  CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
+       
+        CGPoint reverseBallPosition = CGPointMake(self.scene.size.width/2, self.scene.size.height/2-30);
+
+        [self addBallAtPosition:reverseBallPosition];
+
+               NSLog(@"ho");
+        
+
+        
+    }else if(contact.bodyB.categoryBitMask == edgeCategory){
+        
+        CGPoint ballPosition = contact.bodyA.node.position;
+        //CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
+       
+        CGPoint reverseBallPosition = CGPointMake(self.scene.size.width/2, self.scene.size.height/2-30);
+
+            [self addBallAtPosition:reverseBallPosition];
+
+
+        
+        NSLog(@"ho");
+    }else{
+        
+    }
+    
+    
+    
+}
 
 - (void)addBall {
     
@@ -40,7 +85,44 @@
     ballSprite.physicsBody.friction = 0;
     ballSprite.physicsBody.restitution = 0.7;
     ballSprite.physicsBody.linearDamping = 0;
+    ballSprite.physicsBody.categoryBitMask = ballCategory;
+    ballSprite.physicsBody.contactTestBitMask = edgeCategory;
+    ballSprite.physicsBody.collisionBitMask = ballCategory;
     ballSprite.position = [self randomPointOnScreen:self.scene.size forViewSize:ballSprite.size];
+    
+    
+    if([ballSprite.ballColor isEqualToString:newSuitColor]){
+        [suitBallsOnScreen addObject:ballSprite];
+        remainingBallsInASuit++;
+    }
+    
+    
+    SKAction *shrink = [SKAction scaleTo:0 duration:0];
+    SKAction *magnify = [SKAction scaleTo:1 duration:POPANIMATIONDURATION];
+    
+    SKAction *sequence = [SKAction sequence:@[shrink,magnify]];
+    
+    
+    [self addChild:ballSprite];
+    
+    [ballSprite runAction:sequence];
+    [ballSprite.physicsBody applyImpulse:[self randomVector]];
+    
+}
+
+- (void)addBallAtPosition:(CGPoint)position {
+    
+    
+    BallNode* ballSprite = [[BallNode alloc] init];
+    
+    ballSprite.physicsBody = [SKPhysicsBody bodyWithCircleOfRadius:ballSprite.frame.size.width/2];
+    ballSprite.physicsBody.friction = 0;
+    ballSprite.physicsBody.restitution = 0.7;
+    ballSprite.physicsBody.linearDamping = 0;
+    ballSprite.physicsBody.categoryBitMask = ballCategory;
+    ballSprite.physicsBody.contactTestBitMask = edgeCategory;
+    ballSprite.physicsBody.collisionBitMask = ballCategory;
+    ballSprite.position = position;
     
     
     if([ballSprite.ballColor isEqualToString:newSuitColor]){
@@ -99,7 +181,11 @@
         
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
+        self.physicsBody.categoryBitMask = edgeCategory;
+        self.physicsBody.collisionBitMask = edgeCategory;
+        self.physicsBody.contactTestBitMask = ballCategory;
         self.physicsWorld.gravity = CGVectorMake(0, 0);
+        self.physicsWorld.contactDelegate = self;
         
         //level 7
         
@@ -169,7 +255,9 @@
         ballCount=0;
         
         // add the balls to the scene
-        for (int i = 0 ; i <10; i++) {
+        // add 6 balls
+        
+        for (int i = 0 ; i <6; i++) {
             
             [self addBall];
             
@@ -269,7 +357,7 @@
             
             //label depicting next level
             SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"8"];
+            levelLabel.text = [NSString stringWithFormat:@"12"];
             levelLabel.fontSize = 60;
             levelLabel.fontColor = levelPassColor;
             levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );

@@ -52,6 +52,8 @@
     [self addChild:ballSprite];
     
     [ballSprite runAction:sequence];
+    
+       
     [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
@@ -133,6 +135,9 @@
             ballCount++;
         }
         
+        
+        
+        
     }
     return self;
 }
@@ -175,6 +180,8 @@
                 
                 
             }
+            
+            
             
             ballTouchCounter--;
             ballCount--;

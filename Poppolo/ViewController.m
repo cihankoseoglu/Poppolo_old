@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "LevelOne.h"
+#import "LevelEleven.h"
 #import "LevelSeven.h"
 #import "SecretLevelOne.h"
 #import "LevelFive.h"
@@ -42,7 +43,7 @@
     
     // This is going to be main menu in the final but for debugging
     // Just load the level
-    SecretLevelOne * scene = [SecretLevelOne sceneWithSize:skView.bounds.size];
+    LevelEleven * scene = [LevelEleven sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

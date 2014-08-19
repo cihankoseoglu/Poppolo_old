@@ -10,6 +10,6 @@
 #import "BallNode.h"
 #import "LaserNode.h"
 
-@interface LevelEleven : SKScene
+@interface LevelEleven : SKScene <SKPhysicsContactDelegate>
 
 @end

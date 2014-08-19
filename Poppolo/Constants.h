@@ -21,6 +21,13 @@
 #define BlueBall @"BlueBall"
 #define GreenBall @"GreenBall"
 
+#define redmm @"MMSKirmizi"
+#define bluemm @"MMSMavi"
+#define yellowmm @"MMSSari"
+#define orangemm @"MMSTuruncu"
+#define greenmm @"MMSYesil"
+
+
 
 // Animation List
 
@@ -56,4 +63,6 @@
 #define labelFadeIn() [SKAction group:@[fadeOutFast,goUp]]
 #define POPANIMATIONDURATION 0.5
 #define REMOVEANIMATIONDURATION 0.55
+
+
 

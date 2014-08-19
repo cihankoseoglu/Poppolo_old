@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "BallNode.h"
 
 @interface LevelTwelve : SKScene
 

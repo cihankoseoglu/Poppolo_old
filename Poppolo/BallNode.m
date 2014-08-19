@@ -16,6 +16,8 @@
         
         NSArray *balls = [NSArray arrayWithObjects:@"BlueBall", @"YellowBall", @"PinkBall" , @"PurpleBall" , @"GreenBall" ,nil];
         
+        NSArray *mms = [NSArray arrayWithObjects:@"MMSKirmizi", @"MMSMavi" , @"MMSSari" , @"MMSTuruncu", @"MMSYesil", nil];
+        
         uint32_t rnd = arc4random_uniform([balls count]);
         
         NSString *ballColor = [balls objectAtIndex:rnd];
