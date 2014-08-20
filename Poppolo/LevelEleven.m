@@ -14,6 +14,8 @@
 #import "LevelTwelve.h"
 #import "LevelEleven.h"
 
+
+
 @interface LevelEleven(){
     
     NSMutableArray *suitBallsOnScreen;
@@ -24,6 +26,8 @@
     NSUInteger ballCount;
     int timeRemaining;
     BOOL firstTouch;
+    
+    BOOL firstContact;
     
     
 }
@@ -37,40 +41,49 @@ static const uint32_t edgeCategory = 2;
 
 @implementation LevelEleven
 
+-(void)didEndContact:(SKPhysicsContact *)contact{
+    
+    firstContact = NO;
+    
+    if (!firstContact) {
+        
+        if (contact.bodyA.categoryBitMask == edgeCategory) {
+            
+            CGPoint ballPosition = contact.bodyB.node.position;
+            CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
+            
+            
+            //[self addBallAtPosition:reverseBallPosition];
+            
+            
+            
+            NSLog(@"heeeeey");
+            
+            
+            
+        }else if(contact.bodyB.categoryBitMask == edgeCategory){
+            
+            CGPoint ballPosition = contact.bodyA.node.position;
+            CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
+            
+            //[self addBallAtPosition:reverseBallPosition];
+            
+            
+            NSLog(@"hoooooo");
+        }else{
+            
+        }
+        firstContact = YES;
+    }
+}
+
 -(void)didBeginContact:(SKPhysicsContact *)contact{
     
     
     BOOL touchedOnce = NO;
     
     
-    if (contact.bodyA.categoryBitMask == edgeCategory) {
-        
-        CGPoint ballPosition = contact.bodyB.node.position;
-      //  CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
-       
-        CGPoint reverseBallPosition = CGPointMake(self.scene.size.width/2, self.scene.size.height/2-30);
 
-        [self addBallAtPosition:reverseBallPosition];
-
-               NSLog(@"ho");
-        
-
-        
-    }else if(contact.bodyB.categoryBitMask == edgeCategory){
-        
-        CGPoint ballPosition = contact.bodyA.node.position;
-        //CGPoint reverseBallPosition = CGPointMake(remainderf(ballPosition.x, self.scene.size.width), remainderf(ballPosition.y, self.scene.size.height));
-       
-        CGPoint reverseBallPosition = CGPointMake(self.scene.size.width/2, self.scene.size.height/2-30);
-
-            [self addBallAtPosition:reverseBallPosition];
-
-
-        
-        NSLog(@"ho");
-    }else{
-        
-    }
     
     
     
