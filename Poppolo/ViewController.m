@@ -43,7 +43,7 @@
     
     // This is going to be main menu in the final but for debugging
     // Just load the level
-    LevelEleven * scene = [LevelEleven sceneWithSize:skView.bounds.size];
+    MainMenu * scene = [MainMenu sceneWithSize:skView.bounds.size];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

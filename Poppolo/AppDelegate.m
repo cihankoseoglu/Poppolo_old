@@ -48,4 +48,9 @@
     
 }
 
+-(void)unlockEndlessMode{
+    // Unlocking endless mode will trigger achievements.
+    // Also add the endless mode button to the main menu.
+    
+}
 @end

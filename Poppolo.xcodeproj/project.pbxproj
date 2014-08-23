@@ -64,6 +64,9 @@
 		D1B49B07197D78130039DB2A /* LevelThree.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B49B06197D78130039DB2A /* LevelThree.m */; };
 		D1B49B0B197D7DAD0039DB2A /* LevelFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1B49B0A197D7DAD0039DB2A /* LevelFour.m */; };
 		D1BEF562197D7FDC006BC806 /* CodeSnippets.m in Sources */ = {isa = PBXBuildFile; fileRef = D1BEF561197D7FDC006BC806 /* CodeSnippets.m */; };
+		D1C8733519A8C7A1006768E7 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C8733419A8C7A1006768E7 /* GameKit.framework */; };
+		D1C8733719A8C7A6006768E7 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1C8733619A8C7A6006768E7 /* StoreKit.framework */; };
+		D1C8733A19A8CC64006768E7 /* StoreHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D1C8733919A8CC64006768E7 /* StoreHelper.m */; };
 		D1CAFA43197EBED100CB3AFC /* LevelFive.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA42197EBED100CB3AFC /* LevelFive.m */; };
 		D1CAFA46197EBEDA00CB3AFC /* LevelSix.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA45197EBEDA00CB3AFC /* LevelSix.m */; };
 		D1CAFA4B197ED5A100CB3AFC /* LevelSeven.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA4A197ED5A100CB3AFC /* LevelSeven.m */; };
@@ -175,6 +178,10 @@
 		D1BEF560197D7FDC006BC806 /* CodeSnippets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodeSnippets.h; sourceTree = "<group>"; };
 		D1BEF561197D7FDC006BC806 /* CodeSnippets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodeSnippets.m; sourceTree = "<group>"; };
 		D1BEF563197D9528006BC806 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		D1C8733419A8C7A1006768E7 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		D1C8733619A8C7A6006768E7 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D1C8733819A8CC64006768E7 /* StoreHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreHelper.h; sourceTree = "<group>"; };
+		D1C8733919A8CC64006768E7 /* StoreHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreHelper.m; sourceTree = "<group>"; };
 		D1CAFA41197EBED100CB3AFC /* LevelFive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelFive.h; sourceTree = "<group>"; };
 		D1CAFA42197EBED100CB3AFC /* LevelFive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelFive.m; sourceTree = "<group>"; };
 		D1CAFA44197EBEDA00CB3AFC /* LevelSix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSix.h; sourceTree = "<group>"; };
@@ -212,6 +219,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1C8733719A8C7A6006768E7 /* StoreKit.framework in Frameworks */,
+				D1C8733519A8C7A1006768E7 /* GameKit.framework in Frameworks */,
 				D1A78C0F19673C32000E30D7 /* CoreGraphics.framework in Frameworks */,
 				D1A78C1119673C32000E30D7 /* UIKit.framework in Frameworks */,
 				D1A78C1319673C32000E30D7 /* SpriteKit.framework in Frameworks */,
@@ -383,6 +392,8 @@
 		D1A78C0B19673C32000E30D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1C8733619A8C7A6006768E7 /* StoreKit.framework */,
+				D1C8733419A8C7A1006768E7 /* GameKit.framework */,
 				D1A78C0C19673C32000E30D7 /* Foundation.framework */,
 				D1A78C0E19673C32000E30D7 /* CoreGraphics.framework */,
 				D1A78C1019673C32000E30D7 /* UIKit.framework */,
@@ -403,6 +414,8 @@
 				D1A78C2019673C32000E30D7 /* Main.storyboard */,
 				D1A78C2319673C32000E30D7 /* ViewController.h */,
 				D1A78C2419673C32000E30D7 /* ViewController.m */,
+				D1C8733819A8CC64006768E7 /* StoreHelper.h */,
+				D1C8733919A8CC64006768E7 /* StoreHelper.m */,
 				D1A78C2B19673C32000E30D7 /* Images.xcassets */,
 				D1BEF55F197D7FCF006BC806 /* Misc */,
 				D1A78C1519673C32000E30D7 /* Supporting Files */,
@@ -816,6 +829,7 @@
 				D1A2F42A1982B2B2001ADFC0 /* LevelEleven.m in Sources */,
 				D1CAFA4E197ED5AB00CB3AFC /* LevelEight.m in Sources */,
 				D1CAFA46197EBEDA00CB3AFC /* LevelSix.m in Sources */,
+				D1C8733A19A8CC64006768E7 /* StoreHelper.m in Sources */,
 				D1A78C1B19673C32000E30D7 /* main.m in Sources */,
 				D1B0A36919919FC400FA7C45 /* GameState.m in Sources */,
 				D1B49B07197D78130039DB2A /* LevelThree.m in Sources */,
