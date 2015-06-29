@@ -88,27 +88,27 @@
 #pragma -
 #pragma mark Setter overrides
 
-- (void)setIsEnabled:(BOOL)isEnabled {
-    _isEnabled = isEnabled;
-    if ([self disabledTexture]) {
-        if (!_isEnabled) {
-            [self setTexture:_disabledTexture];
-        } else {
-            [self setTexture:_normalTexture];
-        }
-    }
-}
-
-- (void)setIsSelected:(BOOL)isSelected {
-    _isSelected = isSelected;
-    if ([self selectedTexture] && [self isEnabled]) {
-        if (_isSelected) {
-            [self setTexture:_selectedTexture];
-        } else {
-            [self setTexture:_normalTexture];
-        }
-    }
-}
+//- (void)setIsEnabled:(BOOL)isEnabled {
+//    _isEnabled = isEnabled;
+//    if ([self disabledTexture]) {
+//        if (!_isEnabled) {
+//            [self setTexture:_disabledTexture];
+//        } else {
+//            [self setTexture:_normalTexture];
+//        }
+//    }
+//}
+//
+//- (void)setIsSelected:(BOOL)isSelected {
+//    _isSelected = isSelected;
+//    if ([self selectedTexture] && [self isEnabled]) {
+//        if (_isSelected) {
+//            [self setTexture:_selectedTexture];
+//        } else {
+//            [self setTexture:_normalTexture];
+//        }
+//    }
+//}
 
 #pragma -
 #pragma mark Touch Handling

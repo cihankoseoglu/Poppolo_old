@@ -13,11 +13,16 @@
 #import "SecretLevelOne.h"
 #import "LevelFive.h"
 #import "LevelFour.h"
+#import "LevelTwo.h"
 #import "LevelTen.h"
 #import "MyScene.h"
+#import "LevelThree.h"
 #import "MainMenu.h"
+#import "LevelSix.h"
 #import "GenericScene.h"
 #import "EndlessLevel.h"
+
+
 
 @interface ViewController(){
     
@@ -37,7 +42,8 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-  
+    NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
+   
     
     // Create and configure the scene.
     

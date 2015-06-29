@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45B2BA60B98321745DA28A6D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C5C0CB182672045400A228 /* libPods.a */; };
 		D133BBC31985D9CF009E556B /* BlueBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D133BBB91985D9CF009E556B /* BlueBall.png */; };
 		D133BBC41985D9CF009E556B /* BlueBall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D133BBBA1985D9CF009E556B /* BlueBall@2x.png */; };
 		D133BBC51985D9CF009E556B /* GreenBall.png in Resources */ = {isa = PBXBuildFile; fileRef = D133BBBB1985D9CF009E556B /* GreenBall.png */; };
@@ -22,8 +23,19 @@
 		D13504A0199A7A25005DA4FC /* MMSSari@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D135049B199A7A25005DA4FC /* MMSSari@2x.png */; };
 		D13504A1199A7A25005DA4FC /* MMSTuruncu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D135049C199A7A25005DA4FC /* MMSTuruncu@2x.png */; };
 		D13504A2199A7A25005DA4FC /* MMSYesil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D135049D199A7A25005DA4FC /* MMSYesil@2x.png */; };
+		D13A78A21B3E8B6C00CD7462 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A78A11B3E8B6C00CD7462 /* GameData.m */; };
 		D14536CB198531EB00CAC5B2 /* GrayOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D14536CA198531EB00CAC5B2 /* GrayOverlay.png */; };
 		D14D3BAC1979FC59001F53E7 /* WhiteOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D14D3BAB1979FC59001F53E7 /* WhiteOverlay.png */; };
+		D1690F921B41624E0087D8BF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F911B41624E0087D8BF /* GoogleMobileAds.framework */; };
+		D1690F9C1B4162880087D8BF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F931B4162880087D8BF /* AdSupport.framework */; };
+		D1690F9D1B4162880087D8BF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F941B4162880087D8BF /* AudioToolbox.framework */; };
+		D1690F9E1B4162880087D8BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F951B4162880087D8BF /* AVFoundation.framework */; };
+		D1690F9F1B4162880087D8BF /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F961B4162880087D8BF /* CoreMedia.framework */; };
+		D1690FA01B4162880087D8BF /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F971B4162880087D8BF /* CoreTelephony.framework */; };
+		D1690FA11B4162880087D8BF /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F981B4162880087D8BF /* EventKit.framework */; };
+		D1690FA21B4162880087D8BF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F991B4162880087D8BF /* EventKitUI.framework */; };
+		D1690FA31B4162880087D8BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F9A1B4162880087D8BF /* MessageUI.framework */; };
+		D1690FA41B4162880087D8BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F9B1B4162880087D8BF /* SystemConfiguration.framework */; };
 		D1A2F41C19803CEC001ADFC0 /* PoppoloLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F41A19803CEC001ADFC0 /* PoppoloLogo.png */; };
 		D1A2F42119803D92001ADFC0 /* PoppoloLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F41E19803D92001ADFC0 /* PoppoloLogo@2x.png */; };
 		D1A2F42619803E0D001ADFC0 /* TransparentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F42419803E0D001ADFC0 /* TransparentButton.png */; };
@@ -79,6 +91,28 @@
 		D1CAFA671980093B00CB3AFC /* LevelSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA661980093B00CB3AFC /* LevelSelect.m */; };
 		D1CAFA6A1980094700CB3AFC /* StoreMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA691980094700CB3AFC /* StoreMenu.m */; };
 		D1CAFA6D19800E8E00CB3AFC /* SKButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D1CAFA6C19800E8E00CB3AFC /* SKButton.m */; };
+		D1D5791819ACAC8000CB18F6 /* LevelTwentyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5791719ACAC8000CB18F6 /* LevelTwentyOne.m */; };
+		D1D5791C19ACAC9700CB18F6 /* LevelTwentyTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5791B19ACAC9700CB18F6 /* LevelTwentyTwo.m */; };
+		D1D5791F19ACACA100CB18F6 /* LevelTwentyThree.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5791E19ACACA100CB18F6 /* LevelTwentyThree.m */; };
+		D1D5792219ACACAC00CB18F6 /* LevelTwentyFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5792119ACACAC00CB18F6 /* LevelTwentyFour.m */; };
+		D1D5792519ACACB800CB18F6 /* LevelTwentyFive.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5792419ACACB800CB18F6 /* LevelTwentyFive.m */; };
+		D1D5792819ACACC300CB18F6 /* LevelTwentySix.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5792719ACACC300CB18F6 /* LevelTwentySix.m */; };
+		D1D5792B19ACACD000CB18F6 /* LevelTwentySeven.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5792A19ACACD000CB18F6 /* LevelTwentySeven.m */; };
+		D1D5792E19ACACDA00CB18F6 /* LevelTwentyEight.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5792D19ACACDA00CB18F6 /* LevelTwentyEight.m */; };
+		D1D5793119ACACE400CB18F6 /* LevelTwentyNine.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5793019ACACE400CB18F6 /* LevelTwentyNine.m */; };
+		D1D5793419ACACF900CB18F6 /* LevelThirty.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5793319ACACF900CB18F6 /* LevelThirty.m */; };
+		D1D5793719ACAD0400CB18F6 /* SecretLevelThree.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5793619ACAD0400CB18F6 /* SecretLevelThree.m */; };
+		D1D5794419ACAD6500CB18F6 /* LevelThirtyOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5794319ACAD6500CB18F6 /* LevelThirtyOne.m */; };
+		D1D5794719ACAD6F00CB18F6 /* LevelThirtyTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5794619ACAD6F00CB18F6 /* LevelThirtyTwo.m */; };
+		D1D5794A19ACAD7900CB18F6 /* LevelThirtyThree.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5794919ACAD7900CB18F6 /* LevelThirtyThree.m */; };
+		D1D5794D19ACAD8200CB18F6 /* LevelThirtyFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5794C19ACAD8200CB18F6 /* LevelThirtyFour.m */; };
+		D1D5795019ACAD8B00CB18F6 /* LevelThirtyFive.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5794F19ACAD8B00CB18F6 /* LevelThirtyFive.m */; };
+		D1D5795319ACAD9500CB18F6 /* LevelThirtySix.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795219ACAD9500CB18F6 /* LevelThirtySix.m */; };
+		D1D5795619ACAD9F00CB18F6 /* LevelThirtySeven.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795519ACAD9F00CB18F6 /* LevelThirtySeven.m */; };
+		D1D5795919ACADA900CB18F6 /* LevelThirtyEight.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795819ACADA900CB18F6 /* LevelThirtyEight.m */; };
+		D1D5795C19ACADB300CB18F6 /* LevelThirtyNine.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795B19ACADB300CB18F6 /* LevelThirtyNine.m */; };
+		D1D5795F19ACADDA00CB18F6 /* LevelForty.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795E19ACADDA00CB18F6 /* LevelForty.m */; };
+		D1D5796219ACADE400CB18F6 /* SecretLevelFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5796119ACADE400CB18F6 /* SecretLevelFour.m */; };
 		D1D8B5EC199653DD0069AF32 /* EndlessLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D8B5EB199653DD0069AF32 /* EndlessLevel.m */; };
 		D1F5DEE01979D97600BAA30F /* LevelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F5DEDF1979D97600BAA30F /* LevelOne.m */; };
 		D1FC254A19854D8A00BB9F3D /* LaserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FC254919854D8A00BB9F3D /* LaserNode.m */; };
@@ -95,6 +129,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59D1E12FCBD5365984608D06 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		90C5C0CB182672045400A228 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA342DCC7A391F56F8CD1F45 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D133BBB91985D9CF009E556B /* BlueBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueBall.png; sourceTree = "<group>"; };
 		D133BBBA1985D9CF009E556B /* BlueBall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BlueBall@2x.png"; sourceTree = "<group>"; };
 		D133BBBB1985D9CF009E556B /* GreenBall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GreenBall.png; sourceTree = "<group>"; };
@@ -110,8 +147,20 @@
 		D135049B199A7A25005DA4FC /* MMSSari@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSSari@2x.png"; sourceTree = "<group>"; };
 		D135049C199A7A25005DA4FC /* MMSTuruncu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSTuruncu@2x.png"; sourceTree = "<group>"; };
 		D135049D199A7A25005DA4FC /* MMSYesil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MMSYesil@2x.png"; sourceTree = "<group>"; };
+		D13A78A11B3E8B6C00CD7462 /* GameData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameData.m; sourceTree = "<group>"; };
+		D13A78A31B3E8B7D00CD7462 /* GameData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		D14536CA198531EB00CAC5B2 /* GrayOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayOverlay.png; sourceTree = "<group>"; };
 		D14D3BAB1979FC59001F53E7 /* WhiteOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteOverlay.png; sourceTree = "<group>"; };
+		D1690F911B41624E0087D8BF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "Pods/Google-Mobile-Ads-SDK/GoogleMobileAdsSdkiOS-7.3.1/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		D1690F931B4162880087D8BF /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		D1690F941B4162880087D8BF /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D1690F951B4162880087D8BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		D1690F961B4162880087D8BF /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		D1690F971B4162880087D8BF /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D1690F981B4162880087D8BF /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		D1690F991B4162880087D8BF /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		D1690F9A1B4162880087D8BF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		D1690F9B1B4162880087D8BF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D1A2F41A19803CEC001ADFC0 /* PoppoloLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoppoloLogo.png; sourceTree = "<group>"; };
 		D1A2F41E19803D92001ADFC0 /* PoppoloLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoppoloLogo@2x.png"; sourceTree = "<group>"; };
 		D1A2F42419803E0D001ADFC0 /* TransparentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TransparentButton.png; sourceTree = "<group>"; };
@@ -206,6 +255,50 @@
 		D1CAFA691980094700CB3AFC /* StoreMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreMenu.m; sourceTree = "<group>"; };
 		D1CAFA6B19800E8E00CB3AFC /* SKButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SKButton.h; sourceTree = "<group>"; };
 		D1CAFA6C19800E8E00CB3AFC /* SKButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SKButton.m; sourceTree = "<group>"; };
+		D1D5791619ACAC8000CB18F6 /* LevelTwentyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyOne.h; sourceTree = "<group>"; };
+		D1D5791719ACAC8000CB18F6 /* LevelTwentyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyOne.m; sourceTree = "<group>"; };
+		D1D5791A19ACAC9700CB18F6 /* LevelTwentyTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyTwo.h; sourceTree = "<group>"; };
+		D1D5791B19ACAC9700CB18F6 /* LevelTwentyTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyTwo.m; sourceTree = "<group>"; };
+		D1D5791D19ACACA100CB18F6 /* LevelTwentyThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyThree.h; sourceTree = "<group>"; };
+		D1D5791E19ACACA100CB18F6 /* LevelTwentyThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyThree.m; sourceTree = "<group>"; };
+		D1D5792019ACACAC00CB18F6 /* LevelTwentyFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyFour.h; sourceTree = "<group>"; };
+		D1D5792119ACACAC00CB18F6 /* LevelTwentyFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyFour.m; sourceTree = "<group>"; };
+		D1D5792319ACACB800CB18F6 /* LevelTwentyFive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyFive.h; sourceTree = "<group>"; };
+		D1D5792419ACACB800CB18F6 /* LevelTwentyFive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyFive.m; sourceTree = "<group>"; };
+		D1D5792619ACACC300CB18F6 /* LevelTwentySix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentySix.h; sourceTree = "<group>"; };
+		D1D5792719ACACC300CB18F6 /* LevelTwentySix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentySix.m; sourceTree = "<group>"; };
+		D1D5792919ACACD000CB18F6 /* LevelTwentySeven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentySeven.h; sourceTree = "<group>"; };
+		D1D5792A19ACACD000CB18F6 /* LevelTwentySeven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentySeven.m; sourceTree = "<group>"; };
+		D1D5792C19ACACDA00CB18F6 /* LevelTwentyEight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyEight.h; sourceTree = "<group>"; };
+		D1D5792D19ACACDA00CB18F6 /* LevelTwentyEight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyEight.m; sourceTree = "<group>"; };
+		D1D5792F19ACACE400CB18F6 /* LevelTwentyNine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelTwentyNine.h; sourceTree = "<group>"; };
+		D1D5793019ACACE400CB18F6 /* LevelTwentyNine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelTwentyNine.m; sourceTree = "<group>"; };
+		D1D5793219ACACF900CB18F6 /* LevelThirty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirty.h; sourceTree = "<group>"; };
+		D1D5793319ACACF900CB18F6 /* LevelThirty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirty.m; sourceTree = "<group>"; };
+		D1D5793519ACAD0400CB18F6 /* SecretLevelThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretLevelThree.h; sourceTree = "<group>"; };
+		D1D5793619ACAD0400CB18F6 /* SecretLevelThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretLevelThree.m; sourceTree = "<group>"; };
+		D1D5794219ACAD6500CB18F6 /* LevelThirtyOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyOne.h; sourceTree = "<group>"; };
+		D1D5794319ACAD6500CB18F6 /* LevelThirtyOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyOne.m; sourceTree = "<group>"; };
+		D1D5794519ACAD6F00CB18F6 /* LevelThirtyTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyTwo.h; sourceTree = "<group>"; };
+		D1D5794619ACAD6F00CB18F6 /* LevelThirtyTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyTwo.m; sourceTree = "<group>"; };
+		D1D5794819ACAD7900CB18F6 /* LevelThirtyThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyThree.h; sourceTree = "<group>"; };
+		D1D5794919ACAD7900CB18F6 /* LevelThirtyThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyThree.m; sourceTree = "<group>"; };
+		D1D5794B19ACAD8200CB18F6 /* LevelThirtyFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyFour.h; sourceTree = "<group>"; };
+		D1D5794C19ACAD8200CB18F6 /* LevelThirtyFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyFour.m; sourceTree = "<group>"; };
+		D1D5794E19ACAD8B00CB18F6 /* LevelThirtyFive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyFive.h; sourceTree = "<group>"; };
+		D1D5794F19ACAD8B00CB18F6 /* LevelThirtyFive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyFive.m; sourceTree = "<group>"; };
+		D1D5795119ACAD9500CB18F6 /* LevelThirtySix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtySix.h; sourceTree = "<group>"; };
+		D1D5795219ACAD9500CB18F6 /* LevelThirtySix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtySix.m; sourceTree = "<group>"; };
+		D1D5795419ACAD9F00CB18F6 /* LevelThirtySeven.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtySeven.h; sourceTree = "<group>"; };
+		D1D5795519ACAD9F00CB18F6 /* LevelThirtySeven.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtySeven.m; sourceTree = "<group>"; };
+		D1D5795719ACADA900CB18F6 /* LevelThirtyEight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyEight.h; sourceTree = "<group>"; };
+		D1D5795819ACADA900CB18F6 /* LevelThirtyEight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyEight.m; sourceTree = "<group>"; };
+		D1D5795A19ACADB300CB18F6 /* LevelThirtyNine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelThirtyNine.h; sourceTree = "<group>"; };
+		D1D5795B19ACADB300CB18F6 /* LevelThirtyNine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelThirtyNine.m; sourceTree = "<group>"; };
+		D1D5795D19ACADDA00CB18F6 /* LevelForty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelForty.h; sourceTree = "<group>"; };
+		D1D5795E19ACADDA00CB18F6 /* LevelForty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelForty.m; sourceTree = "<group>"; };
+		D1D5796019ACADE400CB18F6 /* SecretLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretLevelFour.h; sourceTree = "<group>"; };
+		D1D5796119ACADE400CB18F6 /* SecretLevelFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretLevelFour.m; sourceTree = "<group>"; };
 		D1D8B5EA199653DD0069AF32 /* EndlessLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndlessLevel.h; sourceTree = "<group>"; };
 		D1D8B5EB199653DD0069AF32 /* EndlessLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndlessLevel.m; sourceTree = "<group>"; };
 		D1F5DEDE1979D97600BAA30F /* LevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelOne.h; sourceTree = "<group>"; };
@@ -219,12 +312,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1C8733719A8C7A6006768E7 /* StoreKit.framework in Frameworks */,
-				D1C8733519A8C7A1006768E7 /* GameKit.framework in Frameworks */,
+				D1690F9C1B4162880087D8BF /* AdSupport.framework in Frameworks */,
+				D1690F9D1B4162880087D8BF /* AudioToolbox.framework in Frameworks */,
+				D1690F9E1B4162880087D8BF /* AVFoundation.framework in Frameworks */,
+				D1690F9F1B4162880087D8BF /* CoreMedia.framework in Frameworks */,
+				D1690FA01B4162880087D8BF /* CoreTelephony.framework in Frameworks */,
+				D1690FA11B4162880087D8BF /* EventKit.framework in Frameworks */,
+				D1690FA21B4162880087D8BF /* EventKitUI.framework in Frameworks */,
+				D1690FA31B4162880087D8BF /* MessageUI.framework in Frameworks */,
+				D1690FA41B4162880087D8BF /* SystemConfiguration.framework in Frameworks */,
 				D1A78C0F19673C32000E30D7 /* CoreGraphics.framework in Frameworks */,
+				D1C8733719A8C7A6006768E7 /* StoreKit.framework in Frameworks */,
+				D1690F921B41624E0087D8BF /* GoogleMobileAds.framework in Frameworks */,
+				D1C8733519A8C7A1006768E7 /* GameKit.framework in Frameworks */,
 				D1A78C1119673C32000E30D7 /* UIKit.framework in Frameworks */,
 				D1A78C1319673C32000E30D7 /* SpriteKit.framework in Frameworks */,
 				D1A78C0D19673C32000E30D7 /* Foundation.framework in Frameworks */,
+				45B2BA60B98321745DA28A6D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +345,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		050599219B27CFDC32530619 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59D1E12FCBD5365984608D06 /* Pods.debug.xcconfig */,
+				BA342DCC7A391F56F8CD1F45 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D1350498199A7A25005DA4FC /* mms */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,7 +375,7 @@
 			name = "Level 11";
 			sourceTree = "<group>";
 		};
-		D1A2F42F1983D503001ADFC0 /* Level 10-20 */ = {
+		D1A2F42F1983D503001ADFC0 /* Level 11-20 */ = {
 			isa = PBXGroup;
 			children = (
 				D1A2F42B1982B2B5001ADFC0 /* Level 11 */,
@@ -277,7 +390,7 @@
 				D1A2F44F1983D588001ADFC0 /* Level 20 */,
 				D1A2F44E1983D57B001ADFC0 /* Secret 2 */,
 			);
-			name = "Level 10-20";
+			name = "Level 11-20";
 			sourceTree = "<group>";
 		};
 		D1A2F44E1983D57B001ADFC0 /* Secret 2 */ = {
@@ -377,6 +490,7 @@
 				D1A78C3819673C32000E30D7 /* PoppoloTests */,
 				D1A78C0B19673C32000E30D7 /* Frameworks */,
 				D1A78C0A19673C32000E30D7 /* Products */,
+				050599219B27CFDC32530619 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -392,6 +506,16 @@
 		D1A78C0B19673C32000E30D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1690F931B4162880087D8BF /* AdSupport.framework */,
+				D1690F941B4162880087D8BF /* AudioToolbox.framework */,
+				D1690F951B4162880087D8BF /* AVFoundation.framework */,
+				D1690F961B4162880087D8BF /* CoreMedia.framework */,
+				D1690F971B4162880087D8BF /* CoreTelephony.framework */,
+				D1690F981B4162880087D8BF /* EventKit.framework */,
+				D1690F991B4162880087D8BF /* EventKitUI.framework */,
+				D1690F9A1B4162880087D8BF /* MessageUI.framework */,
+				D1690F9B1B4162880087D8BF /* SystemConfiguration.framework */,
+				D1690F911B41624E0087D8BF /* GoogleMobileAds.framework */,
 				D1C8733619A8C7A6006768E7 /* StoreKit.framework */,
 				D1C8733419A8C7A1006768E7 /* GameKit.framework */,
 				D1A78C0C19673C32000E30D7 /* Foundation.framework */,
@@ -399,6 +523,7 @@
 				D1A78C1019673C32000E30D7 /* UIKit.framework */,
 				D1A78C1219673C32000E30D7 /* SpriteKit.framework */,
 				D1A78C3219673C32000E30D7 /* XCTest.framework */,
+				90C5C0CB182672045400A228 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -477,12 +602,16 @@
 		D1A78C4D19698B52000E30D7 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				D1A78C2619673C32000E30D7 /* MyScene.h */,
+				D1A78C2719673C32000E30D7 /* MyScene.m */,
 				D1D8B5ED199653EF0069AF32 /* EndlessLevel */,
 				D1B0A363199198A200FA7C45 /* Generic Level */,
 				D1CAFA5D197EDA4200CB3AFC /* Level 1-10 */,
-				D1A2F42F1983D503001ADFC0 /* Level 10-20 */,
-				D1A78C2619673C32000E30D7 /* MyScene.h */,
-				D1A78C2719673C32000E30D7 /* MyScene.m */,
+				D1A2F42F1983D503001ADFC0 /* Level 11-20 */,
+				D1D5791219ACABD100CB18F6 /* Level 21-30 */,
+				D1D5791319ACABD900CB18F6 /* Level 31-40 */,
+				D1D5791419ACABE000CB18F6 /* Level 41-50 */,
+				D1D5791519ACABE800CB18F6 /* Level 51-60 */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -556,6 +685,8 @@
 				D1B0A3611991979A00FA7C45 /* LevelData.plist */,
 				D1B0A36719919FC400FA7C45 /* GameState.h */,
 				D1B0A36819919FC400FA7C45 /* GameState.m */,
+				D13A78A11B3E8B6C00CD7462 /* GameData.m */,
+				D13A78A31B3E8B7D00CD7462 /* GameData.h */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -658,6 +789,254 @@
 			name = Menus;
 			sourceTree = "<group>";
 		};
+		D1D5791219ACABD100CB18F6 /* Level 21-30 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5791919ACAC8500CB18F6 /* Level 21 */,
+				D1D5793819ACAD0800CB18F6 /* Level 22 */,
+				D1D5793919ACAD0E00CB18F6 /* Level 23 */,
+				D1D5793A19ACAD1400CB18F6 /* Level 24 */,
+				D1D5793B19ACAD1900CB18F6 /* Level 25 */,
+				D1D5793C19ACAD1D00CB18F6 /* Level 26 */,
+				D1D5793D19ACAD2500CB18F6 /* Level 27 */,
+				D1D5793E19ACAD2B00CB18F6 /* Level 28 */,
+				D1D5793F19ACAD3200CB18F6 /* Level 29 */,
+				D1D5794019ACAD3A00CB18F6 /* Level 30 */,
+				D1D5794119ACAD4000CB18F6 /* Secret 3 */,
+			);
+			name = "Level 21-30";
+			sourceTree = "<group>";
+		};
+		D1D5791319ACABD900CB18F6 /* Level 31-40 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5796319ACADF500CB18F6 /* Level 31 */,
+				D1D5796419ACADFB00CB18F6 /* Level 32 */,
+				D1D5796519ACAE0200CB18F6 /* Level 33 */,
+				D1D5796619ACAE0700CB18F6 /* Level 34 */,
+				D1D5796719ACAE0C00CB18F6 /* Level 35 */,
+				D1D5796819ACAE1200CB18F6 /* Level 36 */,
+				D1D5796919ACAE1900CB18F6 /* Level 37 */,
+				D1D5796A19ACAE2000CB18F6 /* Level 38 */,
+				D1D5796B19ACAE2700CB18F6 /* Level 39 */,
+				D1D5796C19ACAE2E00CB18F6 /* Level 40 */,
+				D1D5796D19ACAE5600CB18F6 /* Secret 4 */,
+			);
+			name = "Level 31-40";
+			sourceTree = "<group>";
+		};
+		D1D5791419ACABE000CB18F6 /* Level 41-50 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level 41-50";
+			sourceTree = "<group>";
+		};
+		D1D5791519ACABE800CB18F6 /* Level 51-60 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Level 51-60";
+			sourceTree = "<group>";
+		};
+		D1D5791919ACAC8500CB18F6 /* Level 21 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5791619ACAC8000CB18F6 /* LevelTwentyOne.h */,
+				D1D5791719ACAC8000CB18F6 /* LevelTwentyOne.m */,
+			);
+			name = "Level 21";
+			sourceTree = "<group>";
+		};
+		D1D5793819ACAD0800CB18F6 /* Level 22 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5791A19ACAC9700CB18F6 /* LevelTwentyTwo.h */,
+				D1D5791B19ACAC9700CB18F6 /* LevelTwentyTwo.m */,
+			);
+			name = "Level 22";
+			sourceTree = "<group>";
+		};
+		D1D5793919ACAD0E00CB18F6 /* Level 23 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5791D19ACACA100CB18F6 /* LevelTwentyThree.h */,
+				D1D5791E19ACACA100CB18F6 /* LevelTwentyThree.m */,
+			);
+			name = "Level 23";
+			sourceTree = "<group>";
+		};
+		D1D5793A19ACAD1400CB18F6 /* Level 24 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792019ACACAC00CB18F6 /* LevelTwentyFour.h */,
+				D1D5792119ACACAC00CB18F6 /* LevelTwentyFour.m */,
+			);
+			name = "Level 24";
+			sourceTree = "<group>";
+		};
+		D1D5793B19ACAD1900CB18F6 /* Level 25 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792319ACACB800CB18F6 /* LevelTwentyFive.h */,
+				D1D5792419ACACB800CB18F6 /* LevelTwentyFive.m */,
+			);
+			name = "Level 25";
+			sourceTree = "<group>";
+		};
+		D1D5793C19ACAD1D00CB18F6 /* Level 26 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792619ACACC300CB18F6 /* LevelTwentySix.h */,
+				D1D5792719ACACC300CB18F6 /* LevelTwentySix.m */,
+			);
+			name = "Level 26";
+			sourceTree = "<group>";
+		};
+		D1D5793D19ACAD2500CB18F6 /* Level 27 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792919ACACD000CB18F6 /* LevelTwentySeven.h */,
+				D1D5792A19ACACD000CB18F6 /* LevelTwentySeven.m */,
+			);
+			name = "Level 27";
+			sourceTree = "<group>";
+		};
+		D1D5793E19ACAD2B00CB18F6 /* Level 28 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792C19ACACDA00CB18F6 /* LevelTwentyEight.h */,
+				D1D5792D19ACACDA00CB18F6 /* LevelTwentyEight.m */,
+			);
+			name = "Level 28";
+			sourceTree = "<group>";
+		};
+		D1D5793F19ACAD3200CB18F6 /* Level 29 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5792F19ACACE400CB18F6 /* LevelTwentyNine.h */,
+				D1D5793019ACACE400CB18F6 /* LevelTwentyNine.m */,
+			);
+			name = "Level 29";
+			sourceTree = "<group>";
+		};
+		D1D5794019ACAD3A00CB18F6 /* Level 30 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5793219ACACF900CB18F6 /* LevelThirty.h */,
+				D1D5793319ACACF900CB18F6 /* LevelThirty.m */,
+			);
+			name = "Level 30";
+			sourceTree = "<group>";
+		};
+		D1D5794119ACAD4000CB18F6 /* Secret 3 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5793519ACAD0400CB18F6 /* SecretLevelThree.h */,
+				D1D5793619ACAD0400CB18F6 /* SecretLevelThree.m */,
+			);
+			name = "Secret 3";
+			sourceTree = "<group>";
+		};
+		D1D5796319ACADF500CB18F6 /* Level 31 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5794219ACAD6500CB18F6 /* LevelThirtyOne.h */,
+				D1D5794319ACAD6500CB18F6 /* LevelThirtyOne.m */,
+			);
+			name = "Level 31";
+			sourceTree = "<group>";
+		};
+		D1D5796419ACADFB00CB18F6 /* Level 32 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5794519ACAD6F00CB18F6 /* LevelThirtyTwo.h */,
+				D1D5794619ACAD6F00CB18F6 /* LevelThirtyTwo.m */,
+			);
+			name = "Level 32";
+			sourceTree = "<group>";
+		};
+		D1D5796519ACAE0200CB18F6 /* Level 33 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5794819ACAD7900CB18F6 /* LevelThirtyThree.h */,
+				D1D5794919ACAD7900CB18F6 /* LevelThirtyThree.m */,
+			);
+			name = "Level 33";
+			sourceTree = "<group>";
+		};
+		D1D5796619ACAE0700CB18F6 /* Level 34 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5794B19ACAD8200CB18F6 /* LevelThirtyFour.h */,
+				D1D5794C19ACAD8200CB18F6 /* LevelThirtyFour.m */,
+			);
+			name = "Level 34";
+			sourceTree = "<group>";
+		};
+		D1D5796719ACAE0C00CB18F6 /* Level 35 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5794E19ACAD8B00CB18F6 /* LevelThirtyFive.h */,
+				D1D5794F19ACAD8B00CB18F6 /* LevelThirtyFive.m */,
+			);
+			name = "Level 35";
+			sourceTree = "<group>";
+		};
+		D1D5796819ACAE1200CB18F6 /* Level 36 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5795119ACAD9500CB18F6 /* LevelThirtySix.h */,
+				D1D5795219ACAD9500CB18F6 /* LevelThirtySix.m */,
+			);
+			name = "Level 36";
+			sourceTree = "<group>";
+		};
+		D1D5796919ACAE1900CB18F6 /* Level 37 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5795419ACAD9F00CB18F6 /* LevelThirtySeven.h */,
+				D1D5795519ACAD9F00CB18F6 /* LevelThirtySeven.m */,
+			);
+			name = "Level 37";
+			sourceTree = "<group>";
+		};
+		D1D5796A19ACAE2000CB18F6 /* Level 38 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5795719ACADA900CB18F6 /* LevelThirtyEight.h */,
+				D1D5795819ACADA900CB18F6 /* LevelThirtyEight.m */,
+			);
+			name = "Level 38";
+			sourceTree = "<group>";
+		};
+		D1D5796B19ACAE2700CB18F6 /* Level 39 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5795A19ACADB300CB18F6 /* LevelThirtyNine.h */,
+				D1D5795B19ACADB300CB18F6 /* LevelThirtyNine.m */,
+			);
+			name = "Level 39";
+			sourceTree = "<group>";
+		};
+		D1D5796C19ACAE2E00CB18F6 /* Level 40 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5795D19ACADDA00CB18F6 /* LevelForty.h */,
+				D1D5795E19ACADDA00CB18F6 /* LevelForty.m */,
+			);
+			name = "Level 40";
+			sourceTree = "<group>";
+		};
+		D1D5796D19ACAE5600CB18F6 /* Secret 4 */ = {
+			isa = PBXGroup;
+			children = (
+				D1D5796019ACADE400CB18F6 /* SecretLevelFour.h */,
+				D1D5796119ACADE400CB18F6 /* SecretLevelFour.m */,
+			);
+			name = "Secret 4";
+			sourceTree = "<group>";
+		};
 		D1D8B5ED199653EF0069AF32 /* EndlessLevel */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,9 +1062,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D1A78C4219673C32000E30D7 /* Build configuration list for PBXNativeTarget "Poppolo" */;
 			buildPhases = (
+				09721AEF8369DEF82177EE92 /* Check Pods Manifest.lock */,
 				D1A78C0519673C32000E30D7 /* Sources */,
 				D1A78C0619673C32000E30D7 /* Frameworks */,
 				D1A78C0719673C32000E30D7 /* Resources */,
+				14D7F4942CDFC9753FEE23A7 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -723,6 +1104,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Cihan Koseoglu";
 				TargetAttributes = {
+					D1A78C0819673C32000E30D7 = {
+						DevelopmentTeam = VE6XLHG75S;
+					};
 					D1A78C3019673C32000E30D7 = {
 						TestTargetID = D1A78C0819673C32000E30D7;
 					};
@@ -790,6 +1174,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09721AEF8369DEF82177EE92 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		14D7F4942CDFC9753FEE23A7 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D1A78C0519673C32000E30D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -797,42 +1214,65 @@
 			files = (
 				D1A78C2819673C32000E30D7 /* MyScene.m in Sources */,
 				D1D8B5EC199653DD0069AF32 /* EndlessLevel.m in Sources */,
+				D1D5791F19ACACA100CB18F6 /* LevelTwentyThree.m in Sources */,
+				D13A78A21B3E8B6C00CD7462 /* GameData.m in Sources */,
 				D1A2F44A1983D56B001ADFC0 /* LevelTwenty.m in Sources */,
 				D1F5DEE01979D97600BAA30F /* LevelOne.m in Sources */,
 				D1A2F42E1982B2EF001ADFC0 /* AchievementMenu.m in Sources */,
 				D1CAFA4B197ED5A100CB3AFC /* LevelSeven.m in Sources */,
+				D1D5795F19ACADDA00CB18F6 /* LevelForty.m in Sources */,
 				D1A2F4441983D554001ADFC0 /* LevelEighteen.m in Sources */,
+				D1D5795C19ACADB300CB18F6 /* LevelThirtyNine.m in Sources */,
 				D1A2F43E1983D542001ADFC0 /* LevelSixteen.m in Sources */,
+				D1D5793119ACACE400CB18F6 /* LevelTwentyNine.m in Sources */,
+				D1D5792519ACACB800CB18F6 /* LevelTwentyFive.m in Sources */,
+				D1D5791C19ACAC9700CB18F6 /* LevelTwentyTwo.m in Sources */,
 				D1CAFA611980091B00CB3AFC /* GameOver.m in Sources */,
 				D1CAFA671980093B00CB3AFC /* LevelSelect.m in Sources */,
+				D1D5792819ACACC300CB18F6 /* LevelTwentySix.m in Sources */,
+				D1D5792E19ACACDA00CB18F6 /* LevelTwentyEight.m in Sources */,
+				D1D5794A19ACAD7900CB18F6 /* LevelThirtyThree.m in Sources */,
 				D1A78C2519673C32000E30D7 /* ViewController.m in Sources */,
+				D1D5796219ACADE400CB18F6 /* SecretLevelFour.m in Sources */,
 				D1A2F4411983D54B001ADFC0 /* LevelSeventeen.m in Sources */,
 				D1CAFA54197ED5BC00CB3AFC /* LevelTen.m in Sources */,
+				D1D5793719ACAD0400CB18F6 /* SecretLevelThree.m in Sources */,
 				D1B49B03197D78020039DB2A /* LevelTwo.m in Sources */,
 				D1BEF562197D7FDC006BC806 /* CodeSnippets.m in Sources */,
 				D1A2F43B1983D539001ADFC0 /* LevelFifteen.m in Sources */,
+				D1D5795919ACADA900CB18F6 /* LevelThirtyEight.m in Sources */,
+				D1D5792219ACACAC00CB18F6 /* LevelTwentyFour.m in Sources */,
+				D1D5791819ACAC8000CB18F6 /* LevelTwentyOne.m in Sources */,
 				D1CAFA51197ED5B400CB3AFC /* LevelNine.m in Sources */,
+				D1D5795619ACAD9F00CB18F6 /* LevelThirtySeven.m in Sources */,
 				D1A78C4A1968A462000E30D7 /* BallNode.m in Sources */,
 				D1CAFA641980092700CB3AFC /* MainMenu.m in Sources */,
 				D1CAFA43197EBED100CB3AFC /* LevelFive.m in Sources */,
 				D1CAFA6D19800E8E00CB3AFC /* SKButton.m in Sources */,
+				D1D5794419ACAD6500CB18F6 /* LevelThirtyOne.m in Sources */,
 				D1A2F4321983D515001ADFC0 /* LevelTwelve.m in Sources */,
 				D1CAFA5B197EDA2500CB3AFC /* SecretLevelOne.m in Sources */,
 				D1A2F4351983D521001ADFC0 /* LevelThirteen.m in Sources */,
 				D1A78C1F19673C32000E30D7 /* AppDelegate.m in Sources */,
+				D1D5792B19ACACD000CB18F6 /* LevelTwentySeven.m in Sources */,
 				D1CAFA6A1980094700CB3AFC /* StoreMenu.m in Sources */,
 				D1FC254A19854D8A00BB9F3D /* LaserNode.m in Sources */,
+				D1D5795019ACAD8B00CB18F6 /* LevelThirtyFive.m in Sources */,
 				D1A2F4471983D560001ADFC0 /* LevelNineteen.m in Sources */,
 				D1B49B0B197D7DAD0039DB2A /* LevelFour.m in Sources */,
+				D1D5793419ACACF900CB18F6 /* LevelThirty.m in Sources */,
 				D1B0A366199198DD00FA7C45 /* GenericScene.m in Sources */,
 				D1A2F44D1983D577001ADFC0 /* SecretLevelTwo.m in Sources */,
 				D1A2F42A1982B2B2001ADFC0 /* LevelEleven.m in Sources */,
 				D1CAFA4E197ED5AB00CB3AFC /* LevelEight.m in Sources */,
+				D1D5794719ACAD6F00CB18F6 /* LevelThirtyTwo.m in Sources */,
 				D1CAFA46197EBEDA00CB3AFC /* LevelSix.m in Sources */,
 				D1C8733A19A8CC64006768E7 /* StoreHelper.m in Sources */,
 				D1A78C1B19673C32000E30D7 /* main.m in Sources */,
+				D1D5795319ACAD9500CB18F6 /* LevelThirtySix.m in Sources */,
 				D1B0A36919919FC400FA7C45 /* GameState.m in Sources */,
 				D1B49B07197D78130039DB2A /* LevelThree.m in Sources */,
+				D1D5794D19ACAD8200CB18F6 /* LevelThirtyFour.m in Sources */,
 				D1A2F4381983D52D001ADFC0 /* LevelFourteen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -955,13 +1395,21 @@
 		};
 		D1A78C4319673C32000E30D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59D1E12FCBD5365984608D06 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Google-Mobile-Ads-SDK/GoogleMobileAdsSdkiOS-7.3.1",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Poppolo/Poppolo-Prefix.pch";
 				INFOPLIST_FILE = "Poppolo/Poppolo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -969,13 +1417,21 @@
 		};
 		D1A78C4419673C32000E30D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BA342DCC7A391F56F8CD1F45 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/Google-Mobile-Ads-SDK/GoogleMobileAdsSdkiOS-7.3.1",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Poppolo/Poppolo-Prefix.pch";
 				INFOPLIST_FILE = "Poppolo/Poppolo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				WRAPPER_EXTENSION = app;
 			};

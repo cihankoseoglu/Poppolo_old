@@ -91,13 +91,13 @@
     
 }
 
-//Level 5 random vector is  big
+//Endless Level vector
 -(CGVector) randomVector{
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %30;
-    CGFloat y = arc4random() %30;
+    CGFloat x = arc4random() %25;
+    CGFloat y = arc4random() %25;
     
     finalVector = CGVectorMake(x, y);
     
@@ -140,7 +140,7 @@
             
             [whiteOverlay runAction:fadeOut];
             [self removeNodeWithTimeInterval:whiteOverlay :2.2];
-            [self userInteractionInTimeInterval:2.3];
+            [self userInteractionInTimeInterval:2.8];
             
             
         });
@@ -207,11 +207,14 @@
             
             [touchedNode removeFromParent];
             scoreCount++;
-
+[GameData sharedGameData].score +=1;
             ballTouchCounter--;
             ballCount--;
             
-            // add ball everytime. 
+            
+            
+            // add ball everytime.
+            
             [self addBallWithAnimation];
             
         }else{
@@ -220,7 +223,7 @@
                 
                 [touchedNode removeFromParent];
                 scoreCount++;
-
+[GameData sharedGameData].score +=1;
                 ballTouchCounter--;
                 ballCount--;
                 
@@ -230,7 +233,14 @@
             }else {
                 
                 NSLog(@"Touched node is not the same color as the suit");
-                // Do nothing but make a little animation of some sort later
+                // You lose the game if you don't follow the suit
+                [GameData sharedGameData].score = scoreCount;
+
+               
+                [GameData sharedGameData].highScore = MAX([GameData sharedGameData].score, [GameData sharedGameData].highScore);
+                 [[GameData sharedGameData] save];
+                [self gameOver];
+                
             }
             
             
@@ -287,6 +297,39 @@
                                    selector:@selector(enableTouches)
                                    userInfo:nil
                                     repeats:NO];
+    
+}
+
+
+-(void)gameOver{
+    
+    NSLog(@"Entered game over state");
+    
+    self.userInteractionEnabled = NO;
+    
+    SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
+    whiteOverlay.alpha=0;
+    
+    // TO DO
+    // save the score if it's the best score.
+    
+    
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.5];
+    
+    [whiteOverlay runAction:fadeIn];
+    
+    [self addChild:whiteOverlay];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        GameOver *gameOver = [[GameOver alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        
+        
+        [self.view presentScene:gameOver transition:transition];
+    });
+    
+    
     
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import "LevelOne.h"
-#import "LevelTwo.h"
+#import "LevelThree.h"
 
 @interface LevelOne(){
     
@@ -67,14 +67,14 @@
                 ballCount++;
         
         SKLabelNode *gameRuleLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
-        gameRuleLabel.text = @"pop the ball";
+        gameRuleLabel.text = @"pop the ball.";
         gameRuleLabel.fontSize = 24;
         gameRuleLabel.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
         gameRuleLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
         gameRuleLabel.alpha = 0 ;
         
         SKAction *fadeIn = [SKAction fadeInWithDuration:2.4];
-        SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-76 duration:3.0];
+        SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-96 duration:3.0];
         
         SKAction *group = [SKAction group:@[fadeIn,moveUpwards]];
         
@@ -85,6 +85,25 @@
         
         [self addChild:gameRuleLabel];
 
+        
+        SKLabelNode *gameRuleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        gameRuleLabel2.text = @"this is a simple game.";
+        gameRuleLabel2.fontSize = 24;
+        gameRuleLabel2.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel2.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
+        gameRuleLabel2.alpha = 0 ;
+        
+        SKAction *fadeIn2 = [SKAction fadeInWithDuration:2.4];
+        SKAction *moveUpwards2 = [SKAction moveToY:self.scene.size.height/2-66 duration:3.0];
+        
+        SKAction *group2 = [SKAction group:@[fadeIn2,moveUpwards2]];
+        
+        [gameRuleLabel2 runAction:group2];
+        
+        
+        
+        
+        [self addChild:gameRuleLabel2];
         
         
         
@@ -235,7 +254,7 @@
     // self.scene = nil;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelTwo *newScene = [[LevelTwo alloc] initWithSize:self.scene.size];
+        LevelThree *newScene = [[LevelThree alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });

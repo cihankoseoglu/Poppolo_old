@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BallNode.h"
+#import "GameData.h"
 
 @interface EndlessLevel : SKScene
 

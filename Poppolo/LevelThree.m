@@ -20,7 +20,7 @@
     NSString *newSuitColor;
     NSDate *firstTime;
     NSUInteger ballCount;
-    
+    NSUInteger i;
     
     
 }
@@ -84,13 +84,18 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         
+        self.userInteractionEnabled = NO;
         self.backgroundColor = [SKColor whiteColor];
         self.physicsBody = [SKPhysicsBody bodyWithEdgeLoopFromRect:self.frame];
         self.physicsWorld.gravity = CGVectorMake(0, 0);
         
-
-        ballCount = 0;
         
+            [self userInteractionInTimeInterval:2.2];
+            
+     
+        
+        ballCount = 0;
+        i=0;
         // Level two
         // Create 4 balls , two of same color and two of other same color.
         
@@ -112,7 +117,8 @@
             }
         }
       
-        
+     
+    
     }
     return self;
 }
@@ -130,7 +136,8 @@
     BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
     
-    if(touchedNode != self){
+
+        if(![touchedNode isKindOfClass:[SKScene class]]){
         
         // if it's a new suit
         if(ballTouchCounter == 0){
@@ -215,6 +222,25 @@
 //                [self deleteInTimeInterval:3 node:colorWarning];
                 NSLog(@"Touched node is not the same color as the suit");
                 // Do nothing but make a little animation of some sort later
+                i++;
+                if (i==1) {
+                    
+                    SKLabelNode *gameRuleLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+                    gameRuleLabel.text = @"follow the suit, or lose.";
+                    gameRuleLabel.fontSize = 24;
+                    gameRuleLabel.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+                    gameRuleLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
+                    gameRuleLabel.alpha = 0 ;
+                    
+                    SKAction *fadeIn = [SKAction fadeInWithDuration:1.0];
+                    SKAction *moveUpwards = [SKAction moveToY:self.scene.size.height/2-176 duration:1.3];
+                    
+                    SKAction *group = [SKAction group:@[fadeIn,moveUpwards]];
+                    
+                    [gameRuleLabel runAction:group];
+                    
+                    [self addChild:gameRuleLabel];
+                }
             }
             
             
@@ -238,7 +264,7 @@
             
             //label depicting next level
             SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"4"];
+            levelLabel.text = [NSString stringWithFormat:@"3"];
             levelLabel.fontSize = 60;
             levelLabel.fontColor = levelPassColor;
             levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
@@ -339,4 +365,31 @@
     
     
 }
+
+
+-(void)userInteractionInTimeInterval:(NSTimeInterval)timeInterval{
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:self
+                                   selector:@selector(enableTouches)
+                                   userInfo:nil
+                                    repeats:NO];
+    
+}
+
+-(void)removeNodeWithTimeInterval:(SKNode*)node :(NSTimeInterval)timeInterval{
+    
+    [NSTimer scheduledTimerWithTimeInterval:timeInterval
+                                     target:node
+                                   selector:@selector(removeFromParent)
+                                   userInfo:nil
+                                    repeats:NO];
+}
+
+-(void)enableTouches{
+    
+    self.userInteractionEnabled = YES;
+    
+}
+
+
 @end

@@ -8,6 +8,7 @@
 
 #import "GameOver.h"
 #import "LevelSelect.h"
+#import "EndlessLevel.h"
 
 #import "LevelSeven.h"
 #import "LevelEight.h"
@@ -62,16 +63,16 @@
         [backButton setTouchUpInsideTarget:self action:@selector(restartLevel)];
         [self addChild:backButton];
         
-        // level select button
-        
-        SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-120)];
-        [levelSelectButton.title setText:@"level select"];
-        [levelSelectButton.title setFontName:@"Helvetica"];
-        [levelSelectButton.title setFontSize:20.0];
-        [levelSelectButton.title setFontColor:instructionColor];
-        [levelSelectButton setTouchUpInsideTarget:self action:@selector(segueToLevelSelect)];
-        [self addChild:levelSelectButton];
+//        // level select button
+//        
+//        SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+//        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-120)];
+//        [levelSelectButton.title setText:@"level select"];
+//        [levelSelectButton.title setFontName:@"Helvetica"];
+//        [levelSelectButton.title setFontSize:20.0];
+//        [levelSelectButton.title setFontColor:instructionColor];
+//        [levelSelectButton setTouchUpInsideTarget:self action:@selector(segueToLevelSelect)];
+//        [self addChild:levelSelectButton];
         
         
         
@@ -86,63 +87,21 @@
 
 -(void)restartLevel{
     
-    
-    id level = [self.userData objectForKey:@"level"];
-    
-    if ([level isEqualToString:@"7"]) {
-        
-        LevelSeven *newScene = [[LevelSeven alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
+    EndlessLevel *newScene = [[EndlessLevel alloc] initWithSize:self.scene.size];
+    SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+    [self.view presentScene:newScene transition:transition];
 
-    }
-    
-    else if ([level isEqualToString:@"8"]) {
-        LevelEight *newScene = [[LevelEight alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-
-    }
-    else if ([level isEqualToString:@"9"]) {
-        LevelNine *newScene = [[LevelNine alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-        
-    }
-    
-    else if ([level isEqualToString:@"10"]) {
-        LevelTen *newScene = [[LevelTen alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-        
-    }
-    
-    else if ([level isEqualToString:@"11"]) {
-        LevelEleven *newScene = [[LevelEleven alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-        
-    }
-    
-    else if ([level isEqualToString:@"12"]) {
-        LevelTwelve *newScene = [[LevelTwelve alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
-        [self.view presentScene:newScene transition:transition];
-        
-    }else{
-        
-        
-    }
-
+   
 
 
 }
 
 -(void) segueToLevelSelect
 {
-    LevelSelect *newScene = [[LevelSelect alloc] initWithSize:self.scene.size];
+    MainMenu *newScene = [[MainMenu alloc] initWithSize:self.scene.size];
     SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
     [self.view presentScene:newScene transition:transition];
+   
     
 }
 

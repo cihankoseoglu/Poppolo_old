@@ -14,6 +14,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    storeManager = [[StoreHelper alloc] init];
+    
+    
     return YES;
 }
 							
@@ -51,6 +55,9 @@
 -(void)unlockEndlessMode{
     // Unlocking endless mode will trigger achievements.
     // Also add the endless mode button to the main menu.
+    
+    [storeManager requestProductData];
+    
     
 }
 @end

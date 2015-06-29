@@ -7,9 +7,11 @@
 //
 
 #import "MainMenu.h"
+#import "GameData.h"
 #import "SKButton.h"
 #import "LevelOne.h"
 #import "LevelSelect.h"
+#import "EndlessLevel.h"
 
 @implementation MainMenu
 
@@ -42,26 +44,19 @@
         [backButton setTouchUpInsideTarget:self action:@selector(resumeLevel)];
         [self addChild:backButton];
         
-        // level select button
-        
-        SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
-        [levelSelectButton.title setText:@"level select"];
-        [levelSelectButton.title setFontName:@"Helvetica"];
-        [levelSelectButton.title setFontSize:20.0];
-        [levelSelectButton.title setFontColor:instructionColor];
-        [levelSelectButton setTouchUpInsideTarget:self action:@selector(selectLevel)];
-        [self addChild:levelSelectButton];
-        
-//        SKButton *storeMenu = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-//        [storeMenu setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-150)];
-//        [storeMenu.title setText:@"level select"];
-//        [storeMenu.title setFontName:@"Helvetica"];
-//        [storeMenu.title setFontSize:20.0];
-//        [storeMenu.title setFontColor:instructionColor];
-//        [storeMenu setTouchUpInsideTarget:self action:@selector(segueToStoreMenu)];
-//        [self addChild:storeMenu];
+//        // level select button
 //        
+//        SKButton *tutorialButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+//        [tutorialButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
+//        [tutorialButton.title setText:@"tutorial"];
+//        [tutorialButton.title setFontName:@"Helvetica"];
+//        [tutorialButton.title setFontSize:20.0];
+//        [tutorialButton.title setFontColor:instructionColor];
+//        [tutorialButton setTouchUpInsideTarget:self action:@selector(selectLevel)];
+//        [self addChild:tutorialButton];
+        
+        
+//
 //        
 //        SKButton *achievementsMenu = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
 //        [achievementsMenu setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
@@ -73,7 +68,56 @@
 //        [self addChild:achievementsMenu];
         
         
+        SKLabelNode *gameRuleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        gameRuleLabel2.text = @"this is a simple game.";
+        gameRuleLabel2.fontSize = 24;
+        gameRuleLabel2.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel2.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -90);
+        gameRuleLabel2.alpha = 0 ;
         
+        SKAction *fadeIn2 = [SKAction fadeInWithDuration:1.8];
+        SKAction *moveUpwards2 = [SKAction moveToY:self.scene.size.height/2-126 duration:1.4];
+        
+        SKAction *group2 = [SKAction group:@[fadeIn2,moveUpwards2]];
+        
+        [gameRuleLabel2 runAction:group2];
+        
+        
+        [self addChild:gameRuleLabel2];
+
+        
+        
+        
+        SKLabelNode *gameRuleLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        gameRuleLabel.text = @"follow the suit, or lose.";
+        gameRuleLabel.fontSize = 24;
+        gameRuleLabel.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
+        gameRuleLabel.alpha = 0 ;
+        
+        SKAction *fadeIn3 = [SKAction fadeInWithDuration:1.8];
+        SKAction *moveUpwards3 = [SKAction moveToY:self.scene.size.height/2-156 duration:1.4];
+        
+        SKAction *group3 = [SKAction group:@[fadeIn3,moveUpwards3]];
+        
+        [gameRuleLabel runAction:group3];
+        
+        [self addChild:gameRuleLabel];
+        
+        
+        SKLabelNode *gameRuleLabel4 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        gameRuleLabel4.text = [NSString stringWithFormat:@"high score: %li", [GameData sharedGameData].highScore];
+        gameRuleLabel4.fontSize = 24;
+        gameRuleLabel4.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel4.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 +180);
+        gameRuleLabel4.alpha = 0 ;
+        
+        SKAction *fadeIn4 = [SKAction fadeInWithDuration:1.8];
+        SKAction *group4 = [SKAction group:@[fadeIn4]];
+        [gameRuleLabel4 runAction:group4];
+        
+        [self addChild:gameRuleLabel4];
+      
         SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];
         whiteOverlay.alpha = 1;
         whiteOverlay.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2);
@@ -95,7 +139,7 @@
     
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelOne *newScene = [[LevelOne alloc] initWithSize:self.scene.size];
+        EndlessLevel *newScene = [[EndlessLevel alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });
@@ -108,7 +152,20 @@
 -(void)selectLevel{
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelSelect *newScene = [[LevelSelect alloc] initWithSize:self.scene.size];
+        LevelOne *newScene = [[LevelOne alloc] initWithSize:self.scene.size];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        [self.view presentScene:newScene transition:transition];
+    });
+    
+    
+    
+    
+}
+
+-(void)segueToEndlessLevel{
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        EndlessLevel *newScene = [[EndlessLevel alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });

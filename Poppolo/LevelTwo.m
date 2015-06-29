@@ -83,7 +83,7 @@
         
         
         
-        SKLabelNode *gameRuleLabel = [self gameLabelWithText:@"pop a yellow ball" ofColor:instructionColor withHeightOffset:0];
+        SKLabelNode *gameRuleLabel = [self gameLabelWithText:@"pop a yellow ball." ofColor:instructionColor withHeightOffset:0];
         
         [self addChild:gameRuleLabel];
         
@@ -372,7 +372,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         LevelThree *newScene = [[LevelThree alloc] initWithSize:self.scene.size];
-        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+        SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:0.5];
         [self.view presentScene:newScene transition:transition];
     });
     

@@ -8,7 +8,6 @@
 
 #import "StoreHelper.h"
 #import "AppDelegate.h"
-#define EndlessMode @"com.cihankoseoglu.poppolo.endlessmode"
 
 @implementation StoreHelper
 

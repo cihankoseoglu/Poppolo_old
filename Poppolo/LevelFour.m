@@ -8,7 +8,7 @@
 
 
 #import "LevelFour.h"
-#import "LevelFive.h"
+#import "EndlessLevel.h"
 
 @interface LevelFour(){
     
@@ -216,7 +216,7 @@
             
             //label depicting next level
             SKLabelNode *levelLabel = [SKLabelNode labelNodeWithFontNamed:@"Helvetica"];
-            levelLabel.text = [NSString stringWithFormat:@"5"];
+            levelLabel.text = [NSString stringWithFormat:@"you are ready."];
             levelLabel.fontSize = 60;
             levelLabel.fontColor = levelPassColor;
             levelLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 );
@@ -301,7 +301,7 @@
     // self.scene = nil;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        LevelFive *newScene = [[LevelFive alloc] initWithSize:self.scene.size];
+        EndlessLevel *newScene = [[EndlessLevel alloc] initWithSize:self.scene.size];
         SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
         [self.view presentScene:newScene transition:transition];
     });

@@ -151,7 +151,6 @@
     
     BallNode *touchedNode = (BallNode*)[self nodeAtPoint:location];
     
-    
     if(touchedNode != self){
         // if it's a new suit
         if(ballTouchCounter == 0){

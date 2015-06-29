@@ -65,4 +65,9 @@
 #define REMOVEANIMATIONDURATION 0.55
 
 
+// Endless mode
+
+#define EndlessMode @"com.cihankoseoglu.poppolo.endlessmode"
+
+
 
