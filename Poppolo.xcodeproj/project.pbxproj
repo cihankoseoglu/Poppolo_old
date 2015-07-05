@@ -26,7 +26,6 @@
 		D13A78A21B3E8B6C00CD7462 /* GameData.m in Sources */ = {isa = PBXBuildFile; fileRef = D13A78A11B3E8B6C00CD7462 /* GameData.m */; };
 		D14536CB198531EB00CAC5B2 /* GrayOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D14536CA198531EB00CAC5B2 /* GrayOverlay.png */; };
 		D14D3BAC1979FC59001F53E7 /* WhiteOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = D14D3BAB1979FC59001F53E7 /* WhiteOverlay.png */; };
-		D1690F921B41624E0087D8BF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F911B41624E0087D8BF /* GoogleMobileAds.framework */; };
 		D1690F9C1B4162880087D8BF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F931B4162880087D8BF /* AdSupport.framework */; };
 		D1690F9D1B4162880087D8BF /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F941B4162880087D8BF /* AudioToolbox.framework */; };
 		D1690F9E1B4162880087D8BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F951B4162880087D8BF /* AVFoundation.framework */; };
@@ -36,6 +35,7 @@
 		D1690FA21B4162880087D8BF /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F991B4162880087D8BF /* EventKitUI.framework */; };
 		D1690FA31B4162880087D8BF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F9A1B4162880087D8BF /* MessageUI.framework */; };
 		D1690FA41B4162880087D8BF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F9B1B4162880087D8BF /* SystemConfiguration.framework */; };
+		D1860F791B495EE800B704A4 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1690F911B41624E0087D8BF /* GoogleMobileAds.framework */; };
 		D1A2F41C19803CEC001ADFC0 /* PoppoloLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F41A19803CEC001ADFC0 /* PoppoloLogo.png */; };
 		D1A2F42119803D92001ADFC0 /* PoppoloLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F41E19803D92001ADFC0 /* PoppoloLogo@2x.png */; };
 		D1A2F42619803E0D001ADFC0 /* TransparentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = D1A2F42419803E0D001ADFC0 /* TransparentButton.png */; };
@@ -323,7 +323,7 @@
 				D1690FA41B4162880087D8BF /* SystemConfiguration.framework in Frameworks */,
 				D1A78C0F19673C32000E30D7 /* CoreGraphics.framework in Frameworks */,
 				D1C8733719A8C7A6006768E7 /* StoreKit.framework in Frameworks */,
-				D1690F921B41624E0087D8BF /* GoogleMobileAds.framework in Frameworks */,
+				D1860F791B495EE800B704A4 /* GoogleMobileAds.framework in Frameworks */,
 				D1C8733519A8C7A1006768E7 /* GameKit.framework in Frameworks */,
 				D1A78C1119673C32000E30D7 /* UIKit.framework in Frameworks */,
 				D1A78C1319673C32000E30D7 /* SpriteKit.framework in Frameworks */,

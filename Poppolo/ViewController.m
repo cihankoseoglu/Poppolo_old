@@ -24,6 +24,7 @@
 
 
 
+
 @interface ViewController(){
     
     NSMutableArray *levelData;
@@ -43,7 +44,9 @@
     skView.showsNodeCount = YES;
     
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
-   
+    self.bannerView.adUnitID = @"ca-app-pub-3940256099942544/2934735716";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
     
     // Create and configure the scene.
     
