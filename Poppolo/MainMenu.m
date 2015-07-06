@@ -44,29 +44,9 @@
         [backButton setTouchUpInsideTarget:self action:@selector(resumeLevel)];
         [self addChild:backButton];
         
-//        // level select button
-//        
-//        SKButton *tutorialButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-//        [tutorialButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
-//        [tutorialButton.title setText:@"tutorial"];
-//        [tutorialButton.title setFontName:@"Helvetica"];
-//        [tutorialButton.title setFontSize:20.0];
-//        [tutorialButton.title setFontColor:instructionColor];
-//        [tutorialButton setTouchUpInsideTarget:self action:@selector(selectLevel)];
-//        [self addChild:tutorialButton];
+        // set the ad counter
         
-        
-//
-//        
-//        SKButton *achievementsMenu = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-//        [achievementsMenu setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-90)];
-//        [achievementsMenu.title setText:@"level select"];
-//        [achievementsMenu.title setFontName:@"Helvetica"];
-//        [achievementsMenu.title setFontSize:20.0];
-//        [achievementsMenu.title setFontColor:instructionColor];
-//        [achievementsMenu setTouchUpInsideTarget:self action:@selector(segueToAchievementMenu)];
-//        [self addChild:achievementsMenu];
-        
+        [GameData sharedGameData].adShowCount = 0;
         
         SKLabelNode *gameRuleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
         gameRuleLabel2.text = @"this is a simple game.";

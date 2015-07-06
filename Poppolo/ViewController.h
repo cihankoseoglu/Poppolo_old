@@ -12,10 +12,12 @@
 @import GoogleMobileAds;
 
 
-@interface ViewController : UIViewController  <UIPickerViewDataSource , UIPickerViewDelegate>
 
-@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
+@interface ViewController : UIViewController  <GADInterstitialDelegate>
 
+
+
+@property (nonatomic, strong) GADInterstitial *gadInterstitial;
 
 
 //@property (weak,nonatomic) IBOutlet UIPickerView *levelPickerView;

@@ -13,6 +13,8 @@
 @property (assign, nonatomic) long score;
 @property (assign, nonatomic) long highScore;
 
+@property (assign, nonatomic) int adShowCount;
+
 
 +(instancetype)sharedGameData;
 -(void)reset;

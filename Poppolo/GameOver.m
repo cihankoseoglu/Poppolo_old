@@ -63,6 +63,32 @@
         [backButton setTouchUpInsideTarget:self action:@selector(restartLevel)];
         [self addChild:backButton];
         
+        
+        // main menu
+        
+        SKButton *mainMenuButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+        [mainMenuButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-100)];
+        [mainMenuButton.title setText:@"main menu"];
+        [mainMenuButton.title setFontName:@"Helvetica"];
+        [mainMenuButton.title setFontSize:20.0];
+        [mainMenuButton.title setFontColor:instructionColor];
+        [mainMenuButton setTouchUpInsideTarget:self action:@selector(mainMenu)];
+        [self addChild:mainMenuButton];
+        
+        // score label
+        
+        SKLabelNode *gameRuleLabel4 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
+        gameRuleLabel4.text = [NSString stringWithFormat:@"you scored: %li", [GameData sharedGameData].score];
+        gameRuleLabel4.fontSize = 24;
+        gameRuleLabel4.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel4.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 +180);
+        gameRuleLabel4.alpha = 0 ;
+        
+        SKAction *fadeIn4 = [SKAction fadeInWithDuration:1.8];
+        SKAction *group4 = [SKAction group:@[fadeIn4]];
+        [gameRuleLabel4 runAction:group4];
+        
+        [self addChild:gameRuleLabel4];
 //        // level select button
 //        
 //        SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
@@ -75,8 +101,14 @@
 //        [self addChild:levelSelectButton];
         
         
-        
-        
+        //shows ad at the end of each game session.
+            [GameData sharedGameData].adShowCount += 1;        
+        if ([GameData sharedGameData].adShowCount %2 == 0) {
+
+
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil];
+            
+        }
         
         
     }
@@ -94,6 +126,18 @@
    
 
 
+}
+
+
+-(void)mainMenu{
+    
+    MainMenu *newScene = [[MainMenu alloc] initWithSize:self.scene.size];
+    SKTransition *transition = [SKTransition fadeWithColor:[UIColor whiteColor] duration:2];
+    [self.view presentScene:newScene transition:transition];
+    
+    
+    
+    
 }
 
 -(void) segueToLevelSelect

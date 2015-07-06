@@ -18,6 +18,7 @@
     NSUInteger ballCount;
     SKLabelNode *score;
     int scoreCount;
+    float chaoticConstant;
     
 }
 
@@ -124,6 +125,11 @@
         score.userInteractionEnabled = NO;
         [self addChild:score];
         
+        chaoticConstant = 20;
+        
+        // ready ad
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"readyAd" object:nil];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -147,17 +153,10 @@
         ballTouchCounter = 0;
         ballCount=0;
         
-        
+        // add balls
         for (int i = 0 ; i <10; i++) {
             
-            
-            
-            //            BallNode* ball = [[BallNode alloc] init];
-            //            ball.position = [self randomPointOnScreen:self.scene.size forViewSize:ball.size];
-            //
-            //            [self addChild:ball];
-            //[ball.physicsBody applyAngularImpulse:arc4random()%20];
-            
+        
             [self addBall];
             
             ballCount++;
@@ -259,6 +258,16 @@
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
     score.text = [NSString stringWithFormat:@"%i", scoreCount];
+    
+
+    if (currentTime == chaoticConstant) {
+        
+        for (BallNode *ball in self.children) {
+            [ball.physicsBody applyImpulse:[self randomVector]];
+            NSLog(@"applied vector");
+
+        }
+    }
 
 }
 
