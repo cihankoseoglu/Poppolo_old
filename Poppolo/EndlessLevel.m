@@ -97,8 +97,8 @@
     
     CGVector finalVector;
     
-    CGFloat x = arc4random() %25;
-    CGFloat y = arc4random() %25;
+    CGFloat x = arc4random() %50;
+    CGFloat y = arc4random() %50;
     
     finalVector = CGVectorMake(x, y);
     

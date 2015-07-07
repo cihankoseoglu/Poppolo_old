@@ -33,7 +33,7 @@
         SKAction *fadeIn = [SKAction fadeInWithDuration:2];
         [logoNode runAction:fadeIn];
         
-        // restart button
+        // play button
         
         SKButton *backButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
         [backButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-40)];
@@ -43,6 +43,17 @@
         [backButton.title setFontColor:instructionColor];
         [backButton setTouchUpInsideTarget:self action:@selector(resumeLevel)];
         [self addChild:backButton];
+        
+        // remove ads button
+        
+        SKButton *removeAdsButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
+        [removeAdsButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-40)];
+        [removeAdsButton.title setText:@"remove ads"];
+        [removeAdsButton.title setFontName:@"Helvetica"];
+        [removeAdsButton.title setFontSize:20.0];
+        [removeAdsButton.title setFontColor:instructionColor];
+        [removeAdsButton setTouchUpInsideTarget:self action:@selector(removeAds)];
+        [self addChild:removeAdsButton];
         
         // set the ad counter
         
@@ -164,5 +175,35 @@
                                     repeats:NO];
 }
 
+
+#pragma mark - remove ads
+
+
+-(void)removeAds{
+    
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"InApp" withExtension:@"plist"];
+    NSArray *productIdentifiers =[NSArray arrayWithContentsOfURL:url];
+    
+    
+    
+}
+
+-(void)validateProductIdentifiers:(NSArray *)productIdentifiers{
+
+    SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithArray:productIdentifiers]];
+    productsRequest.delegate = self;
+    [productsRequest start];
+
+}
+
+-(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
+    //self.products = response.products;
+    
+    for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
+        // Handle invalid product ids
+    }
+    
+    
+}
 
 @end

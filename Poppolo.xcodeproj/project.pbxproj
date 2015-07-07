@@ -113,6 +113,7 @@
 		D1D5795C19ACADB300CB18F6 /* LevelThirtyNine.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795B19ACADB300CB18F6 /* LevelThirtyNine.m */; };
 		D1D5795F19ACADDA00CB18F6 /* LevelForty.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5795E19ACADDA00CB18F6 /* LevelForty.m */; };
 		D1D5796219ACADE400CB18F6 /* SecretLevelFour.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D5796119ACADE400CB18F6 /* SecretLevelFour.m */; };
+		D1D6F46B1B4ACF7D00EB1C03 /* InApp.plist in Resources */ = {isa = PBXBuildFile; fileRef = D1D6F46A1B4ACF7D00EB1C03 /* InApp.plist */; };
 		D1D8B5EC199653DD0069AF32 /* EndlessLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = D1D8B5EB199653DD0069AF32 /* EndlessLevel.m */; };
 		D1F5DEE01979D97600BAA30F /* LevelOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D1F5DEDF1979D97600BAA30F /* LevelOne.m */; };
 		D1FC254A19854D8A00BB9F3D /* LaserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D1FC254919854D8A00BB9F3D /* LaserNode.m */; };
@@ -299,6 +300,7 @@
 		D1D5795E19ACADDA00CB18F6 /* LevelForty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelForty.m; sourceTree = "<group>"; };
 		D1D5796019ACADE400CB18F6 /* SecretLevelFour.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecretLevelFour.h; sourceTree = "<group>"; };
 		D1D5796119ACADE400CB18F6 /* SecretLevelFour.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecretLevelFour.m; sourceTree = "<group>"; };
+		D1D6F46A1B4ACF7D00EB1C03 /* InApp.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InApp.plist; sourceTree = "<group>"; };
 		D1D8B5EA199653DD0069AF32 /* EndlessLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndlessLevel.h; sourceTree = "<group>"; };
 		D1D8B5EB199653DD0069AF32 /* EndlessLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndlessLevel.m; sourceTree = "<group>"; };
 		D1F5DEDE1979D97600BAA30F /* LevelOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelOne.h; sourceTree = "<group>"; };
@@ -687,6 +689,7 @@
 				D1B0A36819919FC400FA7C45 /* GameState.m */,
 				D13A78A11B3E8B6C00CD7462 /* GameData.m */,
 				D13A78A31B3E8B7D00CD7462 /* GameData.h */,
+				D1D6F46A1B4ACF7D00EB1C03 /* InApp.plist */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -1145,6 +1148,7 @@
 				D133BBC91985D9CF009E556B /* PurpleBall.png in Resources */,
 				D1B0A3621991979A00FA7C45 /* LevelData.plist in Resources */,
 				D1A2F41C19803CEC001ADFC0 /* PoppoloLogo.png in Resources */,
+				D1D6F46B1B4ACF7D00EB1C03 /* InApp.plist in Resources */,
 				D133BBC51985D9CF009E556B /* GreenBall.png in Resources */,
 				D13504A0199A7A25005DA4FC /* MMSSari@2x.png in Resources */,
 				D1A78C1919673C32000E30D7 /* InfoPlist.strings in Resources */,
