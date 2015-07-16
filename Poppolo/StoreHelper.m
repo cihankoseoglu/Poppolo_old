@@ -40,7 +40,7 @@
         return;
     }
     
-    currentPurchase = EndlessMode;
+    currentPurchase = RemoveAds;
     
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:currentPurchase]];
     request.delegate=self;
@@ -105,8 +105,8 @@
     
     if (transaction.error.code != SKErrorPaymentCancelled) {
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Transaction failed" message:@"Your payment did not go throught" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Transaction failed" message:@"Your payment did not go through" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
     }
     
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
@@ -128,7 +128,7 @@
     
     AppDelegate *appDelegateInstance = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     
-    if ([contentId isEqualToString:EndlessMode]) {
+    if ([contentId isEqualToString:RemoveAds]) {
         [appDelegateInstance unlockEndlessMode];
     }
     

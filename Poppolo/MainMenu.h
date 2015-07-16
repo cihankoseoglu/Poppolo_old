@@ -9,6 +9,15 @@
 #import <SpriteKit/SpriteKit.h>
 #import <StoreKit/StoreKit.h>
 
-@interface MainMenu : SKScene <SKProductsRequestDelegate>
+@interface MainMenu : SKScene <SKProductsRequestDelegate, SKPaymentTransactionObserver, SKRequestDelegate,UIAlertViewDelegate>
+
+
+-(void) completeTransaction: (SKPaymentTransaction *)transaction;
+-(void) restoreTransaction: (SKPaymentTransaction *)transaction;
+-(void) failedTransaction: (SKPaymentTransaction *)transaction;
+-(void) recordTransaction: (SKPaymentTransaction *)transaction;
+-(void) provideContent: (NSString *)contentId;
+-(void) makePurchase;
+-(void) requestProductData;
 
 @end

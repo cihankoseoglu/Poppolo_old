@@ -22,6 +22,18 @@
         self.backgroundColor = [SKColor whiteColor];
         
         
+        // remove ads button
+        
+        // duzelt burayi
+        
+        SKButton *removeAdsButton = [[SKButton alloc] initWithImageNamedNormal:@"WhiteOverlay" selected:@"TransparentButton"];
+        [removeAdsButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-200)];
+        [removeAdsButton.title setText:@"remove ads"];
+        [removeAdsButton.title setFontName:@"Helvetica"];
+        [removeAdsButton.title setFontSize:20.0];
+        [removeAdsButton.title setFontColor:levelPassColor];
+        [removeAdsButton setTouchUpInsideTarget:self action:@selector(removeAds)];
+        [self addChild:removeAdsButton];
         
 
         
@@ -32,6 +44,9 @@
         
         SKAction *fadeIn = [SKAction fadeInWithDuration:2];
         [logoNode runAction:fadeIn];
+        
+       
+       
         
         // play button
         
@@ -44,17 +59,6 @@
         [backButton setTouchUpInsideTarget:self action:@selector(resumeLevel)];
         [self addChild:backButton];
         
-        // remove ads button
-        
-        SKButton *removeAdsButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-        [removeAdsButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-40)];
-        [removeAdsButton.title setText:@"remove ads"];
-        [removeAdsButton.title setFontName:@"Helvetica"];
-        [removeAdsButton.title setFontSize:20.0];
-        [removeAdsButton.title setFontColor:instructionColor];
-        [removeAdsButton setTouchUpInsideTarget:self action:@selector(removeAds)];
-        [self addChild:removeAdsButton];
-        
         // set the ad counter
         
         [GameData sharedGameData].adShowCount = 0;
@@ -62,7 +66,7 @@
         SKLabelNode *gameRuleLabel2 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
         gameRuleLabel2.text = @"this is a simple game.";
         gameRuleLabel2.fontSize = 24;
-        gameRuleLabel2.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel2.fontColor = [UIColor colorWithRed:140/255.0 green:140/255.0 blue:140/255.0 alpha:1.0];
         gameRuleLabel2.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -90);
         gameRuleLabel2.alpha = 0 ;
         
@@ -82,7 +86,7 @@
         SKLabelNode *gameRuleLabel = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
         gameRuleLabel.text = @"follow the suit, or lose.";
         gameRuleLabel.fontSize = 24;
-        gameRuleLabel.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel.fontColor = [UIColor colorWithRed:140/255.0 green:140/255.0 blue:140/255.0 alpha:1.0];
         gameRuleLabel.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 -120);
         gameRuleLabel.alpha = 0 ;
         
@@ -99,7 +103,7 @@
         SKLabelNode *gameRuleLabel4 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
         gameRuleLabel4.text = [NSString stringWithFormat:@"high score: %li", [GameData sharedGameData].highScore];
         gameRuleLabel4.fontSize = 24;
-        gameRuleLabel4.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel4.fontColor = [UIColor colorWithRed:140/255.0 green:140/255.0 blue:140/255.0 alpha:1.0];
         gameRuleLabel4.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 +180);
         gameRuleLabel4.alpha = 0 ;
         
@@ -184,7 +188,8 @@
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"InApp" withExtension:@"plist"];
     NSArray *productIdentifiers =[NSArray arrayWithContentsOfURL:url];
     
-    
+    NSLog(@"remove ads button pressed");
+    [self validateProductIdentifiers:productIdentifiers];
     
 }
 
@@ -197,13 +202,80 @@
 }
 
 -(void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
-    //self.products = response.products;
     
-    for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
-        // Handle invalid product ids
+    NSArray *products = response.products;
+    SKProduct *product = [products objectAtIndex:0];
+    SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
+    payment.quantity = 1;
+    
+    
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+
+    
+}
+
+-(void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions{
+    
+    for (SKPaymentTransaction *transaction in transactions){
+        
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchased:
+                // purchase completed
+                [self completeTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateFailed:
+                // purchase failed
+                [self failedTransaction:transaction];
+                break;
+            case SKPaymentTransactionStateRestored:
+                //purchase restored
+                [self restoreTransaction:transaction];
+                break;
+            default:
+                break;
+        }
     }
+}
+
+-(void)completeTransaction:(SKPaymentTransaction *)transaction{
+    
+    
+    [self recordTransaction:transaction];
+    [self provideContent:transaction.payment.productIdentifier];
+    
+    // remove the transaction from the payment queue
+    
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    
+}
+
+-(void)failedTransaction:(SKPaymentTransaction *)transaction{
+    
+    if (transaction.error.code != SKErrorPaymentCancelled) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Transaction failed" message:@"Your payment did not go through" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alertView show];
+    }
+    
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+}
+
+-(void)restoreTransaction:(SKPaymentTransaction *)transaction{
+    
+    [self recordTransaction:transaction];
+    [self provideContent:transaction.originalTransaction.payment.productIdentifier];
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    
+}
+
+-(void)provideContent:(NSString *)contentId{
+    
+    // unlock endless mode
+    
+    [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:contentId];
     
     
 }
+
 
 @end
