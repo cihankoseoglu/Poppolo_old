@@ -26,14 +26,14 @@
         
         // duzelt burayi
         
-        SKButton *removeAdsButton = [[SKButton alloc] initWithImageNamedNormal:@"WhiteOverlay" selected:@"TransparentButton"];
-        [removeAdsButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-200)];
-        [removeAdsButton.title setText:@"remove ads"];
-        [removeAdsButton.title setFontName:@"Helvetica"];
-        [removeAdsButton.title setFontSize:20.0];
-        [removeAdsButton.title setFontColor:levelPassColor];
-        [removeAdsButton setTouchUpInsideTarget:self action:@selector(removeAds)];
-        [self addChild:removeAdsButton];
+//        SKButton *removeAdsButton = [[SKButton alloc] initWithImageNamedNormal:@"WhiteOverlay" selected:@"TransparentButton"];
+//        [removeAdsButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-200)];
+//        [removeAdsButton.title setText:@"remove ads"];
+//        [removeAdsButton.title setFontName:@"Helvetica"];
+//        [removeAdsButton.title setFontSize:20.0];
+//        [removeAdsButton.title setFontColor:levelPassColor];
+//        [removeAdsButton setTouchUpInsideTarget:self action:@selector(removeAds)];
+//        [self addChild:removeAdsButton];
         
 
         
