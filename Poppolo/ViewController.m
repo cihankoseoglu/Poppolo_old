@@ -7,18 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "LevelOne.h"
-#import "LevelEleven.h"
-#import "LevelSeven.h"
-#import "SecretLevelOne.h"
-#import "LevelFive.h"
-#import "LevelFour.h"
-#import "LevelTwo.h"
-#import "LevelTen.h"
 #import "MyScene.h"
-#import "LevelThree.h"
+
 #import "MainMenu.h"
-#import "LevelSix.h"
+
 #import "GenericScene.h"
 #import "EndlessLevel.h"
 
@@ -44,8 +36,8 @@
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+//    skView.showsFPS = YES;
+//    skView.showsNodeCount = YES;
     
     
     NSLog(@"Google Mobile Ads SDK version: %@", [GADRequest sdkVersion]);
@@ -76,14 +68,14 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return UIInterfaceOrientationMaskAllButUpsideDown;
-    } else {
-        return UIInterfaceOrientationMaskAll;
-    }
-}
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//        return UIInterfaceOrientationMaskAllButUpsideDown;
+//    } else {
+//        return UIInterfaceOrientationMaskAll;
+//    }
+//}
 
 -(BOOL)prefersStatusBarHidden
 {
@@ -104,7 +96,7 @@
 }
 
 -(GADInterstitial*)createAndLoadInterstitial{
-    GADInterstitial *interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
+    GADInterstitial *interstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2625695451857163/7046930530"];
     interstitial.delegate = self;
     [interstitial loadRequest:[GADRequest request]];
     return interstitial;
@@ -118,7 +110,7 @@
 
 
 -(void)readyInterstitial{
-    GADInterstitial* newInterstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-3940256099942544/4411468910"];
+    GADInterstitial* newInterstitial = [[GADInterstitial alloc] initWithAdUnitID:@"ca-app-pub-2625695451857163/7046930530"];
     
     GADRequest *request = [GADRequest request];
     request.testDevices = @[@"439f8ddf1a8d7601d5478939c3263326"];

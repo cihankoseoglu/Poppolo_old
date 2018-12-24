@@ -119,7 +119,7 @@
  */
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if ([self isEnabled]) {
-        objc_msgSend(_targetTouchDown, _actionTouchDown);
+       
         [self setIsSelected:YES];
     }
 }
@@ -151,10 +151,10 @@
     CGPoint touchPoint = [touch locationInNode:self.parent];
     
     if ([self isEnabled] && CGRectContainsPoint(self.frame, touchPoint)) {
-        objc_msgSend(_targetTouchUpInside, _actionTouchUpInside);
+        
     }
     [self setIsSelected:NO];
-    objc_msgSend(_targetTouchUp, _actionTouchUp);
+    
 }
 
 @end

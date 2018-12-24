@@ -14,9 +14,11 @@
     NSUInteger ballTouchCounter;
     NSUInteger remainingBallsInASuit;
     NSString *newSuitColor;
+    NSString *lastSpawnedBallColor;
     NSDate *firstTime;
     NSUInteger ballCount;
     SKLabelNode *score;
+    SKLabelNode *timer;
     int scoreCount;
     float chaoticConstant;
     
@@ -43,6 +45,8 @@
         remainingBallsInASuit++;
     }
     
+    lastSpawnedBallColor = ballSprite.ballColor;
+    
     
     [self addChild:ballSprite];
     
@@ -66,12 +70,18 @@
         remainingBallsInASuit++;
     }
     
-    
+    lastSpawnedBallColor = ballSprite.ballColor;
+
     [self addChild:ballSprite];
     
+  
     SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:1];
+  //  SKAction *group = [SKAction group:@[playSound,fadeIn]];
     [ballSprite runAction:fadeIn];
+//    [ballSprite runAction:group];
     
+    
+                       
     [ballSprite.physicsBody applyImpulse:[self randomVector]];
     
 }
@@ -127,6 +137,8 @@
         
         chaoticConstant = 20;
         
+      
+        
         // ready ad
         
         [[NSNotificationCenter defaultCenter] postNotificationName:@"readyAd" object:nil];
@@ -155,7 +167,6 @@
         
         // add balls
         for (int i = 0 ; i <10; i++) {
-            
         
             [self addBall];
             
@@ -178,11 +189,18 @@
     
     
     
+    
     if(touchedNode != self){
         
 
         // if it's a new suit
-        if(ballTouchCounter == 0){
+        
+        // make this right sometime
+//        if(ballTouchCounter == 0 && ![newSuitColor isEqualToString:lastSpawnedBallColor]){
+        
+        if (ballTouchCounter == 0) {
+            
+        
 
             // get that suit color
             newSuitColor = touchedNode.ballColor;
@@ -206,7 +224,7 @@
             
             [touchedNode removeFromParent];
             scoreCount++;
-[GameData sharedGameData].score +=1;
+            [GameData sharedGameData].score +=1;
             ballTouchCounter--;
             ballCount--;
             
@@ -222,9 +240,14 @@
                 
                 [touchedNode removeFromParent];
                 scoreCount++;
-[GameData sharedGameData].score +=1;
+                [GameData sharedGameData].score +=1;
                 ballTouchCounter--;
                 ballCount--;
+                
+                // I CHANGED HERE
+                SKAction *playSound = [SKAction playSoundFileNamed:@"poppoloballpop.mp3" waitForCompletion:NO];
+                [touchedNode runAction:playSound];
+                //
                 
                 // add ball everytime.
                 [self addBallWithAnimation];
@@ -313,7 +336,7 @@
 -(void)gameOver{
     
     NSLog(@"Entered game over state");
-    
+    // Need to get a sound for game over
     self.userInteractionEnabled = NO;
     
     SKSpriteNode *whiteOverlay = [SKSpriteNode spriteNodeWithImageNamed:@"WhiteOverlay.png"];

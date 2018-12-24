@@ -10,21 +10,7 @@
 #import "LevelSelect.h"
 #import "EndlessLevel.h"
 
-#import "LevelSeven.h"
-#import "LevelEight.h"
-#import "LevelNine.h"
-#import "LevelTen.h"
 
-#import "LevelEleven.h"
-#import "LevelTwelve.h"
-#import "LevelThirteen.h"
-#import "LevelFourteen.h"
-#import "LevelFifteen.h"
-#import "LevelSixteen.h"
-#import "LevelSeventeen.h"
-#import "LevelEighteen.h"
-#import "LevelNineteen.h"
-#import "LevelTwenty.h"
 
 @interface GameOver(){
     
@@ -38,6 +24,17 @@
 -(id)initWithSize:(CGSize)size{
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
+        
+        //self.userInteractionEnabled = NO;
+        
+        //shows ad at the end of each game session.
+        
+        [GameData sharedGameData].adShowCount += 1;
+        
+        if ([GameData sharedGameData].adShowCount %2 == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil];
+        }
+
         
         self.backgroundColor = [SKColor whiteColor];
         
@@ -80,7 +77,7 @@
         SKLabelNode *gameRuleLabel4 = [[SKLabelNode alloc] initWithFontNamed:@"Helvetica"];
         gameRuleLabel4.text = [NSString stringWithFormat:@"you scored: %li", [GameData sharedGameData].score];
         gameRuleLabel4.fontSize = 24;
-        gameRuleLabel4.fontColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1.0];
+        gameRuleLabel4.fontColor = instructionColor;
         gameRuleLabel4.position = CGPointMake(self.scene.size.width/2, self.scene.size.height/2 +180);
         gameRuleLabel4.alpha = 0 ;
         
@@ -89,33 +86,14 @@
         [gameRuleLabel4 runAction:group4];
         
         [self addChild:gameRuleLabel4];
-//        // level select button
-//        
-//        SKButton *levelSelectButton = [[SKButton alloc] initWithImageNamedNormal:@"TransparentButton" selected:@"TransparentButton"];
-//        [levelSelectButton setPosition:CGPointMake(self.scene.size.width/2, self.scene.size.height/2-120)];
-//        [levelSelectButton.title setText:@"level select"];
-//        [levelSelectButton.title setFontName:@"Helvetica"];
-//        [levelSelectButton.title setFontSize:20.0];
-//        [levelSelectButton.title setFontColor:instructionColor];
-//        [levelSelectButton setTouchUpInsideTarget:self action:@selector(segueToLevelSelect)];
-//        [self addChild:levelSelectButton];
         
         
-        //shows ad at the end of each game session.
-            [GameData sharedGameData].adShowCount += 1;        
-        if ([GameData sharedGameData].adShowCount %2 == 0) {
-
-
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"showAd" object:nil];
-            
-        }
         
         
     }
     return self;
 }
 
-// I hate myself for typing out such a method.
 
 -(void)restartLevel{
     
